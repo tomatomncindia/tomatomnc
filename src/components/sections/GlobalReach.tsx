@@ -18,7 +18,11 @@ import {
   MERIDIAN_X,
   PROJECTED_MARKETS,
   HQ,
+  BLACKCHIP_HQ,
 } from "./world-map-path";
+
+// Blackchip (India) HQ accent — a saffron amber, distinct from the Korea HQ red.
+const BLACKCHIP_COLOR = "#E08A1E";
 
 export function GlobalReach() {
   const reduce = useReducedMotion();
@@ -42,7 +46,7 @@ export function GlobalReach() {
           </Reveal>
           <Reveal delay={0.05} className="lg:col-span-5">
             <p className="text-[15.5px] leading-relaxed text-ink-soft max-w-md">
-              Active distribution across the Americas, Europe, Asia-Pacific, and MENA. Each market entry backed by region-specific regulatory clearance.
+              Manufactured in Pyeongtaek, South Korea, and shipped to the United States, Japan, China, Southeast Asia, MENA, Europe, and South America. In India, <span className="text-ink font-medium">Blackchip</span> operates as the distributor of Tomato M&amp;C India.
             </p>
             <Link
               href="/network#markets"
@@ -153,6 +157,25 @@ export function GlobalReach() {
                 >
                   HQ · PYEONGTAEK
                 </text>
+
+                {/* Blackchip — India operations / distributor */}
+                <g>
+                  <circle cx={BLACKCHIP_HQ.x} cy={BLACKCHIP_HQ.y} r="12" fill={BLACKCHIP_COLOR} opacity="0.16" />
+                  <circle cx={BLACKCHIP_HQ.x} cy={BLACKCHIP_HQ.y} r="7" fill={BLACKCHIP_COLOR} opacity="0.32" />
+                  <circle cx={BLACKCHIP_HQ.x} cy={BLACKCHIP_HQ.y} r="3" fill={BLACKCHIP_COLOR} stroke="white" strokeWidth="0.8" />
+                </g>
+                <text
+                  x={BLACKCHIP_HQ.x - 14}
+                  y={BLACKCHIP_HQ.y + 18}
+                  textAnchor="end"
+                  fontFamily="var(--font-mono)"
+                  fontSize="8.5"
+                  letterSpacing="0.16em"
+                  fill={BLACKCHIP_COLOR}
+                  className="uppercase font-medium"
+                >
+                  BLACKCHIP · INDIA
+                </text>
               </svg>
             </div>
 
@@ -166,6 +189,10 @@ export function GlobalReach() {
                 <span className="inline-flex items-center gap-2">
                   <span aria-hidden className="inline-block h-2 w-2 rounded-full bg-brand-red" />
                   HEADQUARTERS · KR
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <span aria-hidden className="inline-block h-2 w-2 rounded-full" style={{ backgroundColor: BLACKCHIP_COLOR }} />
+                  BLACKCHIP · IN
                 </span>
               </div>
               <span className="tabular-nums">SOURCE · NATURAL EARTH 110M</span>

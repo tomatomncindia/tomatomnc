@@ -218,12 +218,6 @@ export const PROJECTED_MARKETS: ProjectedMarket[] = [
     "y": 355.6
   },
   {
-    "name": "India",
-    "region": "Rest of World",
-    "x": 710.5,
-    "y": 167
-  },
-  {
     "name": "Australia",
     "region": "Rest of World",
     "x": 857.9,
@@ -237,4 +231,8 @@ export const PROJECTED_MARKETS: ProjectedMarket[] = [
   }
 ];
 
+// Pyeongtaek, South Korea — manufacturing headquarters.
 export const HQ = {"x":820.7,"y":114.6};
+
+// Blackchip — India operations / distributor of Tomato M&C India.
+export const BLACKCHIP_HQ = {"x":710.5,"y":167};

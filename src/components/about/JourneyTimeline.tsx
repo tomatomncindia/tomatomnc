@@ -10,6 +10,7 @@ import {
   Cog,
   Stamp,
   Rocket,
+  Handshake,
   type LucideIcon,
 } from "lucide-react";
 
@@ -91,6 +92,13 @@ const MILESTONES: Milestone[] = [
     title: "Private-label program.",
     body: "OEM and private-label program launches at scale. KGMP coverage expands. The line is open for partner brands.",
     icon: Rocket,
+  },
+  {
+    year: "2026",
+    tag: "INDIA · BLACKCHIP",
+    title: "Blackchip distributes in India.",
+    body: "Blackchip is appointed distributor of Tomato M&C India, bringing the full casting and splinting catalog to Indian hospitals and clinics.",
+    icon: Handshake,
   },
 ];
 

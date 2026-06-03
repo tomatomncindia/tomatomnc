@@ -1,6 +1,5 @@
 export type DownloadCategory =
   | "Catalogs"
-  | "Datasheets"
   | "Certifications"
   | "Technical Guides";
 
@@ -21,30 +20,6 @@ export const DOWNLOADS: DownloadItem[] = [
     category: "Catalogs",
     file: "/downloads/tomato-mnc-catalog.pdf",
     size: "8.2 MB",
-  },
-  {
-    id: "tomato-cast-ds",
-    title: "Tomato Cast: Datasheet",
-    description: "Specifications, sizes, and ordering codes for Tomato Cast.",
-    category: "Datasheets",
-    file: "/downloads/datasheets/tomato-cast.pdf",
-    size: "1.4 MB",
-  },
-  {
-    id: "tomato-soft-cast-ds",
-    title: "Tomato Soft Cast: Datasheet",
-    description: "Specifications and product details for Tomato Soft Cast.",
-    category: "Datasheets",
-    file: "/downloads/datasheets/tomato-soft-cast.pdf",
-    size: "1.2 MB",
-  },
-  {
-    id: "tomato-splint-ds",
-    title: "Tomato Splint: Datasheet",
-    description: "Specifications and application details for Tomato Splint.",
-    category: "Datasheets",
-    file: "/downloads/datasheets/tomato-splint.pdf",
-    size: "1.3 MB",
   },
   {
     id: "iso-13485-cert",

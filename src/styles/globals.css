@@ -99,7 +99,10 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    color: var(--color-ink);
+    /* Inherit the surrounding text color so headings on dark sections
+       (which set text-white on the section) don't render dark-on-dark.
+       Body color is ink, so headings on light backgrounds stay ink. */
+    color: inherit;
     letter-spacing: -0.01em;
   }
 

@@ -28,7 +28,7 @@ export function AnchorNav({
   }, [items]);
 
   return (
-    <div className="sticky top-16 z-20 -mx-5 md:mx-0 bg-white/85 backdrop-blur border-b border-line">
+    <div className="sticky top-16 z-20 bg-white/85 backdrop-blur border-b border-line">
       <div className="container-page flex gap-1 overflow-x-auto">
         {items.map((item) => (
           <a

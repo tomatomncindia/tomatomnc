@@ -101,7 +101,7 @@ export default function NetworkPage() {
                 Supplying {TOTAL_COUNTRIES}+ countries across five continents.
               </h2>
               <p className="mt-5 text-[15.5px] leading-relaxed text-ink-soft max-w-md">
-                Active distribution across the Americas, Europe, Asia-Pacific, and MENA. Each market entry backed by region-specific regulatory clearance.
+                Active distribution across the Americas, Europe, Asia-Pacific, and MENA. In India, Blackchip operates as the distributor of Tomato M&amp;C India. Each market entry backed by region-specific regulatory clearance.
               </p>
               <dl className="mt-8 grid grid-cols-3 divide-x divide-line border-y border-line">
                 {[

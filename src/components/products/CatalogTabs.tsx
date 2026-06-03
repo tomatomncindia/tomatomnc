@@ -19,7 +19,6 @@ const CATEGORY_FILTERS: Array<{ label: string; value: ProductCategory | "all" }>
 
 const DOWNLOAD_CATEGORIES: DownloadCategory[] = [
   "Catalogs",
-  "Datasheets",
   "Certifications",
   "Technical Guides",
 ];
@@ -198,7 +197,7 @@ function DownloadsView() {
 
       <div className="rounded-xl border border-dashed border-line p-6 md:p-8 text-center">
         <p className="text-[14.5px] text-ink-soft">
-          Need a custom datasheet, batch COA, or regulatory document?
+          Need a batch COA or region-specific regulatory document?
         </p>
         <a
           href="/contact"

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Download, ArrowUpRight, ArrowDown } from "lucide-react";
+import { ArrowUpRight, ArrowDown } from "lucide-react";
 
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
@@ -9,7 +9,6 @@ import { WordReveal } from "@/components/motion/WordReveal";
 import { AnimatedNumber } from "@/components/motion/AnimatedNumber";
 import { JourneyTimeline } from "@/components/about/JourneyTimeline";
 import { FacilityBlueprint } from "@/components/about/FacilityBlueprint";
-import { CERTIFICATIONS } from "@/data/certifications";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -24,7 +23,6 @@ const TOC = [
   { num: "02", label: "Twenty Years", href: "#journey" },
   { num: "03", label: "Inside the Building", href: "#facility" },
   { num: "04", label: "By the Numbers", href: "#numbers" },
-  { num: "05", label: "Quality Dossier", href: "#quality" },
 ];
 
 const PRESS_NUMBERS = [
@@ -329,87 +327,6 @@ export default function AboutPage() {
                   <dt className="mt-4 font-display text-[18px] text-ink">{n.label}</dt>
                   <p className="mt-2 text-[13px] leading-relaxed text-ink-soft">{n.note}</p>
                 </div>
-              </Reveal>
-            ))}
-          </ol>
-        </Container>
-      </Section>
-
-      {/* ─────────────────────────────────────────────────────────
-         05 / QUALITY DOSSIER — filed-document cert presentation
-         ───────────────────────────────────────────────────────── */}
-      <Section size="lg" tone="paper" id="quality" className="scroll-mt-20">
-        <Container>
-          <div className="mb-12 md:mb-16 grid gap-8 lg:grid-cols-12 lg:gap-12 items-end">
-            <div className="lg:col-span-7">
-              <Reveal>
-                <div className="flex items-center gap-4">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-forest tabular-nums">
-                    05
-                  </span>
-                  <span aria-hidden className="h-px w-12 bg-line-strong" />
-                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-muted">
-                    QUALITY DOSSIER
-                  </span>
-                </div>
-                <h2 className="mt-6 font-display text-[36px] md:text-[52px] leading-[1.05] tracking-[-0.02em]">
-                  Documents
-                  <span className="editorial-italic text-forest"> on file.</span>
-                </h2>
-              </Reveal>
-            </div>
-            <Reveal delay={0.05} className="lg:col-span-5">
-              <p className="text-[15.5px] leading-relaxed text-ink-soft">
-                Six certifications across five jurisdictions. Documentation is downloadable directly —
-                no login, no form, no waiting on a sales rep.
-              </p>
-            </Reveal>
-          </div>
-
-          {/* Filed cert cards */}
-          <ol className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {CERTIFICATIONS.map((c, i) => (
-              <Reveal as="li" key={c.id} delay={i * 0.04}>
-                <article className="group h-full bg-white border border-line transition-[border-color,transform] duration-300 [transition-timing-function:var(--ease-out-quint)] hover:-translate-y-0.5 hover:border-forest/40 hover:shadow-[var(--shadow-card)] flex flex-col">
-                  {/* Document header */}
-                  <header className="flex items-center justify-between border-b border-line px-5 py-2.5">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-muted tabular-nums">
-                      DOC · {String(i + 1).padStart(2, "0")}
-                    </p>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-forest">
-                      {c.region}
-                    </p>
-                  </header>
-                  {/* Body */}
-                  <div className="p-5 md:p-6 flex-1 flex flex-col">
-                    <h3 className="font-display text-[26px] leading-tight tracking-[-0.01em] text-ink">
-                      {c.body}
-                    </h3>
-                    <p className="mt-1.5 text-[13px] text-forest font-medium">{c.scope}</p>
-                    <p className="mt-4 text-[13.5px] leading-relaxed text-ink-soft flex-1">
-                      {c.description}
-                    </p>
-                  </div>
-                  {/* Document footer */}
-                  <footer className="border-t border-line px-5 py-3 flex items-center justify-between">
-                    {c.pdf ? (
-                      <a
-                        href={c.pdf}
-                        className="inline-flex items-center gap-1.5 font-mono text-[10.5px] uppercase tracking-[0.16em] text-ink hover:text-forest transition-colors"
-                      >
-                        <Download className="h-3 w-3" />
-                        DOWNLOAD
-                      </a>
-                    ) : (
-                      <span className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-ink-muted">
-                        ON REQUEST
-                      </span>
-                    )}
-                    <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-ink-muted tabular-nums">
-                      {c.id.toUpperCase()}
-                    </span>
-                  </footer>
-                </article>
               </Reveal>
             ))}
           </ol>

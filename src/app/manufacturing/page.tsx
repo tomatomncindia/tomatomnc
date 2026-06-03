@@ -59,65 +59,100 @@ const SUPPORT_SYSTEMS = [
 ];
 
 const FACILITY_LARGE = {
-  src: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=85",
-  alt: "Fabric inspection on the production floor",
-  label: "PRODUCTION FLOOR",
+  src: "/images/manufacturing/line.png",
+  alt: "Fiberglass knitting and coating line on the Tomato M&C production floor",
+  label: "KNITTING & COATING LINE",
   meta: "LINE / 01",
 };
 
 const FACILITY_STACKED = [
   {
-    src: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=900&q=80",
-    alt: "Resin chemistry",
-    label: "RESIN LAB",
+    src: "/images/manufacturing/fabric.png",
+    alt: "Coated fiberglass casting fabric",
+    label: "FIBERGLASS FABRIC",
   },
   {
-    src: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
-    alt: "Automated control systems",
-    label: "AUTOMATION",
+    src: "/images/manufacturing/resin.png",
+    alt: "Synthetic resin formulation",
+    label: "RESIN FORMULATION",
   },
 ];
 
 export default function ManufacturingPage() {
   return (
     <>
-      {/* HERO */}
+      {/* HERO — "Top Management for Tomorrow" company story */}
       <section className="relative bg-ink text-white overflow-hidden">
         <IndustrialBackdrop tone="ink" pattern="dots" className="absolute inset-0" />
-        <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1565687981296-535f09db714e?auto=format&fit=crop&w=1800&q=80"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover opacity-25"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/70 to-ink" />
-        </div>
-        <Container className="relative pt-20 md:pt-28 pb-20 md:pb-28">
-          <div className="max-w-3xl">
-            <Reveal>
-              <p className="font-mono text-[11px] uppercase tracking-[0.18em] font-medium text-mid-green">
-                ONE ROOF / END TO END
-              </p>
-            </Reveal>
-            <WordReveal
-              as="h1"
-              delay={0.1}
-              stagger={0.08}
-              className="mt-5 font-display text-[44px] sm:text-[60px] lg:text-[76px] leading-[1.03] tracking-[-0.025em]"
-            >
-              Fully automated.
-              <br />
-              <span className="editorial-italic text-mid-green text-[50px] sm:text-[70px] lg:text-[88px] leading-[0.98]">
-                Consistently precise.
-              </span>
-            </WordReveal>
-            <Reveal delay={0.1}>
-              <p className="mt-6 max-w-2xl text-[16.5px] leading-relaxed text-white/75">
-                A state-of-the-art, one-stop automated facility built for industrial reliability. Our production system eliminates supplier variability and standardizes every roll that leaves the line.
-              </p>
+        <Container className="relative pt-20 md:pt-28 pb-16 md:pb-24">
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-14 items-center">
+            {/* Left — messaging */}
+            <div className="lg:col-span-6">
+              <Reveal>
+                <p className="font-mono text-[11px] uppercase tracking-[0.2em] font-medium text-mid-green">
+                  TOP MANAGEMENT FOR TOMORROW
+                </p>
+              </Reveal>
+              <WordReveal
+                as="h1"
+                delay={0.1}
+                stagger={0.06}
+                className="mt-5 font-display text-white text-[40px] sm:text-[54px] lg:text-[64px] leading-[1.04] tracking-[-0.025em]"
+              >
+                Fiber cast &amp; splint,
+                <br />
+                <span className="editorial-italic text-mid-green">made under one roof.</span>
+              </WordReveal>
+              <Reveal delay={0.12}>
+                <p className="mt-6 max-w-xl text-[16px] leading-relaxed text-white/75">
+                  Established in 2005, Tomato M&amp;C is a specialist manufacturer of synthetic
+                  orthopedic cast and splint. We are the only manufacturer producing synthetic
+                  resin casts on a one-stop, button-operated system with automatic packaging —
+                  supplying Tomato-brand products, OEM, production facilities, and raw materials
+                  to customers in around 30 countries.
+                </p>
+              </Reveal>
+              <Reveal delay={0.18}>
+                <ul className="mt-7 flex flex-wrap gap-2">
+                  {["ISO 13485", "ISO 14001", "ISO 9001", "USA-FDA", "CE", "KGMP"].map((q) => (
+                    <li
+                      key={q}
+                      className="rounded-full border border-white/15 bg-white/[0.04] px-3 py-1.5 font-mono text-[10.5px] uppercase tracking-[0.12em] text-white/75"
+                    >
+                      {q}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            </div>
+
+            {/* Right — framed production photo */}
+            <Reveal delay={0.1} className="lg:col-span-6">
+              <figure className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src="/images/manufacturing/line.png"
+                    alt="Fiberglass knitting and coating line at the Tomato M&C facility"
+                    fill
+                    priority
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-ink/20" />
+                  <div className="absolute inset-x-0 top-0 p-5 flex items-start justify-between font-mono text-[10px] uppercase tracking-[0.18em] text-white/80">
+                    <span>LINE / 01</span>
+                    <span className="tabular-nums">PYEONGTAEK · KR</span>
+                  </div>
+                  <figcaption className="absolute inset-x-0 bottom-0 p-5">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-mid-green">
+                      FIBER GLASS KNITTING & HEATING
+                    </p>
+                    <p className="mt-1 font-display text-lg text-white leading-tight">
+                      Synthetic resin formulation & dehumidification
+                    </p>
+                  </figcaption>
+                </div>
+              </figure>
             </Reveal>
           </div>
         </Container>

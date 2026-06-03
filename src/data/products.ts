@@ -8,6 +8,12 @@ export type ProductSpec = {
   packagingCase?: string;
 };
 
+export type ApplicationStep = {
+  title: string;
+  body: string;
+  image?: string;
+};
+
 export type Product = {
   slug: string;
   name: string;
@@ -19,7 +25,7 @@ export type Product = {
   features: string[];
   precautions?: string;
   image: string;
-  applicationSteps?: { title: string; body: string }[];
+  applicationSteps?: ApplicationStep[];
   specs: ProductSpec[];
   colors?: string[];
   related: string[];
@@ -35,59 +41,59 @@ export const PRODUCTS: Product[] = [
     description:
       "Rigid synthetic casting tape providing exceptional strength-to-weight ratio for primary orthopedic immobilization. Engineered for fast set, high mechanical strength, and radiolucency.",
     intendedUse:
-      "Tomato Cast is designed for the immobilization of fractures, sprains, and post-operative orthopedic conditions where rigid support is required.",
+      "Tomato Cast has been designed for the immobilization of fractures, sprains, and strains where rigid support is required.",
     features: [
-      "Fiberglass and polyester options",
-      "High strength-to-weight ratio",
-      "X-ray translucent",
-      "Multiple color variants",
-      "Conformable application with controlled set time",
+      "Comfortability — smooth unrolling lets clinicians wrap with less pressure and no pain to the patient",
+      "Conformability & mouldability — extreme-soft fabric shapes easily to the contours of the body",
+      "Durability for safety — strong on impact and durable on the edges",
+      "Tack-free with no layer separation",
+      "Excellent X-ray translucency",
     ],
     precautions:
       "Application must be performed by trained medical personnel. Ensure adequate stockinet and padding underlay. Do not apply directly to broken skin.",
     image: "/images/products/tomato-cast.png",
     applicationSteps: [
-      { title: "Preparation", body: "Apply stockinet and undercast padding over the limb." },
-      { title: "Squeeze", body: "Briefly immerse the cast roll in tepid water and squeeze to activate." },
-      { title: "Apply", body: "Wrap with 50% overlap, maintaining smooth, even tension." },
-      { title: "Mould", body: "Mould the cast to anatomy while resin remains workable." },
-      { title: "Set", body: "Cast hardens within 3–5 minutes; full strength in 30 minutes." },
-      { title: "Inspect", body: "Verify neurovascular status and patient comfort." },
+      {
+        title: "Preparation",
+        body: "Slip the two layers of Tomato Safe Pad onto the affected body part.",
+        image: "/images/application/steps/cast-1.png",
+      },
+      {
+        title: "Wear gloves",
+        body: "Gloves must be worn before handling the cast roll.",
+        image: "/images/application/steps/cast-2.png",
+      },
+      {
+        title: "Open one roll",
+        body: "Open only one roll of Tomato Cast at a time to control set time.",
+        image: "/images/application/steps/cast-3.png",
+      },
+      {
+        title: "Immerse",
+        body: "Immerse the roll in water at 20–24°C for 3–5 seconds and squeeze 3–4 times for full penetration. Do not soak too long.",
+        image: "/images/application/steps/cast-4.png",
+      },
+      {
+        title: "Wrap",
+        body: "Wrap spirally, avoiding excessive tightness. Finish within 1 minute 10 seconds of opening the pouch.",
+        image: "/images/application/steps/cast-5.png",
+      },
+      {
+        title: "Mould",
+        body: "Smooth and rub the surface for good contact between layers. Cures for moulding in 3–5 minutes.",
+        image: "/images/application/steps/cast-6.png",
+      },
     ],
     specs: [
-      { refCode: "TC-002", width: "2 in (5.0 cm)", length: "3.6 m", packagingBox: "10 rolls/box" },
-      { refCode: "TC-003", width: "3 in (7.5 cm)", length: "3.6 m", packagingBox: "10 rolls/box" },
-      { refCode: "TC-004", width: "4 in (10.0 cm)", length: "3.6 m", packagingBox: "10 rolls/box" },
-      { refCode: "TC-005", width: "5 in (12.5 cm)", length: "3.6 m", packagingBox: "10 rolls/box" },
-      { refCode: "TC-006", width: "6 in (15.0 cm)", length: "3.6 m", packagingBox: "10 rolls/box" },
+      { refCode: "TRC-001", width: "1 in (2.5 cm)", length: "1.8 m (2 yds)", packagingBox: "Fiberglass / Poly" },
+      { refCode: "TRC-002", width: "2 in (5.0 cm)", length: "3.6 m (4 yds)", packagingBox: "Fiberglass / Poly" },
+      { refCode: "TRC-003", width: "3 in (7.5 cm)", length: "3.6 m (4 yds)", packagingBox: "Fiberglass / Poly" },
+      { refCode: "TRC-004", width: "4 in (10.0 cm)", length: "3.6 m (4 yds)", packagingBox: "Fiberglass / Poly" },
+      { refCode: "TRC-005", width: "5 in (12.5 cm)", length: "3.6 m (4 yds)", packagingBox: "Fiberglass / Poly" },
+      { refCode: "TRC-006", width: "6 in (15.0 cm)", length: "3.6 m (4 yds)", packagingBox: "Fiberglass / Poly" },
     ],
-    colors: ["white", "navy", "royal-blue", "sky-blue", "red", "burgundy", "pink", "purple", "green", "teal", "orange", "yellow", "black", "grey"],
-    related: ["tomato-soft-cast", "tomato-splint", "2in1-safe-pad"],
-  },
-  {
-    slug: "tomato-soft-cast",
-    name: "Tomato Soft Cast",
-    shortName: "Soft Cast",
-    category: "Cast",
-    tagline: "Semi-rigid synthetic cast for functional immobilization.",
-    description:
-      "Flexible polyester casting tape allowing functional movement. Designed for secondary casting applications and effective swelling control. Tomato Soft Cast provides semi-rigid support while allowing the limb to maintain mobility: ideal for sprains, post-operative bracing, or transition from rigid casts.",
-    intendedUse:
-      "Indicated for secondary casting applications and effective swelling control where functional immobilization is desired. Allows for controlled movement while maintaining structural support.",
-    features: [
-      "Easy to apply and remove with standard scissors",
-      "Breathable polyester substrate for patient comfort",
-      "Semi-rigid for functional immobilization",
-      "Bonds to itself rather than to skin or padding",
-    ],
-    image: "/images/products/tomato-soft-cast.png",
-    specs: [
-      { refCode: "TSC-002", width: "2 in (5.0 cm)", length: "3.6 m", packagingBox: "10 rolls/box", packagingCase: "8 boxes/case" },
-      { refCode: "TSC-003", width: "3 in (7.5 cm)", length: "3.6 m", packagingBox: "10 rolls/box", packagingCase: "8 boxes/case" },
-      { refCode: "TSC-004", width: "4 in (10.0 cm)", length: "3.6 m", packagingBox: "10 rolls/box", packagingCase: "8 boxes/case" },
-      { refCode: "TSC-005", width: "5 in (12.5 cm)", length: "3.6 m", packagingBox: "10 rolls/box", packagingCase: "8 boxes/case" },
-    ],
-    related: ["tomato-cast", "tomato-splint", "elastic-bandage"],
+    colors: ["white", "sky-blue", "neon-green", "ocean-green", "green", "purple", "pink", "orange", "yellow", "black", "grey", "pastel"],
+    related: ["tomato-splint", "star-cast-roll", "star-stockinet"],
   },
   {
     slug: "tomato-splint",
@@ -100,126 +106,105 @@ export const PRODUCTS: Product[] = [
     intendedUse:
       "Tomato Splint is designed for the immediate immobilization of fractures, sprains, and post-operative orthopedic conditions where reliable splinting and a quick, clean application is required.",
     features: [
+      "Comfortability & hygiene — water-spray application on the mesh side keeps the patient side dry",
+      "Conformability & mouldability — shapes easily to the contours of the body",
       "Pre-padded: no separate stockinet or padding required",
-      "Hospital-grade fiberglass core",
-      "Excellent moisture-evaporation efficiency",
-      "Available in a range of widths and lengths",
+      "Excellent moisture-evaporation efficiency during hardening",
+      "Available pre-cut and in rolls across a range of widths",
     ],
     image: "/images/products/tomato-splint.png",
     applicationSteps: [
-      { title: "Preparation", body: "Cut splint to required length using standard surgical scissors." },
-      { title: "Wet", body: "Briefly immerse splint in tepid water and squeeze gently to remove excess." },
-      { title: "Apply", body: "Position over limb, smooth out, and secure with elastic bandage." },
-      { title: "Mould", body: "Hand-mould to anatomy while resin remains workable." },
-      { title: "Set", body: "Splint hardens within 3–5 minutes; achieves full strength in 30 minutes." },
+      {
+        title: "Cut to length",
+        body: "Take Tomato Splint with its sealed foil pouch from the box, measure the length, and cut it off with bandage scissors.",
+        image: "/images/application/steps/splint-1.png",
+      },
+      {
+        title: "Reseal the pack",
+        body: "Seal the box immediately with the clip provided inside to prevent moisture from entering the package.",
+        image: "/images/application/steps/splint-2.png",
+      },
+      {
+        title: "Choose the size",
+        body: "Choose the desired size for the affected body part. Generally, no gloves are necessary.",
+        image: "/images/application/steps/splint-3.png",
+      },
+      {
+        title: "Spray",
+        body: "Instead of soaking, spray room-temperature water on the outer green mesh side of the splint.",
+        image: "/images/application/steps/splint-4.png",
+      },
+      {
+        title: "Dry off",
+        body: "Remove excess water by rolling up with a dry towel; tap the surface with the towel if needed.",
+        image: "/images/application/steps/splint-5.png",
+      },
+      {
+        title: "Wrap & mould",
+        body: "Wrap Tomato Splint with a roll of elastic bandage to secure it and mould it firmly to the limb.",
+        image: "/images/application/steps/splint-6.png",
+      },
     ],
     specs: [
-      { refCode: "TSP-001", width: "2 in (5.0 cm)", length: "76 cm", packagingBox: "10 rolls/box" },
-      { refCode: "TSP-002", width: "3 in (7.5 cm)", length: "76 cm", packagingBox: "10 rolls/box" },
-      { refCode: "TSP-003", width: "4 in (10.0 cm)", length: "76 cm", packagingBox: "10 rolls/box" },
-      { refCode: "TSP-004", width: "5 in (12.5 cm)", length: "76 cm", packagingBox: "10 rolls/box" },
+      { refCode: "TPS-210", width: "2 in (5.0 cm)", length: "25.0 cm (10 in)", packagingBox: "Pre-cut" },
+      { refCode: "TPS-312", width: "3 in (7.5 cm)", length: "30.0 cm (12 in)", packagingBox: "Pre-cut" },
+      { refCode: "TPS-415", width: "4 in (10.0 cm)", length: "37.5 cm (15 in)", packagingBox: "Pre-cut" },
+      { refCode: "TPS-530", width: "5 in (12.5 cm)", length: "75.0 cm (30 in)", packagingBox: "Pre-cut" },
+      { refCode: "TRS-004", width: "4 in (10.0 cm)", length: "4.5 m (5 yds)", packagingBox: "Roll" },
+      { refCode: "TRS-005", width: "5 in (12.5 cm)", length: "4.5 m (5 yds)", packagingBox: "Roll" },
     ],
-    related: ["tomato-cast", "2in1-safe-pad", "elastic-bandage"],
+    related: ["tomato-cast", "star-cast-roll", "star-stockinet"],
   },
   {
-    slug: "2in1-safe-pad",
-    name: "Tomato 2in1 Safe Pad",
-    shortName: "2in1 Safe Pad",
-    category: "Accessory",
-    tagline: "Combined padding and stockinet for fast, safe cast application.",
+    slug: "star-cast-roll",
+    name: "Star Cast Roll",
+    shortName: "Cast Roll",
+    category: "Cast",
+    tagline: "Semi-rigid polyester cast roll for functional immobilization.",
     description:
-      "Streamlines the immobilization process while ensuring patient comfort and clinical precision. The 2in1 Safe Pad integrates two layers into one seamless product, eliminating the need for separate application steps.",
+      "Flexible polyester casting tape allowing functional movement. Star Cast Roll provides semi-rigid support while allowing the limb to keep some mobility — ideal for secondary casting, sprains, post-operative bracing, or transition from a rigid cast.",
     intendedUse:
-      "Used as undercast padding and stockinet beneath a primary cast layer to protect skin and ensure consistent padding thickness around bony prominences.",
+      "Indicated for secondary casting and effective swelling control where functional immobilization is desired. Allows controlled movement while maintaining structural support.",
     features: [
-      "Reduces application time by integrating two layers into one seamless product",
-      "High-density polyester ensures consistent protection over bony prominences",
-      "Optimized stretch characteristics conform closely to patient anatomy",
-      "Hybrid construction mixing PAD and STOCKINET functionalities",
+      "Easy to apply and remove with standard scissors",
+      "Enough flexion for support",
+      "Skin-tight application without separate padding",
+      "Shoes can be worn with the cast on",
+      "Suitable for children or for staged cast removal",
     ],
-    precautions:
-      "Ensure appropriate overlap during application to maintain consistent padding thickness. Do not apply directly to broken skin without primary dressing.",
-    image: "/images/products/2in1-safe-pad.png",
+    image: "/images/products/star-cast-roll.png",
     specs: [
-      { refCode: "TIP-002", width: "2 in (5.0 cm)", length: "3.6 m", packagingBox: "12 rolls/box" },
-      { refCode: "TIP-003", width: "3 in (7.5 cm)", length: "3.6 m", packagingBox: "12 rolls/box" },
-      { refCode: "TIP-004", width: "4 in (10.0 cm)", length: "3.6 m", packagingBox: "12 rolls/box" },
-      { refCode: "TIP-005", width: "5 in (12.5 cm)", length: "3.6 m", packagingBox: "12 rolls/box" },
-      { refCode: "TIP-006", width: "6 in (15.0 cm)", length: "3.6 m", packagingBox: "6 rolls/box" },
+      { refCode: "SCR-002", width: "2 in (5.0 cm)", length: "3.6 m (4 yds)", packagingBox: "Soft Polyester Cast" },
+      { refCode: "SCR-003", width: "3 in (7.5 cm)", length: "3.6 m (4 yds)", packagingBox: "Soft Polyester Cast" },
+      { refCode: "SCR-004", width: "4 in (10.0 cm)", length: "3.6 m (4 yds)", packagingBox: "Soft Polyester Cast" },
+      { refCode: "SCR-005", width: "5 in (12.5 cm)", length: "3.6 m (4 yds)", packagingBox: "Soft Polyester Cast" },
     ],
-    related: ["tomato-cast", "tomato-splint", "shockinet"],
+    related: ["tomato-cast", "tomato-splint", "star-stockinet"],
   },
   {
-    slug: "cotton-pad",
-    name: "Cotton Pad",
-    shortName: "Cotton Pad",
+    slug: "star-stockinet",
+    name: "Star Stockinet",
+    shortName: "Stockinet",
     category: "Accessory",
-    tagline: "100% cotton undercast padding for skin-friendly comfort.",
+    tagline: "100% cotton tubular stockinet for baseline skin protection.",
     description:
-      "Premium cotton padding for use beneath rigid orthopedic casts. Soft, breathable, and gentle on skin while providing reliable cushioning and absorbency.",
+      "Soft 100% cotton tubular stockinet worn next to the skin beneath padding and rigid casts. Provides a clean barrier and reduces skin irritation.",
     intendedUse:
-      "Used as undercast padding to protect skin from direct contact with rigid casting materials.",
+      "Star Stockinet is intended as a soft, sores-preventing inter-layer under solid cast materials.",
     features: [
-      "100% pure cotton fibre",
-      "Highly absorbent and breathable",
-      "Easy tear, no scissors required",
-      "Conformable to anatomy",
-    ],
-    image: "/images/products/cotton-pad.png",
-    specs: [
-      { refCode: "CP-002", width: "2 in (5.0 cm)", length: "2.7 m", packagingBox: "12 rolls/box" },
-      { refCode: "CP-003", width: "3 in (7.5 cm)", length: "2.7 m", packagingBox: "12 rolls/box" },
-      { refCode: "CP-004", width: "4 in (10.0 cm)", length: "2.7 m", packagingBox: "12 rolls/box" },
-      { refCode: "CP-006", width: "6 in (15.0 cm)", length: "2.7 m", packagingBox: "6 rolls/box" },
-    ],
-    related: ["2in1-safe-pad", "tomato-cast", "shockinet"],
-  },
-  {
-    slug: "elastic-bandage",
-    name: "Elastic Bandage",
-    shortName: "Elastic Bandage",
-    category: "Accessory",
-    tagline: "High-quality elastic bandage for compression and support.",
-    description:
-      "Versatile woven elastic bandage providing consistent compression and limb support. Used in splinting, post-cast wrap, and general orthopedic support applications.",
-    intendedUse:
-      "For compression, support, and securing splints or dressings.",
-    features: [
-      "Consistent elasticity through repeated washes",
-      "Latex-free, hypoallergenic",
-      "Secure metal-clip or self-adherent closure variants",
-    ],
-    image: "/images/products/elastic-bandage.png",
-    specs: [
-      { refCode: "EB-002", width: "2 in (5.0 cm)", length: "4.5 m" },
-      { refCode: "EB-003", width: "3 in (7.5 cm)", length: "4.5 m" },
-      { refCode: "EB-004", width: "4 in (10.0 cm)", length: "4.5 m" },
-      { refCode: "EB-006", width: "6 in (15.0 cm)", length: "4.5 m" },
-    ],
-    related: ["tomato-splint", "2in1-safe-pad", "cotton-pad"],
-  },
-  {
-    slug: "shockinet",
-    name: "Shockinet",
-    shortName: "Shockinet",
-    category: "Accessory",
-    tagline: "Tubular synthetic bandage for baseline skin protection.",
-    description:
-      "Lightweight tubular stockinet worn next to the skin beneath padding and rigid casts. Provides a clean barrier and reduces skin irritation.",
-    intendedUse:
-      "Used as a skin-protective base layer beneath cast padding and primary casting materials.",
-    features: [
-      "Soft synthetic blend, latex-free",
+      "Soft & moderate elasticity offers more comfort to the patient",
+      "100% cotton minimizes skin trouble",
       "Smooth seamless tubular construction",
-      "Conformable stretch in multiple diameters",
     ],
-    image: "/images/products/shockinet.png",
+    image: "/images/products/star-stockinet.png",
     specs: [
-      { refCode: "SK-002", width: "2 in (5.0 cm)", length: "25 m" },
-      { refCode: "SK-003", width: "3 in (7.5 cm)", length: "25 m" },
-      { refCode: "SK-004", width: "4 in (10.0 cm)", length: "25 m" },
+      { refCode: "SWS-002", width: "2 in (5.0 cm)", length: "10 m" },
+      { refCode: "SWS-003", width: "3 in (7.5 cm)", length: "10 m" },
+      { refCode: "SWS-004", width: "4 in (10.0 cm)", length: "10 m" },
+      { refCode: "SWS-006", width: "6 in (15.0 cm)", length: "10 m" },
+      { refCode: "SWS-010", width: "10 in (25.0 cm)", length: "10 m" },
     ],
-    related: ["2in1-safe-pad", "cotton-pad", "tomato-cast"],
+    related: ["tomato-cast", "tomato-splint", "star-cast-roll"],
   },
 ];
 

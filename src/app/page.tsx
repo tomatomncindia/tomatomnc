@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-const FEATURED_SLUGS = ["tomato-cast", "tomato-soft-cast", "tomato-splint"];
+const FEATURED_SLUGS = ["tomato-cast", "tomato-splint", "star-cast-roll"];
 
 export default function HomePage() {
   return (

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Download, ArrowUpRight, ShieldCheck, Palette } from "lucide-react";
+import { ShieldCheck, Palette } from "lucide-react";
 import type { Product } from "@/data/products";
 import { ButtonLink } from "@/components/ui/Button";
 
@@ -8,7 +8,7 @@ import { ButtonLink } from "@/components/ui/Button";
  * Surfaces the most decision-relevant info at-a-glance:
  *   - Key spec at-a-glance
  *   - Color count (if applicable)
- *   - Primary CTA (request sample) + secondary (datasheet)
+ *   - Primary CTA (request sample)
  *   - Regulatory marks the product ships under
  *
  * Designed to remain in view as the reader scrolls through the long-form
@@ -71,8 +71,8 @@ export function ProductSpecAside({ product }: { product: Product }) {
         </ul>
       </div>
 
-      {/* CTAs */}
-      <div className="space-y-2.5 pb-5 border-b border-line">
+      {/* CTA */}
+      <div className="pb-5 border-b border-line">
         <ButtonLink
           href={`/contact?type=sample&product=${product.slug}`}
           variant="primary"
@@ -82,16 +82,6 @@ export function ProductSpecAside({ product }: { product: Product }) {
         >
           Request a sample
         </ButtonLink>
-        <a
-          href={`/downloads/datasheets/${product.slug}.pdf`}
-          className="group inline-flex w-full items-center justify-between gap-2 rounded-md border border-line-strong bg-white px-5 h-11 text-sm font-medium text-ink hover:border-ink transition-colors"
-        >
-          <span className="inline-flex items-center gap-2">
-            <Download className="h-4 w-4" />
-            Datasheet (PDF)
-          </span>
-          <ArrowUpRight className="h-3.5 w-3.5 text-ink-muted transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-ink" />
-        </a>
       </div>
 
       {/* Regulatory */}

@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { FileDown, Mail } from "lucide-react";
+import { FileDown } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { ButtonLink } from "@/components/ui/Button";
@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Products & Downloads",
   description:
-    "Browse Tomato M&C's complete catalog of synthetic orthopedic casts, splints, padding, and accessories. Download datasheets, certifications, and the full product catalog.",
+    "Browse Tomato M&C's complete catalog of synthetic orthopedic casts, splints, padding, and accessories. Download certifications and the full product catalog.",
   path: "/products",
 });
 
@@ -46,7 +46,7 @@ export default function ProductsPage() {
                 Need a sample, custom spec, or quote?
               </h2>
               <p className="mt-3 text-[15px] leading-relaxed text-ink-soft max-w-md">
-                Send a list of SKUs, target market, and estimated volume. Sample shipments include the relevant datasheet, COA, and regulatory documentation for your region.
+                Send a list of SKUs, target market, and estimated volume. Sample shipments include the relevant specifications and regulatory documentation for your region.
               </p>
               <p className="mt-4 font-mono text-[12px] uppercase tracking-[0.12em] text-ink-muted">
                 Response: &lt; 2 business days
@@ -59,11 +59,6 @@ export default function ProductsPage() {
               <ButtonLink href="/products?tab=downloads" variant="outline" size="lg" className="w-full justify-between">
                 <span className="inline-flex items-center gap-2">
                   <FileDown className="h-4 w-4" /> Download Catalog
-                </span>
-              </ButtonLink>
-              <ButtonLink href="/contact?type=distributor" variant="ghost" size="lg" className="w-full justify-between">
-                <span className="inline-flex items-center gap-2">
-                  <Mail className="h-4 w-4" /> Distributor inquiry
                 </span>
               </ButtonLink>
             </div>

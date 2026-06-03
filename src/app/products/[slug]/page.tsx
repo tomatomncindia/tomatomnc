@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ChevronRight, AlertTriangle, CheckCircle2, FileDown } from "lucide-react";
+import { ChevronRight, AlertTriangle, CheckCircle2 } from "lucide-react";
 
 import { Container } from "@/components/layout/Container";
 import { Section, SectionHeader } from "@/components/layout/Section";
@@ -146,19 +147,17 @@ export default async function ProductDetailPage({
                 >
                   Request a Sample
                 </ButtonLink>
-                <ButtonLink
-                  href={`/downloads/datasheets/${product.slug}.pdf`}
-                  variant="outline"
-                  size="lg"
-                >
-                  <FileDown className="mr-1 h-4 w-4" /> Download Datasheet
-                </ButtonLink>
               </div>
             </Reveal>
           </div>
 
           <Reveal delay={0.1} className="lg:col-span-6 order-1 lg:order-2">
-            <ProductVisual product={product} className="aspect-[4/3]" />
+            <ProductVisual
+              product={product}
+              className="aspect-[4/3]"
+              priority
+              sizes="(min-width: 1024px) 50vw, 100vw"
+            />
             {product.colors ? (
               <div className="mt-6">
                 <ColorSwatches colors={product.colors} />
@@ -172,7 +171,7 @@ export default async function ProductDetailPage({
       <Section size="md" tone="paper">
         <Container>
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-start">
-            <div className="lg:col-span-8 space-y-8">
+            <div className="lg:col-span-8 min-w-0 space-y-8">
               {/* Intended Use + Precautions */}
               <div className="grid gap-6 md:grid-cols-2">
                 <Reveal>
@@ -227,22 +226,42 @@ export default async function ProductDetailPage({
                         {product.applicationSteps.length} STEPS
                       </p>
                     </div>
+
                     <StaggerGroup className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                       {product.applicationSteps.map((step, i) => (
                         <StaggerItem key={step.title}>
-                          <div className="h-full rounded-xl border border-line bg-white p-5 md:p-6 transition-[border-color,transform] duration-300 [transition-timing-function:var(--ease-out-quint)] hover:border-forest/30 hover:-translate-y-0.5">
-                            {/* Step illustration plate — large monospace number with subtle backdrop */}
-                            <div className="relative h-16 w-full flex items-end justify-between">
-                              <span className="font-display text-5xl text-forest leading-none tracking-[-0.02em] tabular-nums">
-                                {String(i + 1).padStart(2, "0")}
-                              </span>
-                              <span className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-ink-muted">
-                                STEP / {String(i + 1).padStart(2, "0")}
-                              </span>
+                          <div className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white transition-[border-color,transform] duration-300 [transition-timing-function:var(--ease-out-quint)] hover:border-forest/30 hover:-translate-y-0.5">
+                            {/* Step illustration from the catalog */}
+                            {step.image ? (
+                              <div className="relative aspect-[16/11] w-full overflow-hidden bg-paper-warm">
+                                <Image
+                                  src={step.image}
+                                  alt={`${step.title} — step ${i + 1}`}
+                                  fill
+                                  sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
+                                  className="object-contain transition-transform duration-700 [transition-timing-function:var(--ease-out-quint)] group-hover:scale-[1.04]"
+                                />
+                                <span className="absolute left-3 top-3 inline-flex h-7 min-w-7 items-center justify-center rounded-full bg-forest px-2 font-mono text-[12px] font-medium tabular-nums text-white shadow-sm">
+                                  {String(i + 1).padStart(2, "0")}
+                                </span>
+                              </div>
+                            ) : null}
+                            <div className="flex flex-1 flex-col p-5">
+                              <div className="flex items-baseline justify-between gap-2">
+                                <h3 className="font-display text-[17px] leading-tight">
+                                  {step.image ? null : (
+                                    <span className="mr-2 font-mono text-forest tabular-nums">
+                                      {String(i + 1).padStart(2, "0")}
+                                    </span>
+                                  )}
+                                  {step.title}
+                                </h3>
+                                <span className="shrink-0 font-mono text-[9.5px] uppercase tracking-[0.18em] text-ink-muted">
+                                  STEP / {String(i + 1).padStart(2, "0")}
+                                </span>
+                              </div>
+                              <p className="mt-2 text-[13.5px] leading-relaxed text-ink-soft">{step.body}</p>
                             </div>
-                            <div aria-hidden className="mt-4 h-px w-full bg-line" />
-                            <h3 className="mt-4 font-display text-[17px] leading-tight">{step.title}</h3>
-                            <p className="mt-2 text-[13.5px] leading-relaxed text-ink-soft">{step.body}</p>
                           </div>
                         </StaggerItem>
                       ))}
@@ -260,15 +279,12 @@ export default async function ProductDetailPage({
                       {product.specs.length} VARIANTS
                     </p>
                   </div>
-                  <SpecsTable
-                    specs={product.specs}
-                    datasheetHref={`/downloads/datasheets/${product.slug}.pdf`}
-                  />
+                  <SpecsTable specs={product.specs} />
                 </div>
               </Reveal>
             </div>
 
-            <div className="lg:col-span-4">
+            <div className="lg:col-span-4 min-w-0">
               <ProductSpecAside product={product} />
             </div>
           </div>
@@ -305,22 +321,12 @@ export default async function ProductDetailPage({
                 Request a sample of {product.name}.
               </h2>
               <p className="mt-3 text-[14.5px] leading-relaxed text-white/70 max-w-md">
-                Sample shipment includes the datasheet, certificate of analysis, and the relevant regulatory documentation for your market.
+                Sample shipment includes full specifications and the relevant regulatory documentation for your market.
               </p>
             </div>
             <div className="flex flex-wrap gap-3 md:justify-end">
               <ButtonLink href={`/contact?type=sample&product=${product.slug}`} variant="primary" size="lg" withArrow>
                 Request sample
-              </ButtonLink>
-              <ButtonLink
-                href={`/downloads/datasheets/${product.slug}.pdf`}
-                variant="ghost"
-                size="lg"
-                className="text-white border border-white/20 hover:bg-white/10"
-              >
-                <span className="inline-flex items-center gap-2">
-                  <FileDown className="h-4 w-4" /> Datasheet
-                </span>
               </ButtonLink>
             </div>
           </div>
