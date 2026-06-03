@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
 import { PRODUCTS } from "@/data/products";
+import { SITE_URL } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://tomatomnc-mc.com";
+  const base = SITE_URL;
   const now = new Date();
 
   const staticRoutes: MetadataRoute.Sitemap = [

@@ -5,7 +5,7 @@ import "@/styles/globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/motion/ScrollProgress";
-import { baseMetadata } from "@/lib/seo";
+import { baseMetadata, SITE_URL } from "@/lib/seo";
 import { SITE } from "@/data/site";
 
 // Editorial display serif. Used for h1, h2, large display moments.
@@ -56,23 +56,29 @@ const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: SITE.legalName,
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://tomatomnc-mc.com",
-  logo: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://tomatomnc-mc.com"}/tomatomnclogo.png`,
+  alternateName: "Tomato M&C India",
+  url: SITE_URL,
+  logo: `${SITE_URL}/tomatomnclogo.png`,
   description:
-    "Korean manufacturer of synthetic orthopedic casting tape, splints, and immobilization accessories.",
+    "Korean manufacturer of synthetic orthopedic casting tape, splints, and immobilization accessories, supplying hospitals and distributors across India.",
   foundingDate: "2005",
   address: {
     "@type": "PostalAddress",
     addressCountry: "KR",
     addressRegion: "Gyeonggi-do",
   },
+  areaServed: [
+    { "@type": "Country", name: "India" },
+    { "@type": "Country", name: "South Korea" },
+  ],
   contactPoint: [
     {
       "@type": "ContactPoint",
       contactType: "sales",
       email: SITE.contact.salesEmail,
       telephone: SITE.contact.phone,
-      availableLanguage: ["English", "Korean"],
+      areaServed: "IN",
+      availableLanguage: ["English", "Hindi", "Korean"],
     },
   ],
 };
@@ -80,7 +86,7 @@ const orgJsonLd = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
-      lang="en"
+      lang="en-IN"
       className={`${fraunces.variable} ${geist.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable}`}
     >
       <body className="min-h-screen flex flex-col bg-white">

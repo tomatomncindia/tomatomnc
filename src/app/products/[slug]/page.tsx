@@ -15,6 +15,7 @@ import { ProductSpecAside } from "@/components/products/ProductSpecAside";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion/Reveal";
 
 import { PRODUCTS, getProduct, getRelatedProducts } from "@/data/products";
+import { SITE_URL } from "@/lib/seo";
 
 type Params = { slug: string };
 
@@ -35,7 +36,7 @@ export async function generateMetadata({
     description: product.tagline,
     alternates: { canonical: `/products/${product.slug}` },
     openGraph: {
-      title: `${product.name} · Tomato M&C`,
+      title: `${product.name} · Tomato M&C India`,
       description: product.tagline,
       url: `/products/${product.slug}`,
       type: "website",
@@ -54,7 +55,7 @@ export default async function ProductDetailPage({
 
   const related = getRelatedProducts(product.related);
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://tomatomnc-mc.com";
+  const siteUrl = SITE_URL;
 
   const productJsonLd = {
     "@context": "https://schema.org",
@@ -66,6 +67,12 @@ export default async function ProductDetailPage({
     category: product.category,
     image: `${siteUrl}${product.image}`,
     url: `${siteUrl}/products/${product.slug}`,
+    offers: {
+      "@type": "Offer",
+      availability: "https://schema.org/InStock",
+      areaServed: { "@type": "Country", name: "India" },
+      seller: { "@type": "Organization", name: "Tomato M&C Co., Ltd." },
+    },
   };
 
   const breadcrumbJsonLd = {

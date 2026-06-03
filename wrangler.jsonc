@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tomatomncindia",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-03-25",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": ".open-next/assets"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    "NEXT_PUBLIC_SITE_URL": "https://tomatomncindia.com"
+  }
+  // Secrets (do NOT put these in vars / git):
+  //   npx wrangler secret put RESEND_API_KEY
+  //   npx wrangler secret put TURNSTILE_SECRET_KEY
+  //   npx wrangler secret put INQUIRY_TO_EMAIL
+  //   npx wrangler secret put INQUIRY_FROM_EMAIL
+  // Public Turnstile site key can be added to "vars" above:
+  //   "NEXT_PUBLIC_TURNSTILE_SITE_KEY": "0x..."
+}

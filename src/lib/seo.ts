@@ -1,42 +1,64 @@
 import type { Metadata } from "next";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://tomatomnc-mc.com";
-const SITE_NAME = "Tomato M&C";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://tomatomncindia.com";
+const SITE_NAME = "Tomato M&C India";
 
 export const baseMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Tomato M&C · Synthetic Orthopedic Casting & Splint Manufacturer",
-    template: "%s · Tomato M&C",
+    default: "Tomato M&C India · Orthopedic Casting Tape & Splint Supplier in India",
+    template: "%s · Tomato M&C India",
   },
   description:
-    "Korea's leading manufacturer of synthetic orthopedic casting tape, splints, and immobilization accessories. ISO 13485, FDA, CE, KGMP certified. Supplying 30+ countries since 2005.",
+    "Premium Korean-manufactured synthetic orthopedic casting tape, fiberglass casts, and splints for the Indian healthcare market. ISO 13485, FDA, CE & KGMP certified. Trusted supplier to hospitals and distributors across India.",
   applicationName: SITE_NAME,
   authors: [{ name: "Tomato M&C Co., Ltd." }],
+  creator: "Tomato M&C Co., Ltd.",
+  publisher: "Tomato M&C Co., Ltd.",
+  category: "Medical Devices",
   keywords: [
+    // Product / India market intent
+    "orthopedic casting tape India",
+    "synthetic cast supplier India",
+    "fiberglass casting tape India",
+    "polyester casting tape India",
+    "orthopedic splint India",
+    "casting tape distributor India",
+    "orthopedic immobilization products India",
+    "POP cast alternative India",
+    "medical casting supplies India",
+    "hospital casting supplies India",
+    // Product generic
     "synthetic cast",
-    "orthopedic casting tape",
     "fiberglass cast",
     "polyester cast",
-    "orthopedic splint",
-    "medical manufacturer Korea",
-    "ISO 13485",
-    "OEM private label casting",
+    // Sourcing / B2B
+    "Korean orthopedic casting tape",
+    "OEM private label casting tape",
+    "ISO 13485 casting tape",
   ],
+  alternates: {
+    canonical: "/",
+  },
+  formatDetection: {
+    telephone: false,
+    address: false,
+    email: false,
+  },
   openGraph: {
     type: "website",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: "Tomato M&C · Synthetic Orthopedic Casting & Splint Manufacturer",
+    title: "Tomato M&C India · Orthopedic Casting Tape & Splint Supplier",
     description:
-      "Premium medical-grade synthetic casting and splint solutions, manufactured in Korea since 2005.",
-    locale: "en_US",
+      "Premium Korean-manufactured synthetic orthopedic casting tape and splints for hospitals and distributors across India. ISO 13485, CE & FDA certified.",
+    locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tomato M&C",
+    title: "Tomato M&C India",
     description:
-      "Premium medical-grade synthetic casting and splint solutions, manufactured in Korea since 2005.",
+      "Premium Korean-manufactured synthetic orthopedic casting tape and splints for the Indian healthcare market. ISO 13485, CE & FDA certified.",
   },
   robots: {
     index: true,
@@ -46,6 +68,7 @@ export const baseMetadata: Metadata = {
       follow: true,
       "max-image-preview": "large",
       "max-snippet": -1,
+      "max-video-preview": -1,
     },
   },
 };
