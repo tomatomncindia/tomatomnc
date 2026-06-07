@@ -98,7 +98,7 @@ export default function HomePage() {
             {FEATURED_SLUGS.map((slug) => {
               const p = PRODUCTS.find((x) => x.slug === slug)!;
               return (
-                <StaggerItem key={p.slug}>
+                <StaggerItem key={p.slug} className="h-full">
                   <ProductCard product={p} />
                 </StaggerItem>
               );

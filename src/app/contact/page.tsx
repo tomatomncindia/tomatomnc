@@ -35,9 +35,9 @@ export default function ContactPage() {
           {/* MAIN — company details card with the map below it */}
           <div className="lg:col-span-7 flex flex-col gap-6">
             <div className="rounded-2xl border border-line bg-paper p-6 sm:p-8 md:p-9">
-              <p className="eyebrow">Head Office &amp; Factory</p>
+              <p className="eyebrow">India Office</p>
               <h2 className="mt-3 font-display text-[24px] sm:text-[28px] md:text-[32px] leading-[1.15] tracking-[-0.015em]">
-                {SITE.legalName}
+                {SITE.contact.company}
               </h2>
 
               {/* The address — the main thing */}
@@ -56,20 +56,15 @@ export default function ContactPage() {
 
               {/* Contact rows */}
               <dl className="mt-8 divide-y divide-line border-y border-line">
-                <div className="flex items-center gap-3 py-4">
-                  <Phone className="h-4 w-4 shrink-0 text-forest" strokeWidth={1.7} />
-                  <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-muted w-16">
-                    Tel
-                  </dt>
-                  <dd className="text-[15px] text-ink tabular-nums">{SITE.contact.phone}</dd>
-                </div>
-                <div className="flex items-center gap-3 py-4">
-                  <Phone className="h-4 w-4 shrink-0 text-forest" strokeWidth={1.7} />
-                  <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-muted w-16">
-                    Fax
-                  </dt>
-                  <dd className="text-[15px] text-ink tabular-nums">{SITE.contact.fax}</dd>
-                </div>
+                {SITE.contact.phones.map((phone) => (
+                  <div key={phone} className="flex items-center gap-3 py-4">
+                    <Phone className="h-4 w-4 shrink-0 text-forest" strokeWidth={1.7} />
+                    <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-muted w-16">
+                      Tel
+                    </dt>
+                    <dd className="text-[15px] text-ink tabular-nums">{phone}</dd>
+                  </div>
+                ))}
                 <div className="flex items-center gap-3 py-4">
                   <Mail className="h-4 w-4 shrink-0 text-forest" strokeWidth={1.7} />
                   <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-muted w-16">
@@ -141,8 +136,8 @@ function FacilityMap({ className }: { className?: string }) {
       )}
     >
       <iframe
-        title="Tomato M&C India facility location, Pyeongtaek-si"
-        src="https://www.google.com/maps?q=37.1223061,127.0313408&output=embed"
+        title="Blackchip Impex Private Limited office location, Mumbai"
+        src="https://www.google.com/maps?q=Shiv+CHS+Ltd,+MHB+Colony,+Mahavir+Nagar,+Kandivali+West,+Mumbai+400067&output=embed"
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
         className="absolute inset-0 h-full w-full grayscale-[0.2] contrast-[1.05]"
@@ -151,7 +146,7 @@ function FacilityMap({ className }: { className?: string }) {
       {/* Pin overlay */}
       <div className="pointer-events-none absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-white/95 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-ink shadow-[var(--shadow-soft)]">
         <MapPin className="h-3 w-3 text-brand-red" />
-        PYEONGTAEK · KR
+        MUMBAI · IN
       </div>
     </div>
   );

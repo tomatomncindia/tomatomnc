@@ -56,7 +56,7 @@ export default function AboutPage() {
             <div className="lg:col-span-8">
               <Reveal>
                 <p className="text-forest font-mono text-[11px] tracking-[0.18em] uppercase">
-                  ABOUT — TOMATO M&amp;C INDIA
+                  ABOUT — TOMATO M&amp;C
                 </p>
               </Reveal>
 
@@ -87,7 +87,6 @@ export default function AboutPage() {
                 {/* Header */}
                 <div className="border-ink/15 text-ink-muted flex items-center justify-between border-b px-5 py-3 font-mono text-[10px] tracking-[0.18em] uppercase">
                   <span>FILE CARD</span>
-                  <span className="tabular-nums">REV.2024</span>
                 </div>
                 {/* Body */}
                 <dl className="space-y-3 px-5 py-5 text-[13px]">
@@ -96,7 +95,7 @@ export default function AboutPage() {
                   <Row label="Location" value="Pyeongtaek-si, Gyeonggi-do, KR" />
                   <Row label="Category" value="Orthopedic Manufacturing" />
                   <Row label="Output" value="Fiberglass casting tape & splints" />
-                  <Row label="Certifications" value="ISO 13485 · FDA · CE · KGMP" mono />
+                  <Row label="Certificates" value="ISO 13485 · FDA · CE · KGMP" mono />
                   <Row label="Distribution" value="30+ countries / 5 continents" />
                 </dl>
                 {/* Footer */}

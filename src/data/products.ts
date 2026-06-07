@@ -21,6 +21,12 @@ export type ProductLogo = {
   height: number;
 };
 
+/** Lifestyle photo — a happy patient wearing the branded product. */
+export type LifestyleImage = {
+  src: string;
+  alt: string;
+};
+
 export type Product = {
   slug: string;
   name: string;
@@ -32,6 +38,8 @@ export type Product = {
   features: string[];
   precautions?: string;
   image: string;
+  /** Extra carousel slides for the product-page hero (patient/lifestyle shots). */
+  lifestyle?: LifestyleImage[];
   logo?: ProductLogo;
   applicationSteps?: ApplicationStep[];
   specs: ProductSpec[];
@@ -61,6 +69,21 @@ export const PRODUCTS: Product[] = [
     precautions:
       "Application must be performed by trained medical personnel. Ensure adequate stockinet and padding underlay. Do not apply directly to broken skin.",
     image: "/images/products/tomato-cast.png",
+    lifestyle: [
+      {
+        src: "/images/products/lifestyle/tomato-cast-1.png",
+        alt: "Smiling patient recovering in hospital with a Tomato Cast on her leg",
+      },
+      {
+        src: "/images/products/lifestyle/tomato-cast-2.png",
+        alt: "Happy patient relaxing at home with a Tomato Cast leg cast",
+      },
+      {
+        src: "/images/products/lifestyle/tomato-cast-3.png",
+        alt: "Patient back on his feet outdoors wearing a Tomato Cast walking cast",
+      },
+    ],
+    logo: { src: "/images/products/logos/star-cast.png", width: 1018, height: 240 },
     applicationSteps: [
       {
         title: "Preparation",
@@ -94,11 +117,8 @@ export const PRODUCTS: Product[] = [
       },
     ],
     specs: [
-      { refCode: "TRC-002", width: "2 in (5.0 cm)", length: "3.6 m (4 yds)", packagingBox: "Fiberglass" },
-      { refCode: "TRC-003", width: "3 in (7.5 cm)", length: "3.6 m (4 yds)", packagingBox: "Fiberglass" },
-      { refCode: "TRC-004", width: "4 in (10.0 cm)", length: "3.6 m (4 yds)", packagingBox: "Fiberglass" },
-      { refCode: "TRC-005", width: "5 in (12.5 cm)", length: "3.6 m (4 yds)", packagingBox: "Fiberglass" },
-      { refCode: "TRC-006", width: "6 in (15.0 cm)", length: "3.6 m (4 yds)", packagingBox: "Fiberglass" },
+      { refCode: "TRC-004", width: "4 in (10.0 cm)", length: "3 m", packagingBox: "Fiberglass" },
+      { refCode: "TRC-006", width: "6 in (15.0 cm)", length: "3 m", packagingBox: "Fiberglass" },
     ],
     colors: ["white", "green", "purple", "pink", "blue", "red", "orange", "yellow", "grey", "black", "sky-blue", "neon-green", "green-pastel", "pink-pastel", "ocean-green"],
     related: ["tomato-splint", "star-cast-roll", "star-stockinet"],
@@ -125,6 +145,20 @@ export const PRODUCTS: Product[] = [
       "Suitable for a child in cast removal",
     ],
     image: "/images/products/star-cast-roll.png",
+    lifestyle: [
+      {
+        src: "/images/products/lifestyle/star-cast-roll-1.png",
+        alt: "Smiling athlete with a Star Cast Roll soft wrap on his wrist",
+      },
+      {
+        src: "/images/products/lifestyle/star-cast-roll-2.png",
+        alt: "Patient with a Star Cast Roll functional wrap during recovery",
+      },
+      {
+        src: "/images/products/lifestyle/star-cast-roll-3.png",
+        alt: "Happy child wearing a colorful Star Cast Roll soft cast on his arm",
+      },
+    ],
     logo: { src: "/images/products/logos/star-cast-roll.png", width: 1479, height: 240 },
     specs: [
       { refCode: "SCR-004", width: "4 in (10.0 cm)", length: "3 m" },
@@ -150,16 +184,29 @@ export const PRODUCTS: Product[] = [
       "100% cotton minimizes skin trouble",
     ],
     image: "/images/products/star-stockinet.png",
-    logo: { src: "/images/products/logos/star-stockinet.png", width: 1281, height: 240 },
+    lifestyle: [
+      {
+        src: "/images/products/lifestyle/star-stockinet-1.png",
+        alt: "Doctor fitting Star Stockinet onto a patient's arm before casting",
+      },
+      {
+        src: "/images/products/lifestyle/star-stockinet-2.png",
+        alt: "Patient with soft Star Stockinet visible under a fresh cast",
+      },
+      {
+        src: "/images/products/lifestyle/star-stockinet-3.png",
+        alt: "Nurse fitting Star Stockinet onto a child's arm",
+      },
+    ],
     specs: [
-      { refCode: "STK-002-S", width: "2 in (5.0 cm)", length: "1.5 m" },
-      { refCode: "STK-002-L", width: "2 in (5.0 cm)", length: "10 m" },
-      { refCode: "STK-003-S", width: "3 in (7.5 cm)", length: "1.5 m" },
-      { refCode: "STK-003-L", width: "3 in (7.5 cm)", length: "10 m" },
-      { refCode: "STK-004-S", width: "4 in (10.0 cm)", length: "1.5 m" },
-      { refCode: "STK-004-L", width: "4 in (10.0 cm)", length: "10 m" },
-      { refCode: "STK-006-S", width: "6 in (15.0 cm)", length: "1.5 m" },
-      { refCode: "STK-006-L", width: "6 in (15.0 cm)", length: "10 m" },
+      { refCode: "SSN-002-S", width: "2 in (5.0 cm)", length: "1.5 m" },
+      { refCode: "SSN-002-L", width: "2 in (5.0 cm)", length: "10 m" },
+      { refCode: "SSN-003-S", width: "3 in (7.5 cm)", length: "1.5 m" },
+      { refCode: "SSN-003-L", width: "3 in (7.5 cm)", length: "10 m" },
+      { refCode: "SSN-004-S", width: "4 in (10.0 cm)", length: "1.5 m" },
+      { refCode: "SSN-004-L", width: "4 in (10.0 cm)", length: "10 m" },
+      { refCode: "SSN-006-S", width: "6 in (15.0 cm)", length: "1.5 m" },
+      { refCode: "SSN-006-L", width: "6 in (15.0 cm)", length: "10 m" },
     ],
     related: ["tomato-cast", "tomato-splint", "star-cast-roll"],
   },
@@ -181,6 +228,21 @@ export const PRODUCTS: Product[] = [
       "Available pre-cut and in rolls across a range of widths",
     ],
     image: "/images/products/tomato-splint.png",
+    lifestyle: [
+      {
+        src: "/images/products/lifestyle/tomato-splint-1.png",
+        alt: "Relieved patient with a Tomato Splint on her forearm in the emergency room",
+      },
+      {
+        src: "/images/products/lifestyle/tomato-splint-2.png",
+        alt: "Doctor applying a Tomato Splint to a smiling patient's wrist",
+      },
+      {
+        src: "/images/products/lifestyle/tomato-splint-3.png",
+        alt: "Happy child with a Tomato Splint wrap on her arm at home",
+      },
+    ],
+    logo: { src: "/images/products/logos/star-splint.png", width: 1079, height: 240 },
     applicationSteps: [
       {
         title: "Cut to length",

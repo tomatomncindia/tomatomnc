@@ -19,6 +19,7 @@ export function HeroCarousel() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
+  const touchStartX = useRef<number | null>(null);
 
   const goTo = useCallback((next: number) => {
     setIndex((next + PRODUCTS.length) % PRODUCTS.length);
@@ -45,6 +46,17 @@ export function HeroCarousel() {
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
+      onTouchStart={(e) => {
+        setPaused(true);
+        touchStartX.current = e.touches[0].clientX;
+      }}
+      onTouchEnd={(e) => {
+        setPaused(false);
+        if (touchStartX.current === null) return;
+        const dx = e.changedTouches[0].clientX - touchStartX.current;
+        touchStartX.current = null;
+        if (Math.abs(dx) > 48) goTo(dx < 0 ? index + 1 : index - 1);
+      }}
     >
       <div className="relative">
         {/* Brand slogan — stamped over the images, constant across slides */}

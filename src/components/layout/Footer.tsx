@@ -11,7 +11,7 @@ const navCols = [
       { label: "Casting", href: "/products" },
       { label: "Splints", href: "/products" },
       { label: "Supporting Products", href: "/products" },
-      { label: "Full catalog (PDF)", href: "/downloads/tomato-mnc-catalog.pdf" },
+      { label: "Full catalog (PDF)", href: "/downloads/Tomato_MnC_India_Catalog_BlackchipImpex.pdf" },
     ],
   },
   {
@@ -101,16 +101,12 @@ export function Footer() {
             </p>
 
             <div className="mt-8 border-t border-white/10 pt-6">
-              <Link
-                href="/founders"
-                className="inline-flex items-center gap-2 text-[13px] text-white/70 transition-colors hover:text-white"
-              >
+              <div className="inline-flex items-center gap-2 text-[13px] text-white/70 transition-colors cursor-pointer hover:text-white">
                 <span className="font-mono text-[10px] tracking-[0.16em] text-white/40 uppercase">
                   PARENT COMPANY
                 </span>
                 <span>Blackchip Impex Pvt. Ltd.</span>
-                <ArrowUpRight className="h-3 w-3" />
-              </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -126,10 +122,11 @@ export function Footer() {
               {SITE.tagline}
             </p>
             <address className="mt-6 text-[13.5px] leading-relaxed text-white/60 not-italic">
+              <div className="text-white/80">{SITE.contact.company}</div>
               {SITE.contact.addressLines.map((l) => (
                 <div key={l}>{l}</div>
               ))}
-              <div className="mt-2 tabular-nums">{SITE.contact.phone}</div>
+              <div className="mt-2 tabular-nums">{SITE.contact.phones.join(" · ")}</div>
               <a
                 href={`mailto:${SITE.contact.salesEmail}`}
                 className="underline-offset-4 transition-colors hover:text-white hover:underline"
@@ -197,15 +194,10 @@ export function Footer() {
       <div className="container-page flex flex-col gap-4 py-6 font-mono text-[10px] tracking-[0.16em] text-white/40 uppercase md:flex-row md:items-center md:justify-between">
         <p>© {year} Blackchip Impex Pvt. Ltd. All rights reserved.</p>
         <div className="flex flex-wrap gap-x-6 gap-y-2">
-          <Link href="/privacy" className="transition-colors hover:text-white">
-            Privacy
-          </Link>
-          <Link href="/terms" className="transition-colors hover:text-white">
-            Terms
-          </Link>
-          <Link href="/network#quality" className="transition-colors hover:text-white">
-            Compliance
-          </Link>
+          {/* Plain labels for now — client asked for non-clickable items; pages live at /privacy, /terms, /compliance when re-enabled. */}
+          <span className="cursor-default transition-colors hover:text-white">Privacy</span>
+          <span className="cursor-default transition-colors hover:text-white">Terms</span>
+          <span className="cursor-default transition-colors hover:text-white">Compliance</span>
         </div>
       </div>
     </footer>

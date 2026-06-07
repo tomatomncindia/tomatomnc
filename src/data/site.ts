@@ -6,15 +6,18 @@ export const SITE = {
   parentUrl: "https://www.tomatomnc.com",
 
   contact: {
+    company: "Blackchip Impex Private Limited",
     addressLines: [
-      "#15-11 Suwolam-gil, Seotan-myeon",
-      "Pyeongtaek City, Gyeonggi-do (17704)",
-      "South Korea",
+      "65-651 Shiv CHS Ltd, MHB Colony",
+      "Mahavir Nagar, Kandivali West",
+      "Mumbai – 400067, India",
     ],
-    phone: "+82-31-662-9690",
-    fax: "+82-31-662-9691",
-    email: "sales@tomatomnc.kr",
-    salesEmail: "sales@tomatomnc.kr",
+    phone: "+91 98331 16680",
+    phones: ["+91 98331 16680", "+91 98203 24286"],
+    email: "Blackchip.pvt@gmail.com",
+    salesEmail: "Blackchip.pvt@gmail.com",
+    // WhatsApp business line — digits only, used to build wa.me links.
+    whatsapp: "919819472980",
   },
 
   stats: [

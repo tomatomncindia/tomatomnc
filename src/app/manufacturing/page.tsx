@@ -125,7 +125,7 @@ export default function ManufacturingPage() {
               </WordReveal>
               <Reveal delay={0.12}>
                 <p className="mt-6 max-w-xl text-[16px] leading-relaxed text-white/75">
-                  Established in 2005, Tomato M&amp;C India is a specialist manufacturer of
+                  Established in 2026, Tomato M&amp;C India is a specialist manufacturer of
                   fiberglass orthopedic cast and splint. We are the only manufacturer producing
                   fiberglass casts on a one-stop, button-operated system with automatic packaging —
                   supplying Tomato-brand products, production facilities, and raw materials to

@@ -17,7 +17,7 @@ const CASTING = PRODUCTS.filter((p) => p.category === "Cast");
 const SPLINTS = PRODUCTS.filter((p) => p.category === "Splint");
 const SUPPORTING = PRODUCTS.filter((p) => p.category === "Supporting Product");
 
-const CATALOG_PDF = "/downloads/tomato-mnc-catalog.pdf";
+const CATALOG_PDF = "/downloads/Tomato_MnC_India_Catalog_BlackchipImpex.pdf";
 
 export function Navbar() {
   const pathname = usePathname();

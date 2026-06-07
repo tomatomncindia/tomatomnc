@@ -31,7 +31,7 @@ export default function ProductsPage() {
       <Container className="pb-20 md:pb-24">
         <StaggerGroup className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {PRODUCTS.map((p) => (
-            <StaggerItem key={p.slug}>
+            <StaggerItem key={p.slug} className="h-full">
               <ProductCard product={p} />
             </StaggerItem>
           ))}

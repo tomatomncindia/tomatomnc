@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { ScrollProgress } from "@/components/motion/ScrollProgress";
 import { baseMetadata, SITE_URL } from "@/lib/seo";
 import { SITE } from "@/data/site";
@@ -64,8 +65,11 @@ const orgJsonLd = {
   foundingDate: "2005",
   address: {
     "@type": "PostalAddress",
-    addressCountry: "KR",
-    addressRegion: "Gyeonggi-do",
+    streetAddress: "65-651 Shiv CHS Ltd, MHB Colony, Mahavir Nagar, Kandivali West",
+    addressLocality: "Mumbai",
+    addressRegion: "Maharashtra",
+    postalCode: "400067",
+    addressCountry: "IN",
   },
   areaServed: [
     { "@type": "Country", name: "India" },
@@ -98,6 +102,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main className="flex-1 pt-16">{children}</main>
         <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );

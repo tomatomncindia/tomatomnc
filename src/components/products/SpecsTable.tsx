@@ -10,9 +10,10 @@ export function SpecsTable({ specs }: { specs: ProductSpec[] }) {
       </div>
       {/* Scrolls horizontally on narrow screens instead of clipping */}
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[460px] text-[14px] font-tabular">
+        <table className="w-full min-w-[560px] text-[14px] font-tabular">
           <thead>
             <tr className="bg-paper text-left text-[11px] uppercase tracking-[0.12em] text-ink-muted">
+              <th className="px-3.5 py-3 font-semibold sm:px-5">Ref Code</th>
               <th className="px-3.5 py-3 font-semibold sm:px-5">Width</th>
               <th className="px-3.5 py-3 font-semibold sm:px-5">Length</th>
               <th className="px-3.5 py-3 font-semibold sm:px-5">Type</th>
@@ -21,6 +22,7 @@ export function SpecsTable({ specs }: { specs: ProductSpec[] }) {
           <tbody>
             {specs.map((s) => (
               <tr key={s.refCode} className="border-t border-line">
+                <td className="px-3.5 py-3.5 font-medium text-ink sm:px-5">{s.refCode}</td>
                 <td className="px-3.5 py-3.5 font-medium text-ink sm:px-5">{s.width}</td>
                 <td className="px-3.5 py-3.5 text-ink-soft sm:px-5">{s.length}</td>
                 <td className="px-3.5 py-3.5 text-ink-soft sm:px-5">

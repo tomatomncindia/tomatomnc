@@ -10,7 +10,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { ColorSwatches } from "@/components/products/ColorSwatches";
 import { SpecsTable } from "@/components/products/SpecsTable";
 import { ProductCard } from "@/components/products/ProductCard";
-import { ProductVisual } from "@/components/products/ProductVisual";
+import { ProductGallery } from "@/components/products/ProductGallery";
 import { ProductSpecAside } from "@/components/products/ProductSpecAside";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion/Reveal";
 
@@ -171,7 +171,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<Pa
           </div>
 
           <Reveal delay={0.1} className="order-1 lg:order-2 lg:col-span-6">
-            <ProductVisual
+            <ProductGallery
               product={product}
               className="aspect-[4/3]"
               priority
@@ -324,7 +324,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<Pa
             </Reveal>
             <StaggerGroup className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {related.map((p) => (
-                <StaggerItem key={p.slug}>
+                <StaggerItem key={p.slug} className="h-full">
                   <ProductCard product={p} />
                 </StaggerItem>
               ))}
