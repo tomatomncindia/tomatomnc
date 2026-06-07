@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, Globe, FileDown } from "lucide-react";
+import { ArrowUpRight, Globe, ShieldCheck } from "lucide-react";
 import { Logo } from "./Logo";
 import { SITE } from "@/data/site";
 import { NewsletterSignup } from "./NewsletterSignup";
@@ -8,10 +8,10 @@ const navCols = [
   {
     title: "Products",
     links: [
-      { label: "Casting", href: "/products?category=cast" },
-      { label: "Splints", href: "/products?category=splint" },
-      { label: "Accessories", href: "/products?category=accessory" },
-      { label: "Full catalog (PDF)", href: "/products?tab=downloads" },
+      { label: "Casting", href: "/products" },
+      { label: "Splints", href: "/products" },
+      { label: "Supporting Products", href: "/products" },
+      { label: "Full catalog (PDF)", href: "/downloads/tomato-mnc-catalog.pdf" },
     ],
   },
   {
@@ -19,28 +19,27 @@ const navCols = [
     links: [
       { label: "About", href: "/about" },
       { label: "Manufacturing", href: "/manufacturing" },
-      { label: "Quality", href: "/network#quality" },
+      { label: "Certifications", href: "/network#quality" },
+      { label: "Founders", href: "/founders" },
       { label: "Contact", href: "/contact" },
     ],
   },
   {
     title: "Network",
     links: [
-      { label: "OEM / Private Label", href: "/network#oem" },
       { label: "Global Markets", href: "/network#markets" },
       { label: "Become a distributor", href: "/contact?type=distributor" },
-      { label: "Parent company", href: "https://www.tomatomnc.com", external: true },
     ],
   },
 ];
 
-const QUALITY_DOCS = [
-  { label: "ISO 13485", href: "/downloads/certificates/iso-13485.pdf" },
-  { label: "ISO 9001", href: "/downloads/certificates/iso-9001.pdf" },
-  { label: "ISO 14001", href: "/downloads/certificates/iso-14001.pdf" },
-  { label: "FDA Registration", href: "/downloads/certificates/fda-registration.pdf" },
-  { label: "CE Mark", href: "/downloads/certificates/ce-mark.pdf" },
-  { label: "KGMP", href: "/downloads/certificates/kgmp.pdf" },
+const CERTIFICATION_MARKS = [
+  "ISO 13485",
+  "ISO 9001",
+  "ISO 14001",
+  "FDA Registration",
+  "CE Mark",
+  "KGMP",
 ];
 
 const REGIONS = [
@@ -58,17 +57,18 @@ export function Footer() {
     <footer className="bg-ink text-white">
       {/* Top band: newsletter + region */}
       <div className="border-b border-white/10">
-        <div className="container-page py-12 md:py-16 grid gap-10 md:grid-cols-12 md:gap-12 items-start">
+        <div className="container-page grid items-start gap-10 py-12 md:grid-cols-12 md:gap-12 md:py-16">
           <div className="md:col-span-7">
-            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-mid-green">
+            <p className="text-mid-green font-mono text-[11px] tracking-[0.18em] uppercase">
               QUARTERLY BRIEF
             </p>
-            <h2 className="mt-3 font-display text-[28px] md:text-[36px] leading-[1.15] tracking-[-0.015em] text-white">
+            <h2 className="font-display mt-3 text-[28px] leading-[1.15] tracking-[-0.015em] text-white md:text-[36px]">
               Product updates, regulatory changes,
               <br className="hidden md:block" /> shipped to procurement teams quarterly.
             </h2>
-            <p className="mt-3 text-[14px] leading-relaxed text-white/60 max-w-md">
-              Four issues per year. Spec changes, new market clearances, and the occasional production-floor note. Unsubscribe in one click.
+            <p className="mt-3 max-w-md text-[14px] leading-relaxed text-white/60">
+              Four issues per year. Spec changes, new market clearances, and the occasional
+              production-floor note. Unsubscribe in one click.
             </p>
             <div className="mt-6">
               <NewsletterSignup />
@@ -76,8 +76,8 @@ export function Footer() {
           </div>
 
           {/* Region selector + parent company */}
-          <div className="md:col-span-5 md:pl-12 md:border-l md:border-white/10">
-            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/50">
+          <div className="md:col-span-5 md:border-l md:border-white/10 md:pl-12">
+            <p className="font-mono text-[11px] tracking-[0.18em] text-white/50 uppercase">
               REGION
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
@@ -87,8 +87,8 @@ export function Footer() {
                   type="button"
                   className={
                     i === 0
-                      ? "inline-flex items-center gap-1.5 rounded-full border border-white/30 bg-white/10 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.12em] text-white"
-                      : "inline-flex items-center gap-1.5 rounded-full border border-white/10 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.12em] text-white/55 hover:text-white hover:border-white/30 transition-colors"
+                      ? "inline-flex items-center gap-1.5 rounded-full border border-white/30 bg-white/10 px-3 py-1.5 font-mono text-[11px] tracking-[0.12em] text-white uppercase"
+                      : "inline-flex items-center gap-1.5 rounded-full border border-white/10 px-3 py-1.5 font-mono text-[11px] tracking-[0.12em] text-white/55 uppercase transition-colors hover:border-white/30 hover:text-white"
                   }
                 >
                   {i === 0 ? <Globe className="h-3 w-3" /> : null}
@@ -96,23 +96,21 @@ export function Footer() {
                 </button>
               ))}
             </div>
-            <p className="mt-4 text-[12.5px] text-white/40 leading-relaxed">
+            <p className="mt-4 text-[12.5px] leading-relaxed text-white/40">
               Regional pricing, documentation, and distributor contacts adapt to your selection.
             </p>
 
-            <div className="mt-8 pt-6 border-t border-white/10">
-              <a
-                href={SITE.parentUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 text-[13px] text-white/70 hover:text-white transition-colors"
+            <div className="mt-8 border-t border-white/10 pt-6">
+              <Link
+                href="/founders"
+                className="inline-flex items-center gap-2 text-[13px] text-white/70 transition-colors hover:text-white"
               >
-                <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-white/40">
+                <span className="font-mono text-[10px] tracking-[0.16em] text-white/40 uppercase">
                   PARENT COMPANY
                 </span>
-                <span>tomatomnc.com</span>
-                <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
+                <span>Blackchip Impex Pvt. Ltd.</span>
+                <ArrowUpRight className="h-3 w-3" />
+              </Link>
             </div>
           </div>
         </div>
@@ -120,20 +118,21 @@ export function Footer() {
 
       {/* Middle band: navigation + quality docs */}
       <div className="border-b border-white/10">
-        <div className="container-page py-12 md:py-16 grid gap-10 md:grid-cols-12 md:gap-12">
-          <div className="md:col-span-4">
+        {/* Mobile: brand block full-width, link columns 2-up. md+: 12-col row. */}
+        <div className="container-page grid grid-cols-2 gap-x-6 gap-y-10 py-12 md:grid-cols-12 md:gap-12 md:py-16">
+          <div className="col-span-2 md:col-span-4">
             <Logo tone="light" />
             <p className="mt-4 max-w-sm text-[13.5px] leading-relaxed text-white/60">
               {SITE.tagline}
             </p>
-            <address className="mt-6 not-italic text-[13.5px] text-white/60 leading-relaxed">
+            <address className="mt-6 text-[13.5px] leading-relaxed text-white/60 not-italic">
               {SITE.contact.addressLines.map((l) => (
                 <div key={l}>{l}</div>
               ))}
               <div className="mt-2 tabular-nums">{SITE.contact.phone}</div>
               <a
                 href={`mailto:${SITE.contact.salesEmail}`}
-                className="hover:text-white underline-offset-4 hover:underline transition-colors"
+                className="underline-offset-4 transition-colors hover:text-white hover:underline"
               >
                 {SITE.contact.salesEmail}
               </a>
@@ -141,8 +140,8 @@ export function Footer() {
           </div>
 
           {navCols.map((col) => (
-            <div key={col.title} className="md:col-span-2">
-              <h3 className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-white">
+            <div key={col.title} className="col-span-1 md:col-span-2">
+              <h3 className="font-mono text-[11px] font-medium tracking-[0.16em] text-white uppercase">
                 {col.title}
               </h3>
               <ul className="mt-4 space-y-2.5">
@@ -155,7 +154,7 @@ export function Footer() {
                           href={l.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="group inline-flex items-center gap-1.5 text-[13.5px] text-white/60 hover:text-white transition-colors"
+                          className="group inline-flex items-center gap-1.5 text-[13.5px] text-white/60 transition-colors hover:text-white"
                         >
                           {l.label}
                           <ArrowUpRight className="h-3 w-3" />
@@ -163,7 +162,7 @@ export function Footer() {
                       ) : (
                         <Link
                           href={l.href}
-                          className="text-[13.5px] text-white/60 hover:text-white transition-colors"
+                          className="text-[13.5px] text-white/60 transition-colors hover:text-white"
                         >
                           {l.label}
                         </Link>
@@ -175,21 +174,18 @@ export function Footer() {
             </div>
           ))}
 
-          {/* Quality docs */}
-          <div className="md:col-span-2">
-            <h3 className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-white">
-              Quality
+          {/* Certifications */}
+          <div className="col-span-1 md:col-span-2">
+            <h3 className="font-mono text-[11px] font-medium tracking-[0.16em] text-white uppercase">
+              Certifications
             </h3>
             <ul className="mt-4 space-y-2">
-              {QUALITY_DOCS.map((d) => (
-                <li key={d.label}>
-                  <a
-                    href={d.href}
-                    className="group inline-flex items-center gap-1.5 text-[13px] text-white/60 hover:text-white transition-colors"
-                  >
-                    <FileDown className="h-3 w-3 text-white/30 group-hover:text-mid-green transition-colors" />
-                    {d.label}
-                  </a>
+              {CERTIFICATION_MARKS.map((label) => (
+                <li key={label}>
+                  <span className="group inline-flex items-center gap-1.5 text-[13px] text-white/60 transition-colors hover:text-white">
+                    <ShieldCheck className="group-hover:text-mid-green h-3 w-3 text-white/30 transition-colors" />
+                    {label}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -198,19 +194,18 @@ export function Footer() {
       </div>
 
       {/* Bottom rail */}
-      <div className="container-page py-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between font-mono text-[10px] uppercase tracking-[0.16em] text-white/40">
-        <p>© {year} {SITE.legalName}. All rights reserved.</p>
+      <div className="container-page flex flex-col gap-4 py-6 font-mono text-[10px] tracking-[0.16em] text-white/40 uppercase md:flex-row md:items-center md:justify-between">
+        <p>© {year} Blackchip Impex Pvt. Ltd. All rights reserved.</p>
         <div className="flex flex-wrap gap-x-6 gap-y-2">
-          <Link href="/privacy" className="hover:text-white transition-colors">
+          <Link href="/privacy" className="transition-colors hover:text-white">
             Privacy
           </Link>
-          <Link href="/terms" className="hover:text-white transition-colors">
+          <Link href="/terms" className="transition-colors hover:text-white">
             Terms
           </Link>
-          <Link href="/network#quality" className="hover:text-white transition-colors">
+          <Link href="/network#quality" className="transition-colors hover:text-white">
             Compliance
           </Link>
-          <span className="tabular-nums">EN · ES · KO · AR · ZH</span>
         </div>
       </div>
     </footer>

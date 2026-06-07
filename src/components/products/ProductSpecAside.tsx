@@ -15,7 +15,6 @@ import { ButtonLink } from "@/components/ui/Button";
  * spec + application content.
  */
 export function ProductSpecAside({ product }: { product: Product }) {
-  const refCodes = product.specs.map((s) => s.refCode);
   const widthRange = getWidthRange(product);
   const length = product.specs[0]?.length ?? "";
   const colorCount = product.colors?.length ?? 0;
@@ -28,7 +27,7 @@ export function ProductSpecAside({ product }: { product: Product }) {
           QUICK SPEC
         </p>
         <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-muted tabular-nums">
-          {product.specs.length} REF{product.specs.length === 1 ? "" : "S"}
+          {product.specs.length} SIZE{product.specs.length === 1 ? "" : "S"}
         </p>
       </div>
 
@@ -53,23 +52,6 @@ export function ProductSpecAside({ product }: { product: Product }) {
           />
         ) : null}
       </dl>
-
-      {/* Ref codes pill row */}
-      <div className="border-b border-line pb-5">
-        <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-muted">
-          REFERENCE CODES
-        </p>
-        <ul className="mt-2.5 flex flex-wrap gap-1.5">
-          {refCodes.map((c) => (
-            <li
-              key={c}
-              className="font-mono text-[11px] text-ink rounded-md border border-line px-2 py-1 tabular-nums"
-            >
-              {c}
-            </li>
-          ))}
-        </ul>
-      </div>
 
       {/* CTA */}
       <div className="pb-5 border-b border-line">

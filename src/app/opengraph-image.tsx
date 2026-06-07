@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Tomato M&C · Synthetic Orthopedic Casting Manufacturer";
+export const alt = "Tomato M&C India · Fiberglass Orthopedic Casting Manufacturer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -45,6 +45,7 @@ export default async function OG() {
           >
             <span>Tomato</span>
             <span style={{ color: "#D80C18" }}>M&amp;C</span>
+            <span>India</span>
           </div>
         </div>
 
@@ -69,7 +70,7 @@ export default async function OG() {
               maxWidth: 950,
             }}
           >
-            Korea&apos;s Leading Synthetic Cast Manufacturer.
+            Korea&apos;s Leading Fiberglass Cast Manufacturer.
           </div>
         </div>
 

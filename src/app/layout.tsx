@@ -58,9 +58,9 @@ const orgJsonLd = {
   name: SITE.legalName,
   alternateName: "Tomato M&C India",
   url: SITE_URL,
-  logo: `${SITE_URL}/tomatomnclogo.png`,
+  logo: `${SITE_URL}/tomato_mnc_india_logo.png`,
   description:
-    "Korean manufacturer of synthetic orthopedic casting tape, splints, and immobilization accessories, supplying hospitals and distributors across India.",
+    "Korean manufacturer of fiberglass orthopedic casting tape, splints, and supporting products, supplying hospitals and distributors across India.",
   foundingDate: "2005",
   address: {
     "@type": "PostalAddress",
@@ -89,7 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en-IN"
       className={`${fraunces.variable} ${geist.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable}`}
     >
-      <body className="min-h-screen flex flex-col bg-white">
+      <body className="flex min-h-screen flex-col bg-white">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}

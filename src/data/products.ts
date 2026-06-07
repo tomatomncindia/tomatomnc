@@ -1,4 +1,4 @@
-export type ProductCategory = "Cast" | "Splint" | "Accessory";
+export type ProductCategory = "Cast" | "Splint" | "Supporting Product";
 
 export type ProductSpec = {
   refCode: string;
@@ -14,6 +14,13 @@ export type ApplicationStep = {
   image?: string;
 };
 
+/** Product-line wordmark supplied by the client (transparent PNG). */
+export type ProductLogo = {
+  src: string;
+  width: number;
+  height: number;
+};
+
 export type Product = {
   slug: string;
   name: string;
@@ -25,6 +32,7 @@ export type Product = {
   features: string[];
   precautions?: string;
   image: string;
+  logo?: ProductLogo;
   applicationSteps?: ApplicationStep[];
   specs: ProductSpec[];
   colors?: string[];
@@ -37,16 +45,17 @@ export const PRODUCTS: Product[] = [
     name: "Tomato Cast",
     shortName: "Cast",
     category: "Cast",
-    tagline: "Synthetic orthopedic casting tape, fiberglass and polyester options.",
+    tagline: "Fiberglass orthopedic casting tape, with polyester options.",
     description:
-      "Rigid synthetic casting tape providing exceptional strength-to-weight ratio for primary orthopedic immobilization. Engineered for fast set, high mechanical strength, and radiolucency.",
+      "Rigid fiberglass casting tape providing exceptional strength-to-weight ratio for primary orthopedic immobilization. Engineered for fast set, high mechanical strength, and radiolucency.",
     intendedUse:
       "Tomato Cast has been designed for the immobilization of fractures, sprains, and strains where rigid support is required.",
     features: [
       "Comfortability — smooth unrolling lets clinicians wrap with less pressure and no pain to the patient",
-      "Conformability & mouldability — extreme-soft fabric shapes easily to the contours of the body",
+      "Better conformability — molds smoothly around complex joints like ankles and wrists without wrinkling",
       "Durability for safety — strong on impact and durable on the edges",
-      "Tack-free with no layer separation",
+      "Tack-free, smoother lamination — doesn't stick to gloves during application while the layers bond perfectly to each other",
+      "Cleaner edges — no fraying or sharp fiberglass needles to poke and irritate the skin after curing",
       "Excellent X-ray translucency",
     ],
     precautions:
@@ -85,31 +94,90 @@ export const PRODUCTS: Product[] = [
       },
     ],
     specs: [
-      { refCode: "TRC-001", width: "1 in (2.5 cm)", length: "1.8 m (2 yds)", packagingBox: "Fiberglass / Poly" },
-      { refCode: "TRC-002", width: "2 in (5.0 cm)", length: "3.6 m (4 yds)", packagingBox: "Fiberglass / Poly" },
-      { refCode: "TRC-003", width: "3 in (7.5 cm)", length: "3.6 m (4 yds)", packagingBox: "Fiberglass / Poly" },
-      { refCode: "TRC-004", width: "4 in (10.0 cm)", length: "3.6 m (4 yds)", packagingBox: "Fiberglass / Poly" },
-      { refCode: "TRC-005", width: "5 in (12.5 cm)", length: "3.6 m (4 yds)", packagingBox: "Fiberglass / Poly" },
-      { refCode: "TRC-006", width: "6 in (15.0 cm)", length: "3.6 m (4 yds)", packagingBox: "Fiberglass / Poly" },
+      { refCode: "TRC-002", width: "2 in (5.0 cm)", length: "3.6 m (4 yds)", packagingBox: "Fiberglass" },
+      { refCode: "TRC-003", width: "3 in (7.5 cm)", length: "3.6 m (4 yds)", packagingBox: "Fiberglass" },
+      { refCode: "TRC-004", width: "4 in (10.0 cm)", length: "3.6 m (4 yds)", packagingBox: "Fiberglass" },
+      { refCode: "TRC-005", width: "5 in (12.5 cm)", length: "3.6 m (4 yds)", packagingBox: "Fiberglass" },
+      { refCode: "TRC-006", width: "6 in (15.0 cm)", length: "3.6 m (4 yds)", packagingBox: "Fiberglass" },
     ],
-    colors: ["white", "sky-blue", "neon-green", "ocean-green", "green", "purple", "pink", "orange", "yellow", "black", "grey", "pastel"],
+    colors: ["white", "green", "purple", "pink", "blue", "red", "orange", "yellow", "grey", "black", "sky-blue", "neon-green", "green-pastel", "pink-pastel", "ocean-green"],
     related: ["tomato-splint", "star-cast-roll", "star-stockinet"],
+  },
+  {
+    slug: "star-cast-roll",
+    name: "Star Cast Roll",
+    shortName: "Cast Roll",
+    category: "Supporting Product",
+    tagline: "Soft polyester cast roll for functional immobilization.",
+    description:
+      "Soft cast of knitted polyester fabric impregnated with polyurethane resin. Exposure to water sets the roll; the finished wrap retains its shape while remaining elastic to the touch — a more flexible casting material for functional immobilization that can tolerate some movement.",
+    intendedUse:
+      "Intended for secondary casting and a comprehensive wrap to control swelling. Typically used for functional immobilizations that can tolerate some movement, such as minor broken bones, casual strains, sprains, and ligament damage.",
+    features: [
+      "Uniform thickness, dense loft throughout",
+      "Tears crisply, ‘feathers’ smoothly",
+      "Blends together cleanly, stays in place",
+      "Breathable, promotes rapid drying",
+      "Easy to be cut off with bandage scissors",
+      "Enough fixation for support",
+      "Skin-tight application without padding",
+      "Shoes can be worn with the cast on",
+      "Suitable for a child in cast removal",
+    ],
+    image: "/images/products/star-cast-roll.png",
+    logo: { src: "/images/products/logos/star-cast-roll.png", width: 1479, height: 240 },
+    specs: [
+      { refCode: "SCR-004", width: "4 in (10.0 cm)", length: "3 m" },
+      { refCode: "SCR-006", width: "6 in (15.0 cm)", length: "3 m" },
+    ],
+    related: ["tomato-cast", "tomato-splint", "star-stockinet"],
+  },
+  {
+    slug: "star-stockinet",
+    name: "Star Stockinet",
+    shortName: "Stockinet",
+    category: "Supporting Product",
+    tagline: "100% cotton tubular stockinet for baseline skin protection.",
+    description:
+      "Soft 100% cotton tubular stockinet worn next to the skin beneath padding and rigid casts. Provides a clean barrier and reduces skin irritation.",
+    intendedUse:
+      "Star Stockinet is intended as a soft, sores-preventing inter-layer under solid cast materials.",
+    features: [
+      "Conforms smoothly, retains elastic memory",
+      "Resists running, holds shape at cut lines",
+      "Soft, breathable, wicks or absorbs moisture",
+      "Soft & moderate elasticity offers more comfort to the patient",
+      "100% cotton minimizes skin trouble",
+    ],
+    image: "/images/products/star-stockinet.png",
+    logo: { src: "/images/products/logos/star-stockinet.png", width: 1281, height: 240 },
+    specs: [
+      { refCode: "STK-002-S", width: "2 in (5.0 cm)", length: "1.5 m" },
+      { refCode: "STK-002-L", width: "2 in (5.0 cm)", length: "10 m" },
+      { refCode: "STK-003-S", width: "3 in (7.5 cm)", length: "1.5 m" },
+      { refCode: "STK-003-L", width: "3 in (7.5 cm)", length: "10 m" },
+      { refCode: "STK-004-S", width: "4 in (10.0 cm)", length: "1.5 m" },
+      { refCode: "STK-004-L", width: "4 in (10.0 cm)", length: "10 m" },
+      { refCode: "STK-006-S", width: "6 in (15.0 cm)", length: "1.5 m" },
+      { refCode: "STK-006-L", width: "6 in (15.0 cm)", length: "10 m" },
+    ],
+    related: ["tomato-cast", "tomato-splint", "star-cast-roll"],
   },
   {
     slug: "tomato-splint",
     name: "Tomato Splint",
     shortName: "Splint",
     category: "Splint",
-    tagline: "All-in-one layered splinting system with integrated padding.",
+    tagline: "Multi-layered splint for emergency immobilization, pre-cut or in rolls.",
     description:
-      "Pre-padded synthetic splint for immediate immobilization. Tomato Splint is a multi-layered fiberglass-and-resin splint with integrated stockinet padding, ready to use straight out of the package for emergency, fracture care, or post-operative immobilization.",
+      "Multi-layered splint in fiberglass or polyester for emergency immobilization. Supplied pre-cut or in rolls in sealed foil pouches, Tomato Splint applies with a simple water spray — no soaking — and can be used until swelling has decreased and the limb is ready for a complete cast.",
     intendedUse:
-      "Tomato Splint is designed for the immediate immobilization of fractures, sprains, and post-operative orthopedic conditions where reliable splinting and a quick, clean application is required.",
+      "Tomato Splint has been designed for use in emergency treatment of fractures, sprains, and strains. It can be used until swelling has decreased and the limb is ready for a complete cast.",
     features: [
-      "Comfortability & hygiene — water-spray application on the mesh side keeps the patient side dry",
-      "Conformability & mouldability — shapes easily to the contours of the body",
-      "Pre-padded: no separate stockinet or padding required",
-      "Excellent moisture-evaporation efficiency during hardening",
+      "Comfortability — smooth application with less pressure and no pain to the patient",
+      "Conformability & mouldability — extreme-soft fabric shapes easily to the contours of the body",
+      "Generally no gloves are necessary for handling",
+      "Tack-free with no layer separation",
       "Available pre-cut and in rolls across a range of widths",
     ],
     image: "/images/products/tomato-splint.png",
@@ -131,80 +199,38 @@ export const PRODUCTS: Product[] = [
       },
       {
         title: "Spray",
-        body: "Instead of soaking, spray room-temperature water on the outer green mesh side of the splint.",
+        body: "Instead of soaking, spray room-temperature water on the inside (white side) of the splint for 3–5 seconds, then wipe the water off the surface.",
         image: "/images/application/steps/splint-4.png",
       },
       {
         title: "Dry off",
-        body: "Remove excess water by rolling up with a dry towel; tap the surface with the towel if needed.",
+        body: "Remove excess water by laying the splint on a dry towel and rolling it up with the towel to strengthen adhesion between layers.",
         image: "/images/application/steps/splint-5.png",
       },
       {
         title: "Wrap & mould",
-        body: "Wrap Tomato Splint with a roll of elastic bandage to secure it and mould it firmly to the limb.",
+        body: "Wrap Tomato Splint with a roll of elastic bandage to secure it and mould it freely to the limb.",
         image: "/images/application/steps/splint-6.png",
       },
     ],
     specs: [
-      { refCode: "TPS-210", width: "2 in (5.0 cm)", length: "25.0 cm (10 in)", packagingBox: "Pre-cut" },
-      { refCode: "TPS-312", width: "3 in (7.5 cm)", length: "30.0 cm (12 in)", packagingBox: "Pre-cut" },
-      { refCode: "TPS-415", width: "4 in (10.0 cm)", length: "37.5 cm (15 in)", packagingBox: "Pre-cut" },
-      { refCode: "TPS-530", width: "5 in (12.5 cm)", length: "75.0 cm (30 in)", packagingBox: "Pre-cut" },
-      { refCode: "TRS-004", width: "4 in (10.0 cm)", length: "4.5 m (5 yds)", packagingBox: "Roll" },
-      { refCode: "TRS-005", width: "5 in (12.5 cm)", length: "4.5 m (5 yds)", packagingBox: "Roll" },
+      { refCode: "TPS-210", width: "2 in (5.0 cm)", length: "10 in (25.0 cm)", packagingBox: "Pre-cut" },
+      { refCode: "TPS-312", width: "3 in (7.5 cm)", length: "12 in (30.0 cm)", packagingBox: "Pre-cut" },
+      { refCode: "TPS-335", width: "3 in (7.5 cm)", length: "35 in (87.5 cm)", packagingBox: "Pre-cut" },
+      { refCode: "TPS-415", width: "4 in (10.0 cm)", length: "15 in (37.5 cm)", packagingBox: "Pre-cut" },
+      { refCode: "TPS-430", width: "4 in (10.0 cm)", length: "30 in (75.0 cm)", packagingBox: "Pre-cut" },
+      { refCode: "TPS-530", width: "5 in (12.5 cm)", length: "30 in (75.0 cm)", packagingBox: "Pre-cut" },
+      { refCode: "TPS-545", width: "5 in (12.5 cm)", length: "45 in (112.5 cm)", packagingBox: "Pre-cut" },
+      { refCode: "TPS-630", width: "6 in (15.0 cm)", length: "30 in (75.0 cm)", packagingBox: "Pre-cut" },
+      { refCode: "TPS-645", width: "6 in (15.0 cm)", length: "45 in (112.5 cm)", packagingBox: "Pre-cut" },
+      { refCode: "TRS-002", width: "2 in (5.0 cm)", length: "5 yds (4.5 m)", packagingBox: "Roll" },
+      { refCode: "TRS-003", width: "3 in (7.5 cm)", length: "5 yds (4.5 m)", packagingBox: "Roll" },
+      { refCode: "TRS-004", width: "4 in (10.0 cm)", length: "5 yds (4.5 m)", packagingBox: "Roll" },
+      { refCode: "TRS-005", width: "5 in (12.5 cm)", length: "5 yds (4.5 m)", packagingBox: "Roll" },
+      { refCode: "TRS-006", width: "6 in (15.0 cm)", length: "5 yds (4.5 m)", packagingBox: "Roll" },
+      { refCode: "TRS-008", width: "8 in (20.0 cm)", length: "5 yds (4.5 m)", packagingBox: "Roll" },
     ],
     related: ["tomato-cast", "star-cast-roll", "star-stockinet"],
-  },
-  {
-    slug: "star-cast-roll",
-    name: "Star Cast Roll",
-    shortName: "Cast Roll",
-    category: "Cast",
-    tagline: "Semi-rigid polyester cast roll for functional immobilization.",
-    description:
-      "Flexible polyester casting tape allowing functional movement. Star Cast Roll provides semi-rigid support while allowing the limb to keep some mobility — ideal for secondary casting, sprains, post-operative bracing, or transition from a rigid cast.",
-    intendedUse:
-      "Indicated for secondary casting and effective swelling control where functional immobilization is desired. Allows controlled movement while maintaining structural support.",
-    features: [
-      "Easy to apply and remove with standard scissors",
-      "Enough flexion for support",
-      "Skin-tight application without separate padding",
-      "Shoes can be worn with the cast on",
-      "Suitable for children or for staged cast removal",
-    ],
-    image: "/images/products/star-cast-roll.png",
-    specs: [
-      { refCode: "SCR-002", width: "2 in (5.0 cm)", length: "3.6 m (4 yds)", packagingBox: "Soft Polyester Cast" },
-      { refCode: "SCR-003", width: "3 in (7.5 cm)", length: "3.6 m (4 yds)", packagingBox: "Soft Polyester Cast" },
-      { refCode: "SCR-004", width: "4 in (10.0 cm)", length: "3.6 m (4 yds)", packagingBox: "Soft Polyester Cast" },
-      { refCode: "SCR-005", width: "5 in (12.5 cm)", length: "3.6 m (4 yds)", packagingBox: "Soft Polyester Cast" },
-    ],
-    related: ["tomato-cast", "tomato-splint", "star-stockinet"],
-  },
-  {
-    slug: "star-stockinet",
-    name: "Star Stockinet",
-    shortName: "Stockinet",
-    category: "Accessory",
-    tagline: "100% cotton tubular stockinet for baseline skin protection.",
-    description:
-      "Soft 100% cotton tubular stockinet worn next to the skin beneath padding and rigid casts. Provides a clean barrier and reduces skin irritation.",
-    intendedUse:
-      "Star Stockinet is intended as a soft, sores-preventing inter-layer under solid cast materials.",
-    features: [
-      "Soft & moderate elasticity offers more comfort to the patient",
-      "100% cotton minimizes skin trouble",
-      "Smooth seamless tubular construction",
-    ],
-    image: "/images/products/star-stockinet.png",
-    specs: [
-      { refCode: "SWS-002", width: "2 in (5.0 cm)", length: "10 m" },
-      { refCode: "SWS-003", width: "3 in (7.5 cm)", length: "10 m" },
-      { refCode: "SWS-004", width: "4 in (10.0 cm)", length: "10 m" },
-      { refCode: "SWS-006", width: "6 in (15.0 cm)", length: "10 m" },
-      { refCode: "SWS-010", width: "10 in (25.0 cm)", length: "10 m" },
-    ],
-    related: ["tomato-cast", "tomato-splint", "star-cast-roll"],
   },
 ];
 

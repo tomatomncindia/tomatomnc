@@ -4,9 +4,9 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/layout/Container";
 
 const QUICK_LINKS = [
-  { label: "Products", href: "/products", note: "Casts, splints & accessories" },
+  { label: "Products", href: "/products", note: "Casts, splints & supporting products" },
   { label: "Manufacturing", href: "/manufacturing", note: "Inside the production line" },
-  { label: "Global Network", href: "/network", note: "Distribution & OEM" },
+  { label: "Global Network", href: "/network", note: "Distribution & quality" },
   { label: "Contact", href: "/contact", note: "Samples & inquiries" },
 ];
 

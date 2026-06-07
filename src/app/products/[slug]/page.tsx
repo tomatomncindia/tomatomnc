@@ -23,11 +23,7 @@ export async function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<Params>;
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params;
   const product = getProduct(slug);
   if (!product) return {};
@@ -44,11 +40,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProductDetailPage({
-  params,
-}: {
-  params: Promise<Params>;
-}) {
+export default async function ProductDetailPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
   const product = getProduct(slug);
   if (!product) notFound();
@@ -62,7 +54,7 @@ export default async function ProductDetailPage({
     "@type": "Product",
     name: product.name,
     description: product.tagline,
-    brand: { "@type": "Brand", name: "Tomato M&C" },
+    brand: { "@type": "Brand", name: "Tomato M&C India" },
     manufacturer: { "@type": "Organization", name: "Tomato M&C Co., Ltd." },
     category: product.category,
     image: `${siteUrl}${product.image}`,
@@ -81,7 +73,12 @@ export default async function ProductDetailPage({
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
       { "@type": "ListItem", position: 2, name: "Products", item: `${siteUrl}/products` },
-      { "@type": "ListItem", position: 3, name: product.name, item: `${siteUrl}/products/${product.slug}` },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: product.name,
+        item: `${siteUrl}/products/${product.slug}`,
+      },
     ],
   };
 
@@ -98,14 +95,18 @@ export default async function ProductDetailPage({
 
       {/* Breadcrumb */}
       <Container className="pt-10 md:pt-14">
-        <nav aria-label="Breadcrumb" className="text-[12px] text-ink-muted">
+        <nav aria-label="Breadcrumb" className="text-ink-muted text-[12px]">
           <ol className="flex flex-wrap items-center gap-1.5">
             <li>
-              <Link href="/" className="hover:text-ink">Home</Link>
+              <Link href="/" className="hover:text-ink">
+                Home
+              </Link>
             </li>
             <ChevronRight className="h-3 w-3" />
             <li>
-              <Link href="/products" className="hover:text-ink">Products</Link>
+              <Link href="/products" className="hover:text-ink">
+                Products
+              </Link>
             </li>
             <ChevronRight className="h-3 w-3" />
             <li className="text-ink">{product.name}</li>
@@ -114,19 +115,30 @@ export default async function ProductDetailPage({
       </Container>
 
       {/* HERO */}
-      <Container className="pt-6 md:pt-10 pb-10 md:pb-14">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-14 items-start">
-          <div className="lg:col-span-6 order-2 lg:order-1">
+      <Container className="pt-6 pb-10 md:pt-10 md:pb-14">
+        <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
+          <div className="order-2 lg:order-1 lg:col-span-6">
             <Reveal>
               <p className="eyebrow">{product.category}</p>
             </Reveal>
             <Reveal delay={0.05}>
-              <h1 className="mt-3 font-display text-[40px] md:text-[56px] leading-[1.05] tracking-[-0.02em]">
+              {product.logo ? (
+                // Product-line wordmark — client-supplied brand logo, shown above the name
+                <Image
+                  src={product.logo.src}
+                  alt={`${product.name} logo`}
+                  width={product.logo.width}
+                  height={product.logo.height}
+                  priority
+                  className="mt-4 h-9 w-auto md:h-12"
+                />
+              ) : null}
+              <h1 className="font-display mt-3 text-[40px] leading-[1.05] tracking-[-0.02em] md:text-[56px]">
                 {product.name}
               </h1>
             </Reveal>
             <Reveal delay={0.1}>
-              <p className="mt-4 text-[16.5px] leading-relaxed text-ink-soft max-w-xl">
+              <p className="text-ink-soft mt-4 max-w-xl text-[16.5px] leading-relaxed">
                 {product.description}
               </p>
             </Reveal>
@@ -136,7 +148,7 @@ export default async function ProductDetailPage({
                 {product.features.map((f) => (
                   <li
                     key={f}
-                    className="border-l-2 border-forest pl-4 py-1.5 text-[14.5px] leading-relaxed text-ink-soft"
+                    className="border-forest text-ink-soft border-l-2 py-1.5 pl-4 text-[14.5px] leading-relaxed"
                   >
                     {f}
                   </li>
@@ -158,7 +170,7 @@ export default async function ProductDetailPage({
             </Reveal>
           </div>
 
-          <Reveal delay={0.1} className="lg:col-span-6 order-1 lg:order-2">
+          <Reveal delay={0.1} className="order-1 lg:order-2 lg:col-span-6">
             <ProductVisual
               product={product}
               className="aspect-[4/3]"
@@ -177,40 +189,43 @@ export default async function ProductDetailPage({
       {/* BODY: 2-col with sticky aside */}
       <Section size="md" tone="paper">
         <Container>
-          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-start">
-            <div className="lg:col-span-8 min-w-0 space-y-8">
+          <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="min-w-0 space-y-8 lg:col-span-8">
               {/* Intended Use + Precautions */}
               <div className="grid gap-6 md:grid-cols-2">
                 <Reveal>
-                  <div className="h-full rounded-xl border border-line bg-white p-6 md:p-7">
+                  <div className="border-line h-full rounded-xl border bg-white p-6 md:p-7">
                     <p className="eyebrow">Intended Use</p>
-                    <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">
+                    <p className="text-ink-soft mt-3 text-[15px] leading-relaxed">
                       {product.intendedUse}
                     </p>
                   </div>
                 </Reveal>
                 {product.precautions ? (
                   <Reveal delay={0.05}>
-                    <div className="h-full rounded-xl border border-mustard/40 bg-mustard-soft p-6 md:p-7">
+                    <div className="border-mustard/40 bg-mustard-soft h-full rounded-xl border p-6 md:p-7">
                       <div className="flex items-center gap-2">
                         <AlertTriangle className="h-4 w-4 text-[#8B6A1E]" strokeWidth={2} />
-                        <p className="font-mono text-[11px] uppercase tracking-[0.14em] font-semibold text-[#8B6A1E]">
+                        <p className="font-mono text-[11px] font-semibold tracking-[0.14em] text-[#8B6A1E] uppercase">
                           Precautions
                         </p>
                       </div>
-                      <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">
+                      <p className="text-ink-soft mt-3 text-[15px] leading-relaxed">
                         {product.precautions}
                       </p>
                     </div>
                   </Reveal>
                 ) : (
                   <Reveal delay={0.05}>
-                    <div className="h-full rounded-xl border border-line bg-white p-6 md:p-7">
+                    <div className="border-line h-full rounded-xl border bg-white p-6 md:p-7">
                       <p className="eyebrow">At a Glance</p>
-                      <ul className="mt-3 space-y-2 text-[14.5px] text-ink-soft">
+                      <ul className="text-ink-soft mt-3 space-y-2 text-[14.5px]">
                         {product.features.slice(0, 3).map((f) => (
                           <li key={f} className="flex items-start gap-2">
-                            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-forest" strokeWidth={2.2} />
+                            <CheckCircle2
+                              className="text-forest mt-0.5 h-4 w-4 shrink-0"
+                              strokeWidth={2.2}
+                            />
                             {f}
                           </li>
                         ))}
@@ -224,12 +239,12 @@ export default async function ProductDetailPage({
               {product.applicationSteps ? (
                 <Reveal>
                   <div>
-                    <div className="flex items-baseline justify-between gap-4 mb-6">
+                    <div className="mb-6 flex items-baseline justify-between gap-4">
                       <div>
                         <p className="eyebrow">How to use</p>
-                        <h2 className="mt-1.5 font-display text-2xl">Application Guide</h2>
+                        <h2 className="font-display mt-1.5 text-2xl">Application Guide</h2>
                       </div>
-                      <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-muted tabular-nums">
+                      <p className="text-ink-muted font-mono text-[10px] tracking-[0.16em] uppercase tabular-nums">
                         {product.applicationSteps.length} STEPS
                       </p>
                     </div>
@@ -237,18 +252,18 @@ export default async function ProductDetailPage({
                     <StaggerGroup className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                       {product.applicationSteps.map((step, i) => (
                         <StaggerItem key={step.title}>
-                          <div className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white transition-[border-color,transform] duration-300 [transition-timing-function:var(--ease-out-quint)] hover:border-forest/30 hover:-translate-y-0.5">
+                          <div className="group border-line hover:border-forest/30 flex h-full flex-col overflow-hidden rounded-xl border bg-white transition-[border-color,transform] duration-300 [transition-timing-function:var(--ease-out-quint)] hover:-translate-y-0.5">
                             {/* Step illustration from the catalog */}
                             {step.image ? (
-                              <div className="relative aspect-[16/11] w-full overflow-hidden bg-paper-warm">
+                              <div className="relative aspect-[16/11] w-full overflow-hidden bg-white">
                                 <Image
                                   src={step.image}
                                   alt={`${step.title} — step ${i + 1}`}
                                   fill
                                   sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
-                                  className="object-contain transition-transform duration-700 [transition-timing-function:var(--ease-out-quint)] group-hover:scale-[1.04]"
+                                  className="object-cover transition-transform duration-700 [transition-timing-function:var(--ease-out-quint)] group-hover:scale-[1.04]"
                                 />
-                                <span className="absolute left-3 top-3 inline-flex h-7 min-w-7 items-center justify-center rounded-full bg-forest px-2 font-mono text-[12px] font-medium tabular-nums text-white shadow-sm">
+                                <span className="bg-forest absolute top-3 left-3 inline-flex h-7 min-w-7 items-center justify-center rounded-full px-2 font-mono text-[12px] font-medium text-white tabular-nums shadow-sm">
                                   {String(i + 1).padStart(2, "0")}
                                 </span>
                               </div>
@@ -257,17 +272,19 @@ export default async function ProductDetailPage({
                               <div className="flex items-baseline justify-between gap-2">
                                 <h3 className="font-display text-[17px] leading-tight">
                                   {step.image ? null : (
-                                    <span className="mr-2 font-mono text-forest tabular-nums">
+                                    <span className="text-forest mr-2 font-mono tabular-nums">
                                       {String(i + 1).padStart(2, "0")}
                                     </span>
                                   )}
                                   {step.title}
                                 </h3>
-                                <span className="shrink-0 font-mono text-[9.5px] uppercase tracking-[0.18em] text-ink-muted">
+                                <span className="text-ink-muted shrink-0 font-mono text-[9.5px] tracking-[0.18em] uppercase">
                                   STEP / {String(i + 1).padStart(2, "0")}
                                 </span>
                               </div>
-                              <p className="mt-2 text-[13.5px] leading-relaxed text-ink-soft">{step.body}</p>
+                              <p className="text-ink-soft mt-2 text-[13.5px] leading-relaxed">
+                                {step.body}
+                              </p>
                             </div>
                           </div>
                         </StaggerItem>
@@ -280,9 +297,9 @@ export default async function ProductDetailPage({
               {/* Full Specs Table */}
               <Reveal>
                 <div>
-                  <div className="flex items-baseline justify-between gap-4 mb-4">
+                  <div className="mb-4 flex items-baseline justify-between gap-4">
                     <h2 className="font-display text-2xl">Specifications &amp; Ordering</h2>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-muted tabular-nums">
+                    <p className="text-ink-muted font-mono text-[10px] tracking-[0.16em] uppercase tabular-nums">
                       {product.specs.length} VARIANTS
                     </p>
                   </div>
@@ -291,7 +308,7 @@ export default async function ProductDetailPage({
               </Reveal>
             </div>
 
-            <div className="lg:col-span-4 min-w-0">
+            <div className="min-w-0 lg:col-span-4">
               <ProductSpecAside product={product} />
             </div>
           </div>
@@ -319,20 +336,26 @@ export default async function ProductDetailPage({
       {/* CONTEXTUAL SAMPLE REQUEST */}
       <Section size="md" tone="paper">
         <Container>
-          <div className="rounded-2xl bg-ink text-white p-8 md:p-10 grid gap-8 md:grid-cols-[1.4fr_1fr] md:gap-10 items-center">
+          <div className="bg-ink grid items-center gap-8 rounded-2xl p-6 text-white sm:p-8 md:grid-cols-[1.4fr_1fr] md:gap-10 md:p-10">
             <div>
-              <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-mid-green">
+              <p className="text-mid-green font-mono text-[11px] tracking-[0.16em] uppercase">
                 SAMPLE / {product.shortName.toUpperCase()}
               </p>
-              <h2 className="mt-3 font-display text-[26px] md:text-[32px] leading-[1.15] tracking-[-0.015em]">
+              <h2 className="font-display mt-3 text-[26px] leading-[1.15] tracking-[-0.015em] md:text-[32px]">
                 Request a sample of {product.name}.
               </h2>
-              <p className="mt-3 text-[14.5px] leading-relaxed text-white/70 max-w-md">
-                Sample shipment includes full specifications and the relevant regulatory documentation for your market.
+              <p className="mt-3 max-w-md text-[14.5px] leading-relaxed text-white/70">
+                Sample shipment includes full specifications and the relevant regulatory
+                documentation for your market.
               </p>
             </div>
             <div className="flex flex-wrap gap-3 md:justify-end">
-              <ButtonLink href={`/contact?type=sample&product=${product.slug}`} variant="primary" size="lg" withArrow>
+              <ButtonLink
+                href={`/contact?type=sample&product=${product.slug}`}
+                variant="primary"
+                size="lg"
+                withArrow
+              >
                 Request sample
               </ButtonLink>
             </div>

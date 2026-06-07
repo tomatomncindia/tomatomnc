@@ -2,20 +2,22 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, FileDown, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 
 import { Logo } from "./Logo";
 import { ButtonLink } from "@/components/ui/Button";
-import { ProductVisual } from "@/components/products/ProductVisual";
 import { PRODUCTS, type Product } from "@/data/products";
 import { SITE } from "@/data/site";
 import { cn } from "@/lib/cn";
 
 const CASTING = PRODUCTS.filter((p) => p.category === "Cast");
 const SPLINTS = PRODUCTS.filter((p) => p.category === "Splint");
-const ACCESSORIES = PRODUCTS.filter((p) => p.category === "Accessory");
+const SUPPORTING = PRODUCTS.filter((p) => p.category === "Supporting Product");
+
+const CATALOG_PDF = "/downloads/tomato-mnc-catalog.pdf";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -102,6 +104,12 @@ export function Navbar() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-2">
+          {/* Hidden below xl so the nav links never crowd at 1024–1280px */}
+          <ButtonLink href={CATALOG_PDF} variant="outline" size="sm" className="hidden xl:inline-flex">
+            <span className="inline-flex items-center gap-1.5">
+              <FileDown className="h-3.5 w-3.5" /> Download Catalog
+            </span>
+          </ButtonLink>
           <ButtonLink href="/contact" variant="primary" size="sm">
             Request a Sample
           </ButtonLink>
@@ -165,7 +173,7 @@ export function Navbar() {
                       <div className="mt-2 mb-2 ml-3 border-l border-line pl-4 space-y-3">
                         <MobileProductGroup title="Casting" products={CASTING} />
                         <MobileProductGroup title="Splints" products={SPLINTS} />
-                        <MobileProductGroup title="Accessories" products={ACCESSORIES} />
+                        <MobileProductGroup title="Supporting Products" products={SUPPORTING} />
                       </div>
                     ) : null}
                   </div>
@@ -185,9 +193,14 @@ export function Navbar() {
                 </Link>
               );
             })}
-            <div className="pt-4 mt-2 border-t border-line">
+            <div className="pt-4 mt-2 border-t border-line space-y-2.5">
               <ButtonLink href="/contact" variant="primary" size="lg" className="w-full">
                 Request a Sample
+              </ButtonLink>
+              <ButtonLink href={CATALOG_PDF} variant="outline" size="lg" className="w-full">
+                <span className="inline-flex items-center gap-2">
+                  <FileDown className="h-4 w-4" /> Download Catalog
+                </span>
               </ButtonLink>
             </div>
           </nav>
@@ -253,19 +266,14 @@ function ProductsMegaMenu({ onClose }: { onClose: () => void }) {
       <div className="container-page grid grid-cols-12 gap-6 py-8">
         <MegaColumn title="Casting" products={CASTING} />
         <MegaColumn title="Splints" products={SPLINTS} />
-        <MegaColumn title="Accessories" products={ACCESSORIES.slice(0, 3)} extra={ACCESSORIES[3]} />
+        <MegaColumn title="Supporting Products" products={SUPPORTING} />
 
         <div className="col-span-12 md:col-span-3 border-l border-line pl-6 flex flex-col">
           <p className="eyebrow">Resources</p>
           <ul className="mt-4 space-y-3">
             <li>
-              <ResourceLink href="/products?tab=downloads" icon={<FileDown className="h-3.5 w-3.5" />}>
+              <ResourceLink href={CATALOG_PDF} icon={<FileDown className="h-3.5 w-3.5" />}>
                 Full catalog PDF
-              </ResourceLink>
-            </li>
-            <li>
-              <ResourceLink href="/network#oem" icon={<ArrowUpRight className="h-3.5 w-3.5" />}>
-                OEM &amp; private label
               </ResourceLink>
             </li>
             <li>
@@ -294,7 +302,7 @@ function ProductsMegaMenu({ onClose }: { onClose: () => void }) {
       {/* Bottom rail */}
       <div className="border-t border-line bg-paper">
         <div className="container-page py-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.16em] text-ink-muted">
-          <span>{PRODUCTS.length} products / 4 categories</span>
+          <span>{PRODUCTS.length} products / 3 categories</span>
           <span className="tabular-nums">ISO 13485 · FDA · CE · KGMP</span>
         </div>
       </div>
@@ -305,11 +313,9 @@ function ProductsMegaMenu({ onClose }: { onClose: () => void }) {
 function MegaColumn({
   title,
   products,
-  extra,
 }: {
   title: string;
   products: Product[];
-  extra?: Product;
 }) {
   return (
     <div className="col-span-12 md:col-span-3">
@@ -320,11 +326,6 @@ function MegaColumn({
             <ProductLink product={p} />
           </li>
         ))}
-        {extra ? (
-          <li>
-            <ProductLink product={extra} />
-          </li>
-        ) : null}
       </ul>
     </div>
   );
@@ -336,8 +337,14 @@ function ProductLink({ product }: { product: Product }) {
       href={`/products/${product.slug}`}
       className="group flex items-center gap-3 rounded-md p-2 -mx-2 transition-colors hover:bg-paper"
     >
-      <div className="h-12 w-12 shrink-0 overflow-hidden rounded-md border border-line">
-        <ProductVisual product={product} className="h-full w-full" withRefCode={false} />
+      <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-md border border-line bg-white">
+        <Image
+          src={product.image}
+          alt={product.name}
+          fill
+          sizes="48px"
+          className="object-cover"
+        />
       </div>
       <div className="min-w-0 flex-1">
         <p className="font-display text-[14px] leading-tight text-ink truncate">{product.shortName}</p>

@@ -24,14 +24,14 @@ export async function submitInquiry(
   formData: FormData,
 ): Promise<InquiryState> {
   const raw = {
-    inquiryType: formData.get("inquiryType") ?? "sample",
+    inquiryType: formData.get("inquiryType") ?? "distributor",
     companyName: formData.get("companyName") ?? "",
     country: formData.get("country") ?? "",
     contactName: formData.get("contactName") ?? "",
     email: formData.get("email") ?? "",
     phone: formData.get("phone") ?? "",
     productsOfInterest: formData.getAll("productsOfInterest").map(String),
-    estimatedQuantity: formData.get("estimatedQuantity") ?? "",
+    territory: formData.get("territory") ?? "",
     message: formData.get("message") ?? "",
     honeypot: formData.get("honeypot") ?? "",
     turnstileToken: formData.get("turnstileToken") ?? "",
@@ -57,14 +57,14 @@ export async function submitInquiry(
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.INQUIRY_TO_EMAIL ?? "sales@tomatomnc.com";
+  const to = process.env.INQUIRY_TO_EMAIL ?? "sales@tomatomnc.kr";
   const from = process.env.INQUIRY_FROM_EMAIL ?? "noreply@tomatomnc.com";
 
   if (!apiKey) {
     console.warn("RESEND_API_KEY not set — skipping email send.");
     return {
       status: "success",
-      message: "Thank you. We've received your inquiry and will be in touch within 2 business days.",
+      message: "Thank you. We've received your inquiry and will be in touch within 2 hours.",
     };
   }
 
@@ -79,7 +79,7 @@ export async function submitInquiry(
       `Email: ${data.email}`,
       data.phone ? `Phone: ${data.phone}` : null,
       data.productsOfInterest?.length ? `Products: ${data.productsOfInterest.join(", ")}` : null,
-      data.estimatedQuantity ? `Quantity: ${data.estimatedQuantity}` : null,
+      data.territory ? `Territory: ${data.territory}` : null,
       "",
       "Message:",
       data.message,
@@ -97,13 +97,13 @@ export async function submitInquiry(
 
     return {
       status: "success",
-      message: "Thank you. We've received your inquiry and will be in touch within 2 business days.",
+      message: "Thank you. We've received your inquiry and will be in touch within 2 hours.",
     };
   } catch (err) {
     console.error("Resend error:", err);
     return {
       status: "error",
-      message: "We couldn't send your message. Please email sales@tomatomnc.com directly.",
+      message: "We couldn't send your message. Please email sales@tomatomnc.kr directly.",
     };
   }
 }

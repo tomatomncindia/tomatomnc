@@ -17,7 +17,7 @@ const ANNOTATIONS = [
   },
   {
     label: "FIBERGLASS CORE",
-    spec: "Hospital-grade synthetic substrate",
+    spec: "Hospital-grade fiberglass substrate",
     side: "left" as const,
     top: "58%",
   },
@@ -28,8 +28,8 @@ const ANNOTATIONS = [
     top: "26%",
   },
   {
-    label: "14 STANDARD COLORS",
-    spec: "Plus custom OEM colorways",
+    label: "15 STANDARD COLORS",
+    spec: "Plus custom colorways",
     side: "right" as const,
     top: "70%",
   },
@@ -54,7 +54,7 @@ const USE_CASES = [
     icon: Baby,
     title: "Pediatric Care",
     body: "Color-selectable rolls and softer Soft Cast variant for younger patients and shorter-term immobilization.",
-    stat: "14",
+    stat: "15",
     statLabel: "Color choices",
   },
 ];
@@ -132,7 +132,7 @@ function AnnotatedProduct({
     <div className="relative">
       {/* The product visual — slightly inset so annotation chips can sit at the edges */}
       <div className="relative mx-auto max-w-[600px] px-12 py-8 sm:px-20 sm:py-12">
-        <ProductVisual product={product} className="aspect-square" withRefCode />
+        <ProductVisual product={product} className="aspect-square" />
       </div>
 
       {/* Annotation chips */}

@@ -95,6 +95,17 @@ type Word = {
  * inline <span> formatting. Each word gets a placeholder for animation.
  */
 function collectWords(children: ReactNode): Word[] {
+  const out = walkChildren(children);
+  // JSX trims whitespace adjacent to newlines, so a space between a text node
+  // and an inline <span> can vanish from the source. Guarantee a separating
+  // space between any two consecutive words (breaks don't need one).
+  for (let i = 0; i < out.length - 1; i++) {
+    if (!out[i].isBreak && !out[i + 1].isBreak) out[i].trailingSpace = true;
+  }
+  return out;
+}
+
+function walkChildren(children: ReactNode): Word[] {
   const out: Word[] = [];
   Children.forEach(children, (child) => {
     if (typeof child === "string") {

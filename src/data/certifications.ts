@@ -4,7 +4,6 @@ export type Certification = {
   scope: string;
   region: string;
   description: string;
-  pdf?: string;
 };
 
 export const CERTIFICATIONS: Certification[] = [
@@ -15,7 +14,6 @@ export const CERTIFICATIONS: Certification[] = [
     region: "International",
     description:
       "Certifies our quality management system meets the rigorous requirements for the design and manufacture of medical devices.",
-    pdf: "/downloads/certificates/iso-13485.pdf",
   },
   {
     id: "iso-9001",
@@ -24,7 +22,6 @@ export const CERTIFICATIONS: Certification[] = [
     region: "International",
     description:
       "International standard ensuring consistently controlled products that meet customer and regulatory requirements.",
-    pdf: "/downloads/certificates/iso-9001.pdf",
   },
   {
     id: "iso-14001",
@@ -33,7 +30,6 @@ export const CERTIFICATIONS: Certification[] = [
     region: "International",
     description:
       "Certification of our effective environmental management system and commitment to sustainable manufacturing.",
-    pdf: "/downloads/certificates/iso-14001.pdf",
   },
   {
     id: "fda",
@@ -42,7 +38,6 @@ export const CERTIFICATIONS: Certification[] = [
     region: "United States",
     description:
       "Facility registration and device listing. Fully compliant with US Food and Drug Administration requirements for medical device distribution.",
-    pdf: "/downloads/certificates/fda-registration.pdf",
   },
   {
     id: "ce",
@@ -51,7 +46,6 @@ export const CERTIFICATIONS: Certification[] = [
     region: "European Union",
     description:
       "Conformity assessment certificate; products meet European Economic Area health, safety, and environmental protection standards.",
-    pdf: "/downloads/certificates/ce-mark.pdf",
   },
   {
     id: "kgmp",
@@ -60,6 +54,5 @@ export const CERTIFICATIONS: Certification[] = [
     region: "South Korea",
     description:
       "Certified by Korea Good Manufacturing Practice, ensuring domestic excellence in medical device production.",
-    pdf: "/downloads/certificates/kgmp.pdf",
   },
 ];

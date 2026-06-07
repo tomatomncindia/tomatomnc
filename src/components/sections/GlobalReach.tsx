@@ -33,24 +33,27 @@ export function GlobalReach() {
   return (
     <Section size="lg" tone="white">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 mb-12 items-end">
+        <div className="mb-12 grid items-end gap-10 lg:grid-cols-12 lg:gap-12">
           <Reveal className="lg:col-span-7">
-            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-forest">
+            <p className="text-forest font-mono text-[11px] tracking-[0.18em] uppercase">
               GLOBAL REACH
             </p>
-            <h2 className="mt-4 font-display text-[32px] md:text-[44px] leading-[1.08] tracking-[-0.02em]">
+            <h2 className="font-display mt-4 text-[32px] leading-[1.08] tracking-[-0.02em] md:text-[44px]">
               Supplying to {totalCountries}+ countries
               <br className="hidden md:block" />
               <span className="editorial-italic text-forest"> across five continents.</span>
             </h2>
           </Reveal>
           <Reveal delay={0.05} className="lg:col-span-5">
-            <p className="text-[15.5px] leading-relaxed text-ink-soft max-w-md">
-              Manufactured in Pyeongtaek, South Korea, and shipped to the United States, Japan, China, Southeast Asia, MENA, Europe, and South America. In India, <span className="text-ink font-medium">Blackchip</span> operates as the distributor of Tomato M&amp;C India.
+            <p className="text-ink-soft max-w-md text-[15.5px] leading-relaxed">
+              Manufactured in Pyeongtaek, South Korea, and shipped to the United States, Japan,
+              China, Southeast Asia, MENA, Europe, and South America. In India,{" "}
+              <span className="text-ink font-medium">Blackchip</span> operates as the distributor of
+              Tomato M&amp;C India.
             </p>
             <Link
               href="/network#markets"
-              className="mt-5 inline-flex items-center gap-2 text-[14px] font-medium text-forest hover:text-forest-deep group transition-colors"
+              className="text-forest hover:text-forest-deep group mt-5 inline-flex items-center gap-2 text-[14px] font-medium transition-colors"
             >
               See the full distribution program
               <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -60,19 +63,21 @@ export function GlobalReach() {
 
         {/* Map — sharp editorial frame */}
         <Reveal>
-          <div className="relative border border-line bg-paper-warm p-4 md:p-8 overflow-hidden">
+          <div className="border-line bg-paper-warm relative overflow-hidden border p-4 md:p-8">
             {/* Top engineering meta */}
-            <div className="flex items-baseline justify-between mb-4 font-mono text-[10px] uppercase tracking-[0.18em] text-ink-muted">
+            <div className="text-ink-muted mb-4 flex items-baseline justify-between font-mono text-[10px] tracking-[0.18em] uppercase">
               <span>WORLD · EQUAL-EARTH PROJECTION</span>
               <span className="tabular-nums">{PROJECTED_MARKETS.length} ACTIVE MARKETS</span>
             </div>
 
-            <div className="relative">
+            {/* Below sm the map pans horizontally so markers and labels stay
+                legible instead of shrinking to ~300px wide. */}
+            <div className="relative overflow-x-auto">
               <svg
                 viewBox={WORLD_VIEWBOX}
-                className="w-full h-auto"
+                className="h-auto w-full min-w-[560px] sm:min-w-0"
                 role="img"
-                aria-label="World map showing Tomato M&C distribution markets"
+                aria-label="World map showing Tomato M&C India distribution markets"
               >
                 {/* Fine grid backdrop within the map area */}
                 <defs>
@@ -144,7 +149,14 @@ export function GlobalReach() {
                 <g>
                   <circle cx={HQ.x} cy={HQ.y} r="12" fill="var(--color-brand-red)" opacity="0.16" />
                   <circle cx={HQ.x} cy={HQ.y} r="7" fill="var(--color-brand-red)" opacity="0.3" />
-                  <circle cx={HQ.x} cy={HQ.y} r="3" fill="var(--color-brand-red)" stroke="white" strokeWidth="0.8" />
+                  <circle
+                    cx={HQ.x}
+                    cy={HQ.y}
+                    r="3"
+                    fill="var(--color-brand-red)"
+                    stroke="white"
+                    strokeWidth="0.8"
+                  />
                 </g>
                 <text
                   x={HQ.x + 14}
@@ -153,16 +165,35 @@ export function GlobalReach() {
                   fontSize="8.5"
                   letterSpacing="0.16em"
                   fill="var(--color-brand-red)"
-                  className="uppercase font-medium"
+                  className="font-medium uppercase"
                 >
                   HQ · PYEONGTAEK
                 </text>
 
                 {/* Blackchip — India operations / distributor */}
                 <g>
-                  <circle cx={BLACKCHIP_HQ.x} cy={BLACKCHIP_HQ.y} r="12" fill={BLACKCHIP_COLOR} opacity="0.16" />
-                  <circle cx={BLACKCHIP_HQ.x} cy={BLACKCHIP_HQ.y} r="7" fill={BLACKCHIP_COLOR} opacity="0.32" />
-                  <circle cx={BLACKCHIP_HQ.x} cy={BLACKCHIP_HQ.y} r="3" fill={BLACKCHIP_COLOR} stroke="white" strokeWidth="0.8" />
+                  <circle
+                    cx={BLACKCHIP_HQ.x}
+                    cy={BLACKCHIP_HQ.y}
+                    r="12"
+                    fill={BLACKCHIP_COLOR}
+                    opacity="0.16"
+                  />
+                  <circle
+                    cx={BLACKCHIP_HQ.x}
+                    cy={BLACKCHIP_HQ.y}
+                    r="7"
+                    fill={BLACKCHIP_COLOR}
+                    opacity="0.32"
+                  />
+                  <circle
+                    cx={BLACKCHIP_HQ.x}
+                    cy={BLACKCHIP_HQ.y}
+                    r="3"
+                    fill={BLACKCHIP_COLOR}
+                    stroke="white"
+                    strokeWidth="0.8"
+                  />
                 </g>
                 <text
                   x={BLACKCHIP_HQ.x - 14}
@@ -172,7 +203,7 @@ export function GlobalReach() {
                   fontSize="8.5"
                   letterSpacing="0.16em"
                   fill={BLACKCHIP_COLOR}
-                  className="uppercase font-medium"
+                  className="font-medium uppercase"
                 >
                   BLACKCHIP · INDIA
                 </text>
@@ -180,18 +211,22 @@ export function GlobalReach() {
             </div>
 
             {/* Bottom legend */}
-            <div className="mt-4 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 font-mono text-[10px] uppercase tracking-[0.16em] text-ink-muted">
-              <div className="flex items-center gap-x-5 gap-y-1 flex-wrap">
+            <div className="text-ink-muted mt-4 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 font-mono text-[10px] tracking-[0.16em] uppercase">
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
                 <span className="inline-flex items-center gap-2">
-                  <span aria-hidden className="inline-block h-2 w-2 rounded-full bg-forest" />
+                  <span aria-hidden className="bg-forest inline-block h-2 w-2 rounded-full" />
                   ACTIVE MARKET
                 </span>
                 <span className="inline-flex items-center gap-2">
-                  <span aria-hidden className="inline-block h-2 w-2 rounded-full bg-brand-red" />
+                  <span aria-hidden className="bg-brand-red inline-block h-2 w-2 rounded-full" />
                   HEADQUARTERS · KR
                 </span>
                 <span className="inline-flex items-center gap-2">
-                  <span aria-hidden className="inline-block h-2 w-2 rounded-full" style={{ backgroundColor: BLACKCHIP_COLOR }} />
+                  <span
+                    aria-hidden
+                    className="inline-block h-2 w-2 rounded-full"
+                    style={{ backgroundColor: BLACKCHIP_COLOR }}
+                  />
                   BLACKCHIP · IN
                 </span>
               </div>
@@ -202,7 +237,7 @@ export function GlobalReach() {
 
         {/* Region pills */}
         <Reveal delay={0.1}>
-          <ul className="mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+          <ul className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
             {REGIONS.map((r) => (
               <li key={r.name}>
                 <button
@@ -211,19 +246,17 @@ export function GlobalReach() {
                   onMouseLeave={() => setHoveredRegion(null)}
                   onFocus={() => setHoveredRegion(r.name)}
                   onBlur={() => setHoveredRegion(null)}
-                  className="group w-full rounded-xl border border-line bg-white px-4 py-4 text-left transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-forest/40 hover:shadow-[var(--shadow-card)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest [transition-timing-function:var(--ease-out-quint)]"
+                  className="group border-line hover:border-forest/40 focus-visible:outline-forest w-full rounded-xl border bg-white px-4 py-4 text-left transition-[border-color,transform,box-shadow] duration-300 [transition-timing-function:var(--ease-out-quint)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-card)] focus-visible:outline-2 focus-visible:outline-offset-2"
                 >
                   <div className="flex items-baseline justify-between gap-2">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-ink-muted">
+                    <p className="text-ink-muted font-mono text-[10px] tracking-[0.14em] uppercase">
                       Region
                     </p>
-                    <p className="font-mono text-[11px] tabular-nums text-forest">
+                    <p className="text-forest font-mono text-[11px] tabular-nums">
                       {String(r.countries).padStart(2, "0")}
                     </p>
                   </div>
-                  <p className="mt-2 font-display text-[14.5px] leading-tight text-ink">
-                    {r.name}
-                  </p>
+                  <p className="font-display text-ink mt-2 text-[14.5px] leading-tight">{r.name}</p>
                 </button>
               </li>
             ))}

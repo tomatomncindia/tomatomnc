@@ -27,7 +27,7 @@ const MILESTONES: Milestone[] = [
     year: "2005",
     tag: "FOUNDED",
     title: "First roll, first floor.",
-    body: "Tomato M&C is established in Pyeongtaek as a specialist manufacturer of synthetic orthopedic casting tape. One product family, one team.",
+    body: "Tomato M&C India is established in Pyeongtaek as a specialist manufacturer of fiberglass orthopedic casting tape. One product family, one team.",
     icon: Factory,
   },
   {
@@ -88,9 +88,9 @@ const MILESTONES: Milestone[] = [
   },
   {
     year: "2024",
-    tag: "OEM EXPANSION",
-    title: "Private-label program.",
-    body: "OEM and private-label program launches at scale. KGMP coverage expands. The line is open for partner brands.",
+    tag: "EXPANSION",
+    title: "Capacity at scale.",
+    body: "Production capacity expands and KGMP coverage widens. The line is ready for new markets and partners.",
     icon: Rocket,
   },
   {

@@ -10,7 +10,7 @@ export const baseMetadata: Metadata = {
     template: "%s · Tomato M&C India",
   },
   description:
-    "Premium Korean-manufactured synthetic orthopedic casting tape, fiberglass casts, and splints for the Indian healthcare market. ISO 13485, FDA, CE & KGMP certified. Trusted supplier to hospitals and distributors across India.",
+    "Premium Korean-manufactured fiberglass orthopedic casting tape, fiberglass casts, and splints for the Indian healthcare market. ISO 13485, FDA, CE & KGMP certified. Trusted supplier to hospitals and distributors across India.",
   applicationName: SITE_NAME,
   authors: [{ name: "Tomato M&C Co., Ltd." }],
   creator: "Tomato M&C Co., Ltd.",
@@ -19,7 +19,7 @@ export const baseMetadata: Metadata = {
   keywords: [
     // Product / India market intent
     "orthopedic casting tape India",
-    "synthetic cast supplier India",
+    "fiberglass cast supplier India",
     "fiberglass casting tape India",
     "polyester casting tape India",
     "orthopedic splint India",
@@ -29,12 +29,10 @@ export const baseMetadata: Metadata = {
     "medical casting supplies India",
     "hospital casting supplies India",
     // Product generic
-    "synthetic cast",
     "fiberglass cast",
     "polyester cast",
     // Sourcing / B2B
     "Korean orthopedic casting tape",
-    "OEM private label casting tape",
     "ISO 13485 casting tape",
   ],
   alternates: {
@@ -51,14 +49,14 @@ export const baseMetadata: Metadata = {
     siteName: SITE_NAME,
     title: "Tomato M&C India · Orthopedic Casting Tape & Splint Supplier",
     description:
-      "Premium Korean-manufactured synthetic orthopedic casting tape and splints for hospitals and distributors across India. ISO 13485, CE & FDA certified.",
+      "Premium Korean-manufactured fiberglass orthopedic casting tape and splints for hospitals and distributors across India. ISO 13485, CE & FDA certified.",
     locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
     title: "Tomato M&C India",
     description:
-      "Premium Korean-manufactured synthetic orthopedic casting tape and splints for the Indian healthcare market. ISO 13485, CE & FDA certified.",
+      "Premium Korean-manufactured fiberglass orthopedic casting tape and splints for the Indian healthcare market. ISO 13485, CE & FDA certified.",
   },
   robots: {
     index: true,
