@@ -8,6 +8,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { WordReveal } from "@/components/motion/WordReveal";
 import { AnimatedNumber } from "@/components/motion/AnimatedNumber";
 import { JourneyTimeline } from "@/components/about/JourneyTimeline";
+import { FacilityCarousel } from "@/components/about/FacilityCarousel";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -51,10 +52,10 @@ export default function AboutPage() {
           {/* Vertical "ISSUE" label */}
 
           <div className="grid items-end gap-12 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-8">
+            <div className="lg:col-span-7">
               <Reveal>
                 <p className="text-forest font-mono text-[11px] tracking-[0.18em] uppercase">
-                  ABOUT — TOMATO M&amp;C
+                  ABOUT — TOMATO M&amp;C INDIA
                 </p>
               </Reveal>
 
@@ -62,48 +63,27 @@ export default function AboutPage() {
                 as="h1"
                 delay={0.1}
                 stagger={0.06}
-                className="font-display mt-6 text-[clamp(42px,13vw,80px)] leading-[1.08] tracking-[-0.035em] lg:text-[110px]"
+                className="font-display mt-6 text-[clamp(42px,13vw,80px)] leading-[1.08] tracking-[-0.035em] lg:text-[100px]"
               >
                 Twenty Years
-                <span className="editorial-italic text-forest text-[clamp(48px,14.5vw,88px)] lg:text-[120px]">
+                <span className="editorial-italic text-forest text-[clamp(48px,14.5vw,88px)] lg:text-[110px]">
                   on One Floor.
                 </span>
               </WordReveal>
 
               <Reveal delay={0.2}>
                 <p className="text-ink-soft mt-8 max-w-xl text-[17px] leading-relaxed">
-                  An institutional record of Tomato M&amp;C India — the people, the building, the
-                  line, and the documents that make up Korea&apos;s only fully automated, one-stop
-                  fiberglass-cast operation.
+                  Tomato M&amp;C India brings two decades of fiberglass casting to hospitals and
+                  distributors across the country — the same people, building, and production line
+                  behind one of Asia&apos;s only fully automated, one-stop fiberglass-cast
+                  operations.
                 </p>
               </Reveal>
             </div>
 
-            {/* Cover card with metadata */}
-            <Reveal delay={0.15} className="lg:col-span-4">
-              <div className="border-ink/15 bg-paper-warm border">
-                {/* Header */}
-                <div className="border-ink/15 text-ink-muted flex items-center justify-between border-b px-5 py-3 font-mono text-[10px] tracking-[0.18em] uppercase">
-                  <span>FILE CARD</span>
-                </div>
-                {/* Body */}
-                <dl className="space-y-3 px-5 py-5 text-[13px]">
-                  <Row label="Subject" value="Tomato M&C Co., Ltd." />
-                  <Row label="Founded" value="2005" mono />
-                  <Row label="Location" value="Pyeongtaek-si, Gyeonggi-do, KR" />
-                  <Row label="Category" value="Orthopedic Manufacturing" />
-                  <Row label="Output" value="Fiberglass casting tape & splints" />
-                  <Row label="Certificates" value="ISO 13485 · FDA · CE · KGMP" mono />
-                  <Row label="Distribution" value="30+ countries / 5 continents" />
-                </dl>
-                {/* Footer */}
-                <div className="border-ink/15 flex items-center justify-between border-t px-5 py-3">
-                  <span className="text-ink-muted font-mono text-[10px] tracking-[0.16em] uppercase">
-                    PAGES
-                  </span>
-                  <span className="font-display text-[18px] tabular-nums">07</span>
-                </div>
-              </div>
+            {/* Facility carousel — replaces the static file card */}
+            <Reveal delay={0.15} className="lg:col-span-5">
+              <FacilityCarousel />
             </Reveal>
           </div>
 
@@ -341,18 +321,5 @@ export default function AboutPage() {
         </Container>
       </section>
     </>
-  );
-}
-
-function Row({ label, value, mono }: { label: string; value: string; mono?: boolean }) {
-  return (
-    <div className="grid grid-cols-[90px_1fr] items-baseline gap-3">
-      <dt className="text-ink-muted font-mono text-[10px] tracking-[0.16em] uppercase">{label}</dt>
-      <dd
-        className={`text-ink ${mono ? "font-mono text-[12px] tracking-[0.08em] uppercase" : "text-[13.5px]"}`}
-      >
-        {value}
-      </dd>
-    </div>
   );
 }

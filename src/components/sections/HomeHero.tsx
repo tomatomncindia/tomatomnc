@@ -19,29 +19,29 @@ type Slide = {
 
 const SLIDES: Slide[] = [
   {
-    src: "/images/home/hero-1.png",
-    alt: "A smiling girl colouring at home with a green Tomato cast on her arm",
-    position: "58% 35%",
+    src: "/images/home/hero-1.jpg",
+    alt: "A laughing boy in class with a pink Tomato M&C India cast on his arm",
+    position: "45% 35%",
   },
   {
-    src: "/images/home/hero-2.png",
-    alt: "A boy laughing in class with a pink Tomato arm cast",
-    position: "55% 38%",
+    src: "/images/home/hero-2.jpg",
+    alt: "A mother holding her toddler who wears a pink Tomato M&C India arm cast",
+    position: "55% 35%",
   },
   {
-    src: "/images/home/hero-3.png",
-    alt: "A doctor fitting a Tomato product for a mother and her toddler in clinic",
-    position: "60% 35%",
+    src: "/images/home/hero-3.jpg",
+    alt: "A doctor fitting a Tomato M&C India cast to an older patient's arm in clinic",
+    position: "50% 40%",
   },
   {
-    src: "/images/home/hero-4.png",
-    alt: "A woman laughing outdoors while recovering with a Tomato cast on her arm",
-    position: "62% 40%",
+    src: "/images/home/hero-4.jpg",
+    alt: "A girl colouring at home with a green Tomato M&C India cast on her arm",
+    position: "55% 35%",
   },
   {
-    src: "/images/home/hero-5.png",
-    alt: "A doctor applying a Tomato cast to a patient's arm in clinic",
-    position: "60% 40%",
+    src: "/images/home/hero-5.jpg",
+    alt: "A doctor fitting a Tomato M&C India product for a mother and her toddler in clinic",
+    position: "50% 35%",
   },
 ];
 
@@ -137,6 +137,15 @@ export function HomeHero() {
           link (right). Lifted clear of the fixed WhatsApp button. */}
       <div className="absolute inset-x-0 bottom-0 z-[3] pb-24 md:pb-16">
         <div className="container-page">
+          <motion.p
+            initial={reduce ? false : { opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+            className="mb-3 flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.28em] text-white/85 [text-shadow:0_1px_12px_rgba(0,0,0,0.5)] md:mb-4 md:text-xs"
+          >
+            <span aria-hidden className="bg-brand-red h-px w-7" />
+            Comfort in discomfort
+          </motion.p>
           <motion.h1
             initial={reduce ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}

@@ -17,7 +17,7 @@ export const SITE = {
     email: "Blackchip.pvt@gmail.com",
     salesEmail: "Blackchip.pvt@gmail.com",
     // WhatsApp business line — digits only, used to build wa.me links.
-    whatsapp: "919819472980",
+    whatsapp: "919833116680",
   },
 
   stats: [

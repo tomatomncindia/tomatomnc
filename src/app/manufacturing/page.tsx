@@ -80,7 +80,7 @@ const SUPPORT_SYSTEMS = [
 ];
 
 const FACILITY_LARGE = {
-  src: "/images/manufacturing/line.png",
+  src: "/images/facility/line.jpg",
   alt: "Fiberglass knitting and coating line on the Tomato M&C India production floor",
   label: "KNITTING & COATING LINE",
   meta: "LINE / 01",
@@ -88,14 +88,14 @@ const FACILITY_LARGE = {
 
 const FACILITY_STACKED = [
   {
-    src: "/images/manufacturing/fabric.png",
-    alt: "Coated fiberglass casting fabric",
+    src: "/images/facility/spools.jpg",
+    alt: "Fiberglass yarn spooled on the in-house knitting machine",
     label: "FIBERGLASS FABRIC",
   },
   {
-    src: "/images/manufacturing/resin.png",
-    alt: "Fiberglass resin formulation",
-    label: "RESIN FORMULATION",
+    src: "/images/facility/exterior.jpg",
+    alt: "Tomato M&C India production facility exterior",
+    label: "PRODUCTION FACILITY",
   },
 ];
 
@@ -152,7 +152,7 @@ export default function ManufacturingPage() {
               <figure className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
                 <div className="relative aspect-[4/3]">
                   <Image
-                    src="/images/manufacturing/line.png"
+                    src="/images/facility/line.jpg"
                     alt="Fiberglass knitting and coating line at the Tomato M&C India facility"
                     fill
                     priority

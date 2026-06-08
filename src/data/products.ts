@@ -74,19 +74,10 @@ export const PRODUCTS: Product[] = [
     image: "/images/products/tomato-cast.png",
     lifestyle: [
       {
-        src: "/images/products/lifestyle/tomato-cast-1.png",
-        alt: "Smiling patient recovering in hospital with a Tomato Cast on her leg",
-      },
-      {
-        src: "/images/products/lifestyle/tomato-cast-2.png",
-        alt: "Happy patient relaxing at home with a Tomato Cast leg cast",
-      },
-      {
         src: "/images/products/lifestyle/tomato-cast-3.png",
         alt: "Patient back on his feet outdoors wearing a Tomato Cast walking cast",
       },
     ],
-    logo: { src: "/images/products/logos/star-cast.png", width: 1018, height: 240 },
     applicationSteps: [
       {
         title: "Preparation",
@@ -151,10 +142,6 @@ export const PRODUCTS: Product[] = [
     image: "/images/products/star-cast-roll.png",
     lifestyle: [
       {
-        src: "/images/products/lifestyle/star-cast-roll-1.png",
-        alt: "Smiling athlete with a Star Cast Roll soft wrap on his wrist",
-      },
-      {
         src: "/images/products/lifestyle/star-cast-roll-2.png",
         alt: "Patient with a Star Cast Roll functional wrap during recovery",
       },
@@ -189,14 +176,11 @@ export const PRODUCTS: Product[] = [
       "100% cotton minimizes skin trouble",
     ],
     image: "/images/products/star-stockinet.png",
+    logo: { src: "/images/products/logos/star-stockinet.png", width: 1281, height: 240 },
     lifestyle: [
       {
         src: "/images/products/lifestyle/star-stockinet-1.png",
         alt: "Doctor fitting Star Stockinet onto a patient's arm before casting",
-      },
-      {
-        src: "/images/products/lifestyle/star-stockinet-2.png",
-        alt: "Patient with soft Star Stockinet visible under a fresh cast",
       },
       {
         src: "/images/products/lifestyle/star-stockinet-3.png",
@@ -235,10 +219,6 @@ export const PRODUCTS: Product[] = [
     ],
     image: "/images/products/tomato-splint.png",
     lifestyle: [
-      {
-        src: "/images/products/lifestyle/tomato-splint-1.png",
-        alt: "Relieved patient with a Tomato Splint on her forearm in the emergency room",
-      },
       {
         src: "/images/products/lifestyle/tomato-splint-2.png",
         alt: "Doctor applying a Tomato Splint to a smiling patient's wrist",
