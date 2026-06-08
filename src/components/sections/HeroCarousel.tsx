@@ -79,7 +79,19 @@ export function HeroCarousel() {
           <div className="mt-2.5 flex items-center gap-2.5">
             <span aria-hidden className="bg-forest/50 h-px w-8" />
             <p className="text-ink-muted font-mono text-[9px] tracking-[0.2em] uppercase sm:text-[10px]">
-              WITH TOMATO ORTHOPEDIC CAST
+              WITH TOMATO{" "}
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.span
+                  key={product.slug}
+                  initial={reduce ? { opacity: 0 } : { opacity: 0, y: 5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={reduce ? { opacity: 0 } : { opacity: 0, y: -5 }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                  className="text-forest pointer-events-auto inline-block"
+                >
+                  {product.heroTag ?? product.name}
+                </motion.span>
+              </AnimatePresence>
             </p>
           </div>
         </motion.div>
@@ -105,9 +117,7 @@ export function HeroCarousel() {
                   {product.name}
                 </p>
               </div>
-              <span className="bg-forest/10 text-forest inline-flex h-7 shrink-0 items-center rounded-full px-3 font-mono text-[11px] font-medium tracking-[0.08em]">
-                ISO 13485
-              </span>
+              <span aria-hidden className="bg-forest/60 h-1.5 w-1.5 shrink-0 rounded-full" />
             </div>
           </motion.div>
         </AnimatePresence>

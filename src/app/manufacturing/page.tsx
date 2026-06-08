@@ -17,6 +17,7 @@ import { WordReveal } from "@/components/motion/WordReveal";
 import { AnimatedNumber } from "@/components/motion/AnimatedNumber";
 import { ButtonLink } from "@/components/ui/Button";
 import { IndustrialBackdrop } from "@/components/visuals/IndustrialBackdrop";
+import { FacilityBlueprint } from "@/components/about/FacilityBlueprint";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -296,11 +297,44 @@ export default function ManufacturingPage() {
         </Container>
       </Section>
 
-      {/* FACILITY GALLERY */}
+      {/* INSIDE THE BUILDING — annotated facility blueprint */}
       <Section size="lg">
         <Container>
+          <div className="mb-12 grid items-end gap-8 md:mb-16 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-7">
+              <Reveal>
+                <div className="flex items-center gap-4">
+                  <span aria-hidden className="bg-line-strong h-px w-12" />
+                  <span className="text-ink-muted font-mono text-[10px] tracking-[0.18em] uppercase">
+                    FACILITY PLAN
+                  </span>
+                </div>
+                <h2 className="font-display mt-6 text-[36px] leading-[1.05] tracking-[-0.02em] md:text-[52px]">
+                  Inside the
+                  <span className="editorial-italic text-forest"> building.</span>
+                </h2>
+              </Reveal>
+            </div>
+            <Reveal delay={0.05} className="lg:col-span-5">
+              <p className="text-ink-soft text-[15.5px] leading-relaxed">
+                Seven functional areas under one roof. The plan below maps the production sequence
+                left-to-right and the documentation footprint at the bottom. Hover or tap any
+                numbered area to read its function.
+              </p>
+            </Reveal>
+          </div>
+
           <Reveal>
-            <SectionHeader title="Our Facility" />
+            <FacilityBlueprint />
+          </Reveal>
+        </Container>
+      </Section>
+
+      {/* FACILITY GALLERY */}
+      <Section size="lg" tone="paper">
+        <Container>
+          <Reveal>
+            <SectionHeader title="Our Facility" eyebrow="Photographed On-Site" />
           </Reveal>
 
           {/* Asymmetric photo grid: one large left, two stacked right — sharp edges, tight gaps */}
@@ -381,9 +415,9 @@ export default function ManufacturingPage() {
       </Section>
 
       {/* SPEC REQUEST INLINE CARD */}
-      <Section size="md" tone="paper">
+      <Section size="md">
         <Container>
-          <div className="border-line grid gap-8 rounded-2xl border bg-white p-6 sm:p-8 md:grid-cols-[1.4fr_1fr] md:items-center md:gap-12 md:p-10">
+          <div className="border-line grid gap-8 rounded-2xl border bg-paper-warm p-6 sm:p-8 md:grid-cols-[1.4fr_1fr] md:items-center md:gap-12 md:p-10">
             <div>
               <p className="text-forest font-mono text-[11px] tracking-[0.16em] uppercase">
                 SPEC REQUEST

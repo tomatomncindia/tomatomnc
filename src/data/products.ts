@@ -32,6 +32,8 @@ export type Product = {
   name: string;
   shortName: string;
   category: ProductCategory;
+  /** Short label used in the homepage hero slogan: "You can be No. 1 with Tomato {heroTag}". */
+  heroTag?: string;
   tagline: string;
   description: string;
   intendedUse: string;
@@ -53,6 +55,7 @@ export const PRODUCTS: Product[] = [
     name: "Tomato Cast",
     shortName: "Cast",
     category: "Cast",
+    heroTag: "Orthopedic Cast",
     tagline: "Fiberglass orthopedic casting tape, with polyester options.",
     description:
       "Rigid fiberglass casting tape providing exceptional strength-to-weight ratio for primary orthopedic immobilization. Engineered for fast set, high mechanical strength, and radiolucency.",
@@ -128,6 +131,7 @@ export const PRODUCTS: Product[] = [
     name: "Star Cast Roll",
     shortName: "Cast Roll",
     category: "Supporting Product",
+    heroTag: "Orthopedic Star Cast",
     tagline: "Soft polyester cast roll for functional immobilization.",
     description:
       "Soft cast of knitted polyester fabric impregnated with polyurethane resin. Exposure to water sets the roll; the finished wrap retains its shape while remaining elastic to the touch — a more flexible casting material for functional immobilization that can tolerate some movement.",
@@ -161,8 +165,8 @@ export const PRODUCTS: Product[] = [
     ],
     logo: { src: "/images/products/logos/star-cast-roll.png", width: 1479, height: 240 },
     specs: [
-      { refCode: "SCR-004", width: "4 in (10.0 cm)", length: "3 m" },
-      { refCode: "SCR-006", width: "6 in (15.0 cm)", length: "3 m" },
+      { refCode: "SCR-004", width: "4 in (10.0 cm)", length: "3 m", packagingBox: "Premium Cotton Blend" },
+      { refCode: "SCR-006", width: "6 in (15.0 cm)", length: "3 m", packagingBox: "Premium Cotton Blend" },
     ],
     related: ["tomato-cast", "tomato-splint", "star-stockinet"],
   },
@@ -171,6 +175,7 @@ export const PRODUCTS: Product[] = [
     name: "Star Stockinet",
     shortName: "Stockinet",
     category: "Supporting Product",
+    heroTag: "Ortho Stockinet",
     tagline: "100% cotton tubular stockinet for baseline skin protection.",
     description:
       "Soft 100% cotton tubular stockinet worn next to the skin beneath padding and rigid casts. Provides a clean barrier and reduces skin irritation.",
@@ -215,6 +220,7 @@ export const PRODUCTS: Product[] = [
     name: "Tomato Splint",
     shortName: "Splint",
     category: "Splint",
+    heroTag: "Ortho Splint",
     tagline: "Multi-layered splint for emergency immobilization, pre-cut or in rolls.",
     description:
       "Multi-layered splint in fiberglass or polyester for emergency immobilization. Supplied pre-cut or in rolls in sealed foil pouches, Tomato Splint applies with a simple water spray — no soaking — and can be used until swelling has decreased and the limb is ready for a complete cast.",

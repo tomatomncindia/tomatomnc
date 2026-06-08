@@ -64,7 +64,7 @@ export function Footer() {
             </p>
             <h2 className="font-display mt-3 text-[28px] leading-[1.15] tracking-[-0.015em] text-white md:text-[36px]">
               Product updates, regulatory changes,
-              <br className="hidden md:block" /> shipped to procurement teams quarterly.
+              <br className="hidden md:block" /> shipped to procurement teams monthly.
             </h2>
             <p className="mt-3 max-w-md text-[14px] leading-relaxed text-white/60">
               Four issues per year. Spec changes, new market clearances, and the occasional

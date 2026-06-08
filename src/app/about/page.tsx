@@ -8,7 +8,6 @@ import { Reveal } from "@/components/motion/Reveal";
 import { WordReveal } from "@/components/motion/WordReveal";
 import { AnimatedNumber } from "@/components/motion/AnimatedNumber";
 import { JourneyTimeline } from "@/components/about/JourneyTimeline";
-import { FacilityBlueprint } from "@/components/about/FacilityBlueprint";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -21,8 +20,7 @@ export const metadata = pageMetadata({
 const TOC = [
   { num: "01", label: "Manifesto", href: "#manifesto" },
   { num: "02", label: "Twenty Years", href: "#journey" },
-  { num: "03", label: "Inside the Building", href: "#facility" },
-  { num: "04", label: "By the Numbers", href: "#numbers" },
+  { num: "03", label: "By the Numbers", href: "#numbers" },
 ];
 
 const PRESS_NUMBERS = [
@@ -234,45 +232,7 @@ export default function AboutPage() {
       </Section>
 
       {/* ─────────────────────────────────────────────────────────
-         03 / FACILITY — annotated blueprint
-         ───────────────────────────────────────────────────────── */}
-      <Section size="lg" tone="paper" id="facility" className="scroll-mt-20">
-        <Container>
-          <div className="mb-12 grid items-end gap-8 md:mb-16 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-7">
-              <Reveal>
-                <div className="flex items-center gap-4">
-                  <span className="text-forest font-mono text-[10px] tracking-[0.24em] uppercase tabular-nums">
-                    03
-                  </span>
-                  <span aria-hidden className="bg-line-strong h-px w-12" />
-                  <span className="text-ink-muted font-mono text-[10px] tracking-[0.18em] uppercase">
-                    FACILITY
-                  </span>
-                </div>
-                <h2 className="font-display mt-6 text-[36px] leading-[1.05] tracking-[-0.02em] md:text-[52px]">
-                  Inside the
-                  <span className="editorial-italic text-forest"> building.</span>
-                </h2>
-              </Reveal>
-            </div>
-            <Reveal delay={0.05} className="lg:col-span-5">
-              <p className="text-ink-soft text-[15.5px] leading-relaxed">
-                Seven functional areas under one roof. The plan below shows the production sequence
-                left-to-right and the documentation footprint at the bottom. Hover any numbered area
-                to read its function.
-              </p>
-            </Reveal>
-          </div>
-
-          <Reveal>
-            <FacilityBlueprint />
-          </Reveal>
-        </Container>
-      </Section>
-
-      {/* ─────────────────────────────────────────────────────────
-         04 / PRESS KIT — by the numbers
+         03 / PRESS KIT — by the numbers
          ───────────────────────────────────────────────────────── */}
       <Section size="lg" tone="white" id="numbers" className="scroll-mt-20">
         <Container>
@@ -280,7 +240,7 @@ export default function AboutPage() {
             <Reveal>
               <div className="flex items-center gap-4">
                 <span className="text-forest font-mono text-[10px] tracking-[0.24em] uppercase tabular-nums">
-                  04
+                  03
                 </span>
                 <span aria-hidden className="bg-line-strong h-px w-12" />
                 <span className="text-ink-muted font-mono text-[10px] tracking-[0.18em] uppercase">

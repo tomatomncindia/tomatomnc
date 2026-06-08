@@ -52,18 +52,23 @@ export function Navbar() {
     return () => window.removeEventListener("keydown", onKey);
   }, [productsOpen]);
 
+  // On the homepage the hero is a full-bleed image; the navbar overlays it with
+  // light styling until the user scrolls (or opens the mega-menu, which paints
+  // the bar white).
+  const overlay = pathname === "/" && !scrolled && !productsOpen;
+
   return (
     <header
       className={cn(
         "fixed top-0 inset-x-0 z-50 transition-[background,border-color,backdrop-filter] duration-200",
         scrolled || productsOpen
           ? "bg-white/95 backdrop-blur-md border-b border-line"
-          : "bg-white/0 border-b border-transparent",
+          : "bg-transparent border-b border-transparent",
       )}
       onMouseLeave={() => setProductsOpen(false)}
     >
       <div className="container-page flex h-16 items-center justify-between">
-        <Logo />
+        <Logo tone={overlay ? "light" : "dark"} />
 
         <nav aria-label="Primary" className="hidden lg:flex items-center gap-1">
           {SITE.nav.map((item) => {
@@ -76,6 +81,7 @@ export function Navbar() {
                   key={item.href}
                   active={active}
                   open={productsOpen}
+                  overlay={overlay}
                   onOpen={() => setProductsOpen(true)}
                 />
               );
@@ -88,13 +94,20 @@ export function Navbar() {
                 onMouseEnter={() => setProductsOpen(false)}
                 className={cn(
                   "relative px-3.5 py-2 text-[13.5px] font-medium transition-colors",
-                  active ? "text-ink" : "text-ink-soft hover:text-ink",
+                  overlay
+                    ? active
+                      ? "text-white"
+                      : "text-white/75 hover:text-white"
+                    : active
+                      ? "text-ink"
+                      : "text-ink-soft hover:text-ink",
                 )}
               >
                 {item.label}
                 <span
                   className={cn(
-                    "absolute left-3.5 right-3.5 -bottom-px h-px origin-left scale-x-0 bg-ink transition-transform duration-200",
+                    "absolute left-3.5 right-3.5 -bottom-px h-px origin-left scale-x-0 transition-transform duration-200",
+                    overlay ? "bg-white" : "bg-ink",
                     active && "scale-x-100",
                   )}
                 />
@@ -105,13 +118,13 @@ export function Navbar() {
 
         <div className="hidden lg:flex items-center gap-2">
           {/* Hidden below xl so the nav links never crowd at 1024–1280px */}
-          <ButtonLink href={CATALOG_PDF} variant="outline" size="sm" className="hidden xl:inline-flex">
+          <ButtonLink href="/contact" variant="outline" size="sm" className="hidden xl:inline-flex">
+            Request a Sample
+          </ButtonLink>
+          <ButtonLink href={CATALOG_PDF} variant="primary" size="sm">
             <span className="inline-flex items-center gap-1.5">
               <FileDown className="h-3.5 w-3.5" /> Download Catalog
             </span>
-          </ButtonLink>
-          <ButtonLink href="/contact" variant="primary" size="sm">
-            Request a Sample
           </ButtonLink>
         </div>
 
@@ -120,7 +133,12 @@ export function Navbar() {
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((o) => !o)}
-          className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-md text-ink hover:bg-paper-warm"
+          className={cn(
+            "lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-md transition-colors",
+            overlay
+              ? "text-white hover:bg-white/10"
+              : "text-ink hover:bg-paper-warm",
+          )}
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -194,13 +212,13 @@ export function Navbar() {
               );
             })}
             <div className="pt-4 mt-2 border-t border-line space-y-2.5">
-              <ButtonLink href="/contact" variant="primary" size="lg" className="w-full">
-                Request a Sample
-              </ButtonLink>
-              <ButtonLink href={CATALOG_PDF} variant="outline" size="lg" className="w-full">
+              <ButtonLink href={CATALOG_PDF} variant="primary" size="lg" className="w-full">
                 <span className="inline-flex items-center gap-2">
                   <FileDown className="h-4 w-4" /> Download Catalog
                 </span>
+              </ButtonLink>
+              <ButtonLink href="/contact" variant="outline" size="lg" className="w-full">
+                Request a Sample
               </ButtonLink>
             </div>
           </nav>
@@ -213,10 +231,12 @@ export function Navbar() {
 function ProductsTrigger({
   active,
   open,
+  overlay,
   onOpen,
 }: {
   active: boolean;
   open: boolean;
+  overlay: boolean;
   onOpen: () => void;
 }) {
   return (
@@ -228,7 +248,13 @@ function ProductsTrigger({
       aria-expanded={open}
       className={cn(
         "relative px-3.5 py-2 text-[13.5px] font-medium transition-colors inline-flex items-center gap-1",
-        active ? "text-ink" : "text-ink-soft hover:text-ink",
+        overlay
+          ? active
+            ? "text-white"
+            : "text-white/75 hover:text-white"
+          : active
+            ? "text-ink"
+            : "text-ink-soft hover:text-ink",
       )}
     >
       Products
@@ -240,7 +266,8 @@ function ProductsTrigger({
       />
       <span
         className={cn(
-          "absolute left-3.5 right-7 -bottom-px h-px origin-left scale-x-0 bg-ink transition-transform duration-200",
+          "absolute left-3.5 right-7 -bottom-px h-px origin-left scale-x-0 transition-transform duration-200",
+          overlay ? "bg-white" : "bg-ink",
           active && "scale-x-100",
         )}
       />

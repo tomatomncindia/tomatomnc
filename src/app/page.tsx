@@ -3,6 +3,7 @@ import { Section, SectionHeader } from "@/components/layout/Section";
 import { ButtonLink } from "@/components/ui/Button";
 import { StatStrip } from "@/components/sections/StatStrip";
 import { CertGreenBand } from "@/components/sections/CertGreenBand";
+import { HomeHero } from "@/components/sections/HomeHero";
 import { HeroCarousel } from "@/components/sections/HeroCarousel";
 import { ProductionFlowPreview } from "@/components/sections/ProductionFlowPreview";
 import { GlobalReach } from "@/components/sections/GlobalReach";
@@ -22,25 +23,33 @@ const FEATURED_SLUGS = ["tomato-cast", "star-cast-roll", "star-stockinet"];
 export default function HomePage() {
   return (
     <>
-      {/* ─── HERO ──────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden">
-        <Container className="pt-14 pb-14 md:pt-20 md:pb-24">
-          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-7">
+      {/* ─── HERO — full-bleed image carousel, navbar overlays it ── */}
+      <HomeHero />
+
+      {/* ─── CERTIFICATION GREEN BAND ──────────────────────────── */}
+      <CertGreenBand />
+
+      {/* ─── THE MANUFACTURER + PRODUCT LINEUP ──────────────────────
+         One section so the two blocks share a single vertical rhythm
+         (avoids the doubled-padding white gap between them). */}
+      <Section size="lg">
+        <Container>
+          <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-6">
               <Reveal>
-                <p className="eyebrow">Orthopedic Casting Solutions</p>
+                <p className="eyebrow">The Manufacturer</p>
               </Reveal>
               <WordReveal
-                as="h1"
+                as="h2"
                 delay={0.1}
-                stagger={0.07}
-                className="font-display mt-4 text-[clamp(38px,11vw,56px)] leading-[1.02] tracking-[-0.025em] lg:text-[72px]"
+                stagger={0.06}
+                className="font-display mt-4 text-[clamp(34px,8.5vw,52px)] leading-[1.03] tracking-[-0.025em] lg:text-[60px]"
               >
                 Korea&apos;s Leading
                 <br />
                 Fiberglass Cast
                 <br />
-                <span className="editorial-italic text-forest text-[clamp(44px,13vw,66px)] leading-[0.95] lg:text-[84px]">
+                <span className="editorial-italic text-forest text-[clamp(38px,9.5vw,58px)] leading-[0.95] lg:text-[66px]">
                   Manufacturer.
                 </span>
               </WordReveal>
@@ -50,65 +59,48 @@ export default function HomePage() {
                   line. Manufactured in Korea, supplied to 30+ countries.
                 </p>
               </Reveal>
-              <Reveal delay={0.15}>
-                <div className="mt-9 flex flex-wrap gap-3">
-                  <ButtonLink href="/contact?type=sample" variant="primary" size="lg" withArrow>
-                    Request a Sample
-                  </ButtonLink>
-                  <ButtonLink href="/products" variant="outline" size="lg">
-                    View Products
-                  </ButtonLink>
-                </div>
+              <Reveal delay={0.2} className="border-line mt-10 border-y">
+                <StatStrip
+                  stats={[
+                    { value: "ISO 13485", label: "Certified QMS" },
+                    { value: "FDA · CE", label: "Cleared markets" },
+                    { value: "30+", label: "Countries shipped" },
+                  ]}
+                />
               </Reveal>
             </div>
 
-            <Reveal delay={0.1} className="lg:col-span-5">
+            <Reveal delay={0.1} className="lg:col-span-6">
               <HeroCarousel />
             </Reveal>
           </div>
 
-          {/* TRUST STATS */}
-          <Reveal delay={0.2} className="border-line mt-14 border-y md:mt-20">
-            <StatStrip
-              stats={[
-                { value: "ISO 13485", label: "Certified QMS" },
-                { value: "FDA · CE", label: "Cleared markets" },
-                { value: "30+", label: "Countries shipped" },
-              ]}
-            />
-          </Reveal>
-        </Container>
-      </section>
+          {/* Product lineup — flows directly under the manufacturer block */}
+          <div className="mt-20 md:mt-28">
+            <Reveal>
+              <SectionHeader
+                eyebrow="View Our Product Lineup"
+                title="Complete Casting Room Solutions"
+                description="Vertically integrated production of every component a clinician needs: primary cast, padding, splint."
+              />
+            </Reveal>
 
-      {/* ─── CERTIFICATION GREEN BAND ──────────────────────────── */}
-      <CertGreenBand />
+            <StaggerGroup className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {FEATURED_SLUGS.map((slug) => {
+                const p = PRODUCTS.find((x) => x.slug === slug)!;
+                return (
+                  <StaggerItem key={p.slug} className="h-full">
+                    <ProductCard product={p} />
+                  </StaggerItem>
+                );
+              })}
+            </StaggerGroup>
 
-      {/* ─── PRODUCT SHOWCASE ──────────────────────────────────── */}
-      <Section size="lg">
-        <Container>
-          <Reveal>
-            <SectionHeader
-              eyebrow="View Our Product Lineup"
-              title="Complete Casting Room Solutions"
-              description="Vertically integrated production of every component a clinician needs: primary cast, padding, splint."
-            />
-          </Reveal>
-
-          <StaggerGroup className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {FEATURED_SLUGS.map((slug) => {
-              const p = PRODUCTS.find((x) => x.slug === slug)!;
-              return (
-                <StaggerItem key={p.slug} className="h-full">
-                  <ProductCard product={p} />
-                </StaggerItem>
-              );
-            })}
-          </StaggerGroup>
-
-          <div className="mt-10 flex justify-center">
-            <ButtonLink href="/products" variant="outline" withArrow>
-              View full catalog
-            </ButtonLink>
+            <div className="mt-10 flex justify-center">
+              <ButtonLink href="/products" variant="outline" withArrow>
+                View full catalog
+              </ButtonLink>
+            </div>
           </div>
         </Container>
       </Section>
