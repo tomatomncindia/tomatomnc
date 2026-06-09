@@ -160,10 +160,7 @@ export default function ManufacturingPage() {
                     className="object-cover"
                   />
                   <div className="from-ink/70 to-ink/20 absolute inset-0 bg-gradient-to-t via-transparent" />
-                  <div className="absolute inset-x-0 top-0 flex items-start justify-between p-5 font-mono text-[10px] tracking-[0.18em] text-white/80 uppercase">
-                    <span>LINE / 01</span>
-                    <span className="tabular-nums">PYEONGTAEK · KR</span>
-                  </div>
+                  
                   <figcaption className="absolute inset-x-0 bottom-0 p-5">
                     <p className="text-mid-green font-mono text-[10px] tracking-[0.18em] uppercase">
                       FIBER GLASS KNITTING & HEATING
