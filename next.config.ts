@@ -12,7 +12,13 @@ const nextConfig: NextConfig = {
   },
 
   images: {
-    formats: ["image/avif", "image/webp"],
+    // Source images are already hand-optimized WebP (~50–160 KB). Routing them
+    // through the runtime optimizer on the Cloudflare Worker added no real
+    // benefit and broke decoding in Safari (the AVIF/Accept-negotiation path is
+    // fragile in the Workers WASM runtime — Chrome got a working variant, Safari
+    // got a failed transform → broken-image placeholder). Serve the static WebP
+    // assets straight from the CDN instead.
+    unoptimized: true,
   },
 
   experimental: {

@@ -4,13 +4,10 @@ export const INQUIRY_TYPES = ["distributor"] as const;
 export type InquiryType = (typeof INQUIRY_TYPES)[number];
 
 export const PRODUCT_INTERESTS = [
-  "Orthopedic Cast",
-  "Soft Cast",
-  "Orthopedic Splint",
-  "Safe Pad",
-  "Cotton Pad",
-  "Elastic Bandage",
-  "Shockinet",
+  "Tomato Cast",
+  "Star Cast Roll",
+  "Star Stockinet",
+  "Tomato Splint",
 ] as const;
 
 export const inquirySchema = z.object({

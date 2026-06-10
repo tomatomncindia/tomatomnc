@@ -74,6 +74,14 @@ export const PRODUCTS: Product[] = [
     image: "/images/products/tomato-cast.webp",
     lifestyle: [
       {
+        src: "/images/products/lifestyle/tomato-cast-1.webp",
+        alt: "Smiling patient recovering in hospital with a Tomato Cast on her leg",
+      },
+      {
+        src: "/images/products/lifestyle/tomato-cast-2.webp",
+        alt: "Happy patient relaxing at home with a Tomato Cast leg cast",
+      },
+      {
         src: "/images/products/lifestyle/tomato-cast-3.webp",
         alt: "Patient back on his feet outdoors wearing a Tomato Cast walking cast",
       },

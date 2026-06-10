@@ -48,7 +48,7 @@ export function GlobalReach() {
             <p className="text-ink-soft max-w-md text-[15.5px] leading-relaxed">
               Manufactured in Pyeongtaek, South Korea, and shipped to the United States, Japan,
               China, Southeast Asia, MENA, Europe, and South America. In India,{" "}
-              <span className="text-ink font-medium">Blackchip</span> operates as the distributor of
+              <span className="text-ink font-medium">Blackchip Impex Pvt. Ltd.</span>{" "} operates as the exclusive distributor of
               Tomato M&amp;C India.
             </p>
             <Link
@@ -114,9 +114,15 @@ export function GlobalReach() {
                   return (
                     <motion.g
                       key={m.name}
+                      // Safari leaves SVG <g> stuck at the `initial` state when the
+                      // reveal is driven by whileInView (its IntersectionObserver is
+                      // unreliable for SVG children) — the dots never appeared. Drive
+                      // the reveal with `animate` so it can't get stuck, and pin
+                      // transform-box/origin so the scale pops from the dot's own
+                      // centre rather than the SVG canvas origin in Safari.
+                      style={{ transformBox: "fill-box", transformOrigin: "center" }}
                       initial={reduce ? false : { opacity: 0, scale: 0 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true, margin: "-10% 0px" }}
+                      animate={{ opacity: 1, scale: 1 }}
                       transition={{
                         duration: 0.4,
                         delay: 0.3 + i * 0.018,

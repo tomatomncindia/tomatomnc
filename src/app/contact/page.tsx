@@ -137,6 +137,10 @@ export default function ContactPage() {
   );
 }
 
+const MAP_QUERY =
+  "Shiv CHS Ltd, MHB Colony, Mahavir Nagar, Kandivali West, Mumbai 400067";
+const MAP_DIRECT_HREF = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAP_QUERY)}`;
+
 function FacilityMap({ className }: { className?: string }) {
   return (
     <div
@@ -147,17 +151,30 @@ function FacilityMap({ className }: { className?: string }) {
     >
       <iframe
         title="Blackchip Impex Private Limited office location, Mumbai"
-        src="https://www.google.com/maps?q=Shiv+CHS+Ltd,+MHB+Colony,+Mahavir+Nagar,+Kandivali+West,+Mumbai+400067&output=embed"
+        src={`https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&output=embed`}
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
         className="absolute inset-0 h-full w-full grayscale-[0.2] contrast-[1.05]"
         style={{ border: 0 }}
       />
-      {/* Pin overlay */}
-      <div className="pointer-events-none absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-white/95 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-ink shadow-[var(--shadow-soft)]">
+      {/* Pin overlay — kept top-right so it never covers Google's own
+          "View larger map" control in the top-left corner. */}
+      <div className="pointer-events-none absolute right-4 top-4 inline-flex items-center gap-2 rounded-full bg-white/95 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-ink shadow-[var(--shadow-soft)]">
         <MapPin className="h-3 w-3 text-brand-red" />
         MUMBAI · IN
       </div>
+      {/* Explicit, always-visible link to open the exact address in Google Maps. */}
+      <a
+        href={MAP_DIRECT_HREF}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Open Blackchip Impex office location in Google Maps"
+        className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full bg-forest px-3.5 py-2 font-mono text-[10px] font-medium uppercase tracking-[0.14em] text-white shadow-[var(--shadow-soft)] transition-colors hover:bg-forest-deep"
+      >
+        <MapPin className="h-3.5 w-3.5" strokeWidth={2} />
+        Open in Google Maps
+        <ExternalLink className="h-3 w-3" strokeWidth={2} />
+      </a>
     </div>
   );
 }
