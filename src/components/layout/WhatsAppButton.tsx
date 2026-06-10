@@ -1,10 +1,6 @@
-import { SITE } from "@/data/site";
+import { SITE, WHATSAPP_MESSAGE } from "@/data/site";
 
-// Pre-filled inquiry message — opens in WhatsApp ready to send.
-const MESSAGE =
-  "Hello! I'm interested in Tomato M&C India orthopedic casting products and would like to know more. Could you please share details on products, pricing, and availability?";
-
-const WA_HREF = `https://wa.me/${SITE.contact.whatsapp}?text=${encodeURIComponent(MESSAGE)}`;
+const WA_HREF = `https://wa.me/${SITE.contact.whatsapp}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
 export function WhatsAppButton() {
   return (

@@ -5,7 +5,7 @@ export function Logo({ tone = "dark" }: { tone?: "dark" | "light" }) {
   return (
     <Link href="/" aria-label="Tomato M&C India, Home" className="inline-flex items-center">
       <Image
-        src="/tomatomncindia.png"
+        src="/tomatomncindia.webp"
         alt="Tomato M&C India"
         width={1066}
         height={444}

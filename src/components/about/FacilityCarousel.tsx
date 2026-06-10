@@ -17,17 +17,17 @@ type Frame = {
 /** Facility & production-line photography from the Tomato M&C plant. */
 const FRAMES: Frame[] = [
   {
-    src: "/images/facility/exterior.jpg",
+    src: "/images/facility/exterior.webp",
     alt: "Exterior of the Tomato M&C India fiberglass casting facility",
     caption: "The facility — twenty years on one floor.",
   },
   {
-    src: "/images/facility/line.jpg",
+    src: "/images/facility/line.webp",
     alt: "Fiberglass casting-tape rolls advancing along the production line",
     caption: "Casting tape on the production line.",
   },
   {
-    src: "/images/facility/spools.jpg",
+    src: "/images/facility/spools.webp",
     alt: "Fiberglass yarn spooled on the in-house knitting machine",
     caption: "Fiberglass, knitted in-house.",
   },

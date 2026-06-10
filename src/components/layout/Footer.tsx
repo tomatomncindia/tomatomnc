@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, Globe, ShieldCheck } from "lucide-react";
 import { Logo } from "./Logo";
-import { SITE } from "@/data/site";
+import { SITE, whatsappHref } from "@/data/site";
 import { NewsletterSignup } from "./NewsletterSignup";
 
 const navCols = [
@@ -126,7 +126,22 @@ export function Footer() {
               {SITE.contact.addressLines.map((l) => (
                 <div key={l}>{l}</div>
               ))}
-              <div className="mt-2 tabular-nums">{SITE.contact.phones.join(" · ")}</div>
+              <div className="mt-2 tabular-nums">
+                {SITE.contact.phones.map((phone, i) => (
+                  <span key={phone}>
+                    {i > 0 && " · "}
+                    <a
+                      href={whatsappHref(phone)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Message ${phone} on WhatsApp`}
+                      className="underline-offset-4 transition-colors hover:text-white hover:underline"
+                    >
+                      {phone}
+                    </a>
+                  </span>
+                ))}
+              </div>
               <a
                 href={`mailto:${SITE.contact.salesEmail}`}
                 className="underline-offset-4 transition-colors hover:text-white hover:underline"

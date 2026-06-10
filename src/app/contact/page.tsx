@@ -2,7 +2,7 @@ import { MapPin, Phone, Mail, ExternalLink, ShieldCheck } from "lucide-react";
 
 import { Container } from "@/components/layout/Container";
 import { ContactForm } from "./ContactForm";
-import { SITE } from "@/data/site";
+import { SITE, whatsappHref } from "@/data/site";
 import { cn } from "@/lib/cn";
 import { pageMetadata } from "@/lib/seo";
 
@@ -62,7 +62,17 @@ export default function ContactPage() {
                     <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-muted w-16">
                       Tel
                     </dt>
-                    <dd className="text-[15px] text-ink tabular-nums">{phone}</dd>
+                    <dd className="text-[15px] text-ink tabular-nums">
+                      <a
+                        href={whatsappHref(phone)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Message ${phone} on WhatsApp`}
+                        className="underline-offset-4 transition-colors hover:text-forest hover:underline"
+                      >
+                        {phone}
+                      </a>
+                    </dd>
                   </div>
                 ))}
                 <div className="flex items-center gap-3 py-4">

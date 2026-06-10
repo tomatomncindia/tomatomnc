@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight, ArrowDown } from "lucide-react";
 
 import { Container } from "@/components/layout/Container";
@@ -157,29 +158,23 @@ export default function FoundersPage() {
               </Reveal>
             </div>
 
-            {/* Register card */}
+            {/* Parent-company lockup */}
             <Reveal delay={0.15} className="lg:col-span-4">
-              <div className="border-ink/15 bg-paper-warm border">
-                <div className="border-ink/15 text-ink-muted flex items-center justify-between border-b px-5 py-3 font-mono text-[10px] tracking-[0.18em] uppercase">
-                  <span>LEADERSHIP REGISTER</span>
-                  <span>BLACKCHIP</span>
-                </div>
-                <dl className="space-y-3 px-5 py-5 text-[13px]">
-                  <Row label="Entity" value="Blackchip Impex Pvt. Ltd." />
-                  <Row label="Role" value="Parent company — Tomato M&C India" />
-                  <Row label="Directors" value="02" mono />
-                  <Row label="Advisory" value="02" mono />
-                  <Row label="Focus" value="Global healthcare sourcing" />
-                  <Row label="Standard" value="The Global Gold Standard" />
-                </dl>
-                <div className="border-ink/15 flex items-center justify-between border-t px-5 py-3">
-                  <span className="text-ink-muted font-mono text-[10px] tracking-[0.16em] uppercase">
-                    MOTTO
-                  </span>
-                  <span className="text-forest font-mono text-[10px] tracking-[0.14em] uppercase">
-                    PRECISION · TRUST · INNOVATION
-                  </span>
-                </div>
+              <div className="border-ink/15 border-t pt-6 text-center lg:border-t-0 lg:border-l lg:pt-0 lg:pl-8">
+                <p className="text-ink-muted font-mono text-[10px] tracking-[0.18em] uppercase">
+                  A venture by
+                </p>
+                <Image
+                  src="/images/products/logos/blackchiplogo.webp"
+                  alt="Blackchip Impex Pvt. Ltd."
+                  width={4496}
+                  height={1248}
+                  sizes="(max-width: 1024px) 80vw, 360px"
+                  className="mx-auto mt-6 h-auto w-full max-w-[340px] mix-blend-multiply lg:max-w-none"
+                />
+                <p className="text-forest mt-6 border-ink/15 border-t pt-4 font-mono text-[10px] tracking-[0.14em] uppercase">
+                  Precision · Trust · Innovation
+                </p>
               </div>
             </Reveal>
           </div>
@@ -658,18 +653,5 @@ export default function FoundersPage() {
         </Container>
       </section>
     </>
-  );
-}
-
-function Row({ label, value, mono }: { label: string; value: string; mono?: boolean }) {
-  return (
-    <div className="grid grid-cols-[90px_1fr] items-baseline gap-3">
-      <dt className="text-ink-muted font-mono text-[10px] tracking-[0.16em] uppercase">{label}</dt>
-      <dd
-        className={`text-ink ${mono ? "font-mono text-[12px] tracking-[0.08em] uppercase" : "text-[13.5px]"}`}
-      >
-        {value}
-      </dd>
-    </div>
   );
 }

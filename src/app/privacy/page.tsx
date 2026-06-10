@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { LegalShell, LegalSection } from "@/components/legal/LegalShell";
-import { SITE } from "@/data/site";
+import { SITE, whatsappHref } from "@/data/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -33,7 +33,20 @@ export default function PrivacyPage() {
           <br />
           {SITE.contact.addressLines.join(", ")}
           <br />
-          Tel: {SITE.contact.phones.join(" / ")}
+          Tel:{" "}
+          {SITE.contact.phones.map((phone, i) => (
+            <span key={phone}>
+              {i > 0 && " / "}
+              <a
+                href={whatsappHref(phone)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-ink underline underline-offset-4 hover:text-forest"
+              >
+                {phone}
+              </a>
+            </span>
+          ))}
           <br />
           Email:{" "}
           <a href={`mailto:${SITE.contact.email}`} className="text-ink underline underline-offset-4 hover:text-forest">

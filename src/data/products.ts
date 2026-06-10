@@ -71,10 +71,10 @@ export const PRODUCTS: Product[] = [
     ],
     precautions:
       "Application must be performed by trained medical personnel. Ensure adequate stockinet and padding underlay. Do not apply directly to broken skin.",
-    image: "/images/products/tomato-cast.png",
+    image: "/images/products/tomato-cast.webp",
     lifestyle: [
       {
-        src: "/images/products/lifestyle/tomato-cast-3.png",
+        src: "/images/products/lifestyle/tomato-cast-3.webp",
         alt: "Patient back on his feet outdoors wearing a Tomato Cast walking cast",
       },
     ],
@@ -82,32 +82,32 @@ export const PRODUCTS: Product[] = [
       {
         title: "Preparation",
         body: "Slip the two layers of Tomato Safe Pad onto the affected body part.",
-        image: "/images/application/steps/cast-1.png",
+        image: "/images/application/steps/cast-1.webp",
       },
       {
         title: "Wear gloves",
         body: "Gloves must be worn before handling the cast roll.",
-        image: "/images/application/steps/cast-2.png",
+        image: "/images/application/steps/cast-2.webp",
       },
       {
         title: "Open one roll",
         body: "Open only one roll of Tomato Cast at a time to control set time.",
-        image: "/images/application/steps/cast-3.png",
+        image: "/images/application/steps/cast-3.webp",
       },
       {
         title: "Immerse",
         body: "Immerse the roll in water at 20–24°C for 3–5 seconds and squeeze 3–4 times for full penetration. Do not soak too long.",
-        image: "/images/application/steps/cast-4.png",
+        image: "/images/application/steps/cast-4.webp",
       },
       {
         title: "Wrap",
         body: "Wrap spirally, avoiding excessive tightness. Finish within 1 minute 10 seconds of opening the pouch.",
-        image: "/images/application/steps/cast-5.png",
+        image: "/images/application/steps/cast-5.webp",
       },
       {
         title: "Mould",
         body: "Smooth and rub the surface for good contact between layers. Cures for moulding in 3–5 minutes.",
-        image: "/images/application/steps/cast-6.png",
+        image: "/images/application/steps/cast-6.webp",
       },
     ],
     specs: [
@@ -142,18 +142,18 @@ export const PRODUCTS: Product[] = [
       "Shoes can be worn with the cast on",
       "Suitable for a child in cast removal",
     ],
-    image: "/images/products/star-cast-roll.png",
+    image: "/images/products/star-cast-roll.webp",
     lifestyle: [
       {
-        src: "/images/products/lifestyle/star-cast-roll-2.png",
+        src: "/images/products/lifestyle/star-cast-roll-2.webp",
         alt: "Patient with a Star Cast Roll functional wrap during recovery",
       },
       {
-        src: "/images/products/lifestyle/star-cast-roll-3.png",
+        src: "/images/products/lifestyle/star-cast-roll-3.webp",
         alt: "Happy child wearing a colorful Star Cast Roll soft cast on his arm",
       },
     ],
-    logo: { src: "/images/products/logos/star-cast-roll.png", width: 1479, height: 240 },
+    logo: { src: "/images/products/logos/star-cast-roll.webp", width: 1479, height: 240 },
     specs: [
       { refCode: "SCR-004", width: "4 in (10.0 cm)", length: "3 m", packagingBox: "Premium Cotton Blend" },
       { refCode: "SCR-006", width: "6 in (15.0 cm)", length: "3 m", packagingBox: "Premium Cotton Blend" },
@@ -178,15 +178,15 @@ export const PRODUCTS: Product[] = [
       "Soft & moderate elasticity offers more comfort to the patient",
       "100% cotton minimizes skin trouble",
     ],
-    image: "/images/products/star-stockinet.png",
-    logo: { src: "/images/products/logos/star-stockinet.png", width: 1281, height: 240 },
+    image: "/images/products/star-stockinet.webp",
+    logo: { src: "/images/products/logos/star-stockinet.webp", width: 1281, height: 240 },
     lifestyle: [
       {
-        src: "/images/products/lifestyle/star-stockinet-1.png",
+        src: "/images/products/lifestyle/star-stockinet-1.webp",
         alt: "Doctor fitting Star Stockinet onto a patient's arm before casting",
       },
       {
-        src: "/images/products/lifestyle/star-stockinet-3.png",
+        src: "/images/products/lifestyle/star-stockinet-3.webp",
         alt: "Nurse fitting Star Stockinet onto a child's arm",
       },
     ],
@@ -220,14 +220,14 @@ export const PRODUCTS: Product[] = [
       "Tack-free with no layer separation",
       "Available pre-cut and in rolls across a range of widths",
     ],
-    image: "/images/products/tomato-splint.png",
+    image: "/images/products/tomato-splint.webp",
     lifestyle: [
       {
-        src: "/images/products/lifestyle/tomato-splint-2.png",
+        src: "/images/products/lifestyle/tomato-splint-2.webp",
         alt: "Doctor applying a Tomato Splint to a smiling patient's wrist",
       },
       {
-        src: "/images/products/lifestyle/tomato-splint-3.png",
+        src: "/images/products/lifestyle/tomato-splint-3.webp",
         alt: "Happy child with a Tomato Splint wrap on her arm at home",
       },
     ],
@@ -235,32 +235,32 @@ export const PRODUCTS: Product[] = [
       {
         title: "Cut to length",
         body: "Take Tomato Splint with its sealed foil pouch from the box, measure the length, and cut it off with bandage scissors.",
-        image: "/images/application/steps/splint-1.png",
+        image: "/images/application/steps/splint-1.webp",
       },
       {
         title: "Reseal the pack",
         body: "Seal the box immediately with the clip provided inside to prevent moisture from entering the package.",
-        image: "/images/application/steps/splint-2.png",
+        image: "/images/application/steps/splint-2.webp",
       },
       {
         title: "Choose the size",
         body: "Choose the desired size for the affected body part. Generally, no gloves are necessary.",
-        image: "/images/application/steps/splint-3.png",
+        image: "/images/application/steps/splint-3.webp",
       },
       {
         title: "Spray",
         body: "Instead of soaking, spray room-temperature water on the inside (white side) of the splint for 3–5 seconds, then wipe the water off the surface.",
-        image: "/images/application/steps/splint-4.png",
+        image: "/images/application/steps/splint-4.webp",
       },
       {
         title: "Dry off",
         body: "Remove excess water by laying the splint on a dry towel and rolling it up with the towel to strengthen adhesion between layers.",
-        image: "/images/application/steps/splint-5.png",
+        image: "/images/application/steps/splint-5.webp",
       },
       {
         title: "Wrap & mould",
         body: "Wrap Tomato Splint with a roll of elastic bandage to secure it and mould it freely to the limb.",
-        image: "/images/application/steps/splint-6.png",
+        image: "/images/application/steps/splint-6.webp",
       },
     ],
     specs: [

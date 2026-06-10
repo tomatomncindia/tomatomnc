@@ -27,6 +27,7 @@ export const SITE = {
   ],
 
   nav: [
+    { label: "Home", href: "/" },
     { label: "About", href: "/about" },
     { label: "Products", href: "/products" },
     { label: "Manufacturing", href: "/manufacturing" },
@@ -35,3 +36,13 @@ export const SITE = {
     { label: "Contact", href: "/contact" },
   ],
 } as const;
+
+// Pre-filled inquiry message — opens in WhatsApp ready to send.
+export const WHATSAPP_MESSAGE =
+  "Hello! I'm interested in Tomato M&C India orthopedic casting products and would like to know more. Could you please share details on products, pricing, and availability?";
+
+// Build a wa.me link from any displayed phone number (strips spaces, +, etc.).
+export function whatsappHref(phone: string) {
+  const digits = phone.replace(/\D/g, "");
+  return `https://wa.me/${digits}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+}

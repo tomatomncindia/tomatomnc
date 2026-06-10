@@ -19,27 +19,27 @@ type Slide = {
 
 const SLIDES: Slide[] = [
   {
-    src: "/images/home/hero-1.jpg",
+    src: "/images/home/hero-1.webp",
     alt: "A laughing boy in class with a pink Tomato M&C India cast on his arm",
     position: "45% 35%",
   },
   {
-    src: "/images/home/hero-2.jpg",
+    src: "/images/home/hero-2.webp",
     alt: "A mother holding her toddler who wears a pink Tomato M&C India arm cast",
     position: "55% 35%",
   },
   {
-    src: "/images/home/hero-3.jpg",
+    src: "/images/home/hero-3.webp",
     alt: "A doctor fitting a Tomato M&C India cast to an older patient's arm in clinic",
     position: "50% 40%",
   },
   {
-    src: "/images/home/hero-4.jpg",
+    src: "/images/home/hero-4.webp",
     alt: "A girl colouring at home with a green Tomato M&C India cast on her arm",
     position: "55% 35%",
   },
   {
-    src: "/images/home/hero-5.jpg",
+    src: "/images/home/hero-5.webp",
     alt: "A doctor fitting a Tomato M&C India product for a mother and her toddler in clinic",
     position: "50% 35%",
   },
