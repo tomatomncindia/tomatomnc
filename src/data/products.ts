@@ -111,8 +111,11 @@ export const PRODUCTS: Product[] = [
       },
     ],
     specs: [
-      { refCode: "TRC-004", width: "4 in (10.0 cm)", length: "3 m", packagingBox: "Fiberglass" },
-      { refCode: "TRC-006", width: "6 in (15.0 cm)", length: "3 m", packagingBox: "Fiberglass" },
+      { refCode: "TRC-002", width: "2 in (5.0 cm)", length: "3.6 m", packagingBox: "Fiberglass" },
+      { refCode: "TRC-003", width: "3 in (7.5 cm)", length: "3.6 m", packagingBox: "Fiberglass" },
+      { refCode: "TRC-004", width: "4 in (10.0 cm)", length: "3.6 m", packagingBox: "Fiberglass" },
+      { refCode: "TRC-005", width: "5 in (12.5 cm)", length: "3.6 m", packagingBox: "Fiberglass" },
+      { refCode: "TRC-006", width: "6 in (15.0 cm)", length: "3.6 m", packagingBox: "Fiberglass" },
     ],
     colors: ["white", "green", "purple", "pink", "blue", "red", "orange", "yellow", "grey", "black", "sky-blue", "neon-green", "green-pastel", "pink-pastel", "ocean-green"],
     related: ["tomato-splint", "star-cast-roll", "star-stockinet"],
@@ -228,7 +231,6 @@ export const PRODUCTS: Product[] = [
         alt: "Happy child with a Tomato Splint wrap on her arm at home",
       },
     ],
-    logo: { src: "/images/products/logos/star-splint.png", width: 1079, height: 240 },
     applicationSteps: [
       {
         title: "Cut to length",
