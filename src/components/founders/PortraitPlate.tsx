@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -7,11 +8,11 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 /**
  * Typographic portrait plate for leadership profiles.
  *
- * No photography exists for the directors, so the plate treats the monogram
- * as the portrait: an oversized Fraunces pair on warm paper, revealed with a
- * top-down clip-path wipe (the same "typeset into place" feeling as the
- * WordReveal heroes). The inner monogram settles from a slight overscale so
- * the wipe never feels like a flat curtain.
+ * When a photograph exists it fills the plate; otherwise the plate treats the
+ * monogram as the portrait: an oversized Fraunces pair on warm paper, revealed
+ * with a top-down clip-path wipe (the same "typeset into place" feeling as the
+ * WordReveal heroes). The inner monogram settles from a slight overscale so the
+ * wipe never feels like a flat curtain.
  */
 export function PortraitPlate({
   index,
@@ -19,6 +20,8 @@ export function PortraitPlate({
   role,
   name,
   tag,
+  image,
+  imageAlt,
 }: {
   /** Two-digit register index, e.g. "01" */
   index: string;
@@ -29,6 +32,9 @@ export function PortraitPlate({
   name: string;
   /** Mono tag for the bottom rail, e.g. "35+ YEARS" */
   tag: string;
+  /** Optional portrait photograph; falls back to the monogram when absent */
+  image?: string;
+  imageAlt?: string;
 }) {
   const reduce = useReducedMotion();
 
@@ -61,19 +67,29 @@ export function PortraitPlate({
         <span className="text-forest text-right">{role}</span>
       </div>
 
-      {/* Monogram */}
+      {/* Portrait — photograph when available, monogram otherwise */}
       <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden lg:aspect-[5/5.4]">
-        <motion.p
-          aria-hidden
-          initial={reduce ? false : { scale: 1.08, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          viewport={{ once: true, margin: "-15% 0px" }}
-          transition={{ duration: 0.9, delay: 0.15, ease: EASE }}
-          className="select-none font-display text-[110px] leading-none tracking-[-0.05em] text-ink transition-transform duration-500 [transition-timing-function:var(--ease-out-quint)] group-hover:scale-[1.03] lg:text-[150px]"
-        >
-          {initials[0]}
-          <span className="editorial-italic text-forest">{initials[1]}</span>
-        </motion.p>
+        {image ? (
+          <Image
+            src={image}
+            alt={imageAlt ?? name}
+            fill
+            sizes="(max-width: 1024px) 100vw, 40vw"
+            className="object-cover object-top transition-transform duration-500 [transition-timing-function:var(--ease-out-quint)] group-hover:scale-[1.03]"
+          />
+        ) : (
+          <motion.p
+            aria-hidden
+            initial={reduce ? false : { scale: 1.08, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true, margin: "-15% 0px" }}
+            transition={{ duration: 0.9, delay: 0.15, ease: EASE }}
+            className="select-none font-display text-[110px] leading-none tracking-[-0.05em] text-ink transition-transform duration-500 [transition-timing-function:var(--ease-out-quint)] group-hover:scale-[1.03] lg:text-[150px]"
+          >
+            {initials[0]}
+            <span className="editorial-italic text-forest">{initials[1]}</span>
+          </motion.p>
+        )}
       </div>
 
       {/* Bottom rail */}

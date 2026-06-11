@@ -49,7 +49,7 @@ export function GlobalReach() {
               Manufactured in Pyeongtaek, South Korea, and shipped to the United States, Japan,
               China, Southeast Asia, MENA, Europe, and South America. In India,{" "}
               <span className="text-ink font-medium">Blackchip Impex Pvt. Ltd.</span>{" "} operates as the exclusive distributor of
-              Tomato M&amp;C India.
+              Tomato M&amp;C.
             </p>
             <Link
               href="/network#markets"

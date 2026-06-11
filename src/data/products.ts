@@ -85,6 +85,10 @@ export const PRODUCTS: Product[] = [
         src: "/images/products/lifestyle/tomato-cast-3.webp",
         alt: "Patient back on his feet outdoors wearing a Tomato Cast walking cast",
       },
+      {
+        src: "/images/products/lifestyle/tomato-cast-packaging.webp",
+        alt: "Tomato Cast packaging carton with individually sealed casting tape rolls",
+      },
     ],
     applicationSteps: [
       {
@@ -230,6 +234,10 @@ export const PRODUCTS: Product[] = [
     ],
     image: "/images/products/tomato-splint.webp",
     lifestyle: [
+      {
+        src: "/images/products/lifestyle/tomato-splint-1.webp",
+        alt: "Teal Tomato Splint moulded along a patient's forearm",
+      },
       {
         src: "/images/products/lifestyle/tomato-splint-2.webp",
         alt: "Doctor applying a Tomato Splint to a smiling patient's wrist",

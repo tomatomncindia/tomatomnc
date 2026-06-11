@@ -54,6 +54,8 @@ const ADVISORS = [
     index: "01",
     name: "Rajesh Jain",
     epithet: "The Visionary Catalyst.",
+    initials: "RJ",
+    image: "/images/founders/rajesh.webp",
     paragraphs: [
       "With a business legacy spanning over two decades, Rajesh Jain is the driving force of innovation behind the scenes. He pioneered sourcing and importing in 2005 — a foundation that led him to become the undisputed leader and largest supplier in India's hot stamping foil market.",
       "He doesn't just offer advice; he sparks the ideas that bridge the gap between global sourcing expertise and clinical excellence. Every strategic move is backed by 20+ years of proven business acumen and a relentless pursuit of growth.",
@@ -64,6 +66,8 @@ const ADVISORS = [
     index: "02",
     name: "Jenil Shah",
     epithet: "Venture Alchemist & Strategic Architect.",
+    initials: "JS",
+    image: "/images/founders/jenil.webp",
     paragraphs: [
       "A business professional with a career spanning technology, strategy, and venture capital. An alumnus of IIT and INSEAD, and a CFA charterholder, Jenil brings a rare combination of technical rigour, strategic thinking, and growth acumen.",
       "His strategy background sharpened his ability to structure complex problems and deliver pragmatic solutions across industries, while his venture capital stint gave him a front-row seat to building and scaling businesses from the ground up. Grounded in data, he pairs analytical depth with sharp commercial instinct.",
@@ -345,6 +349,8 @@ export default function FoundersPage() {
                 role="CLINICAL COMPASS"
                 name="Dr. Dilip Shah"
                 tag="35+ YEARS"
+                image="/images/founders/dilip.webp"
+                imageAlt="Dr. Dilip Shah, Director and practicing clinician"
               />
             </div>
 
@@ -478,9 +484,29 @@ export default function FoundersPage() {
             {ADVISORS.map((a, i) => (
               <Reveal key={a.name} delay={i * 0.08}>
                 <article className="flex h-full flex-col bg-white p-7 md:p-10">
-                  <p className="text-ink-muted font-mono text-[10px] tracking-[0.18em] uppercase tabular-nums">
-                    ADVISOR / {a.index}
-                  </p>
+                  <div className="flex items-center gap-4">
+                    {a.image ? (
+                      <Image
+                        src={a.image}
+                        alt={`${a.name}, Advisory Board`}
+                        width={120}
+                        height={120}
+                        sizes="64px"
+                        className="border-ink/10 h-16 w-16 shrink-0 rounded-full border object-cover object-top"
+                      />
+                    ) : (
+                      <span
+                        aria-hidden
+                        className="border-ink/10 bg-paper-warm text-ink font-display flex h-16 w-16 shrink-0 items-center justify-center rounded-full border text-[24px] leading-none tracking-[-0.04em]"
+                      >
+                        {a.initials[0]}
+                        <span className="editorial-italic text-forest">{a.initials[1]}</span>
+                      </span>
+                    )}
+                    <p className="text-ink-muted font-mono text-[10px] tracking-[0.18em] uppercase tabular-nums">
+                      ADVISOR / {a.index}
+                    </p>
+                  </div>
                   <h3 className="font-display mt-5 text-[26px] leading-[1.1] tracking-[-0.015em] md:text-[30px]">
                     {a.name}
                   </h3>
