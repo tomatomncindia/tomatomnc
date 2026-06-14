@@ -405,6 +405,8 @@ export default function FoundersPage() {
                 role="GLOBAL ARCHITECT"
                 name="Rohan Jain"
                 tag="SP JAIN ALUMNUS"
+                image="/images/founders/rohan.webp"
+                imageAlt="Rohan Jain, Director and Global Architect of Sourcing"
               />
             </div>
 
