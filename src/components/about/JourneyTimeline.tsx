@@ -3,13 +3,12 @@
 import { motion, useReducedMotion } from "motion/react";
 import {
   Factory,
+  ClipboardCheck,
   ShieldCheck,
-  Layers,
-  FlaskConical,
+  BadgeCheck,
   Globe,
-  Cog,
   Stamp,
-  Rocket,
+  Presentation,
   Handshake,
   type LucideIcon,
 } from "lucide-react";
@@ -22,82 +21,76 @@ type Milestone = {
   icon: LucideIcon;
 };
 
+// Sourced from the manufacturer's official company history (tomatomnc.com).
 const MILESTONES: Milestone[] = [
   {
     year: "2005",
-    tag: "FOUNDED",
-    title: "First roll, first floor.",
-    body: "Tomato M&C India is established in Pyeongtaek as a specialist manufacturer of fiberglass orthopedic casting tape. One product family, one team.",
+    tag: "ESTABLISHMENT",
+    title: "Tomato M&C Co., Ltd. founded.",
+    body: "Tomato M&C Co., Ltd. is established in Pyeongtaek, South Korea, as a specialist manufacturer of orthopedic casting and splinting materials.",
     icon: Factory,
   },
   {
-    year: "2007",
-    tag: "ISO 9001",
-    title: "Quality management certified.",
-    body: "First international quality management certification. Process discipline becomes documented infrastructure.",
-    icon: Stamp,
+    year: "2005",
+    tag: "MFG. LICENSE",
+    title: "Manufacturing licensed.",
+    body: "Korean medical-device manufacturer registration is granted in the founding year, formalizing in-house production.",
+    icon: ClipboardCheck,
   },
   {
-    year: "2009",
-    tag: "VERTICAL",
-    title: "In-house fiberglass weaving.",
-    body: "Vertical integration begins. The most critical raw material moves under the roof to remove supplier variability.",
-    icon: Layers,
-  },
-  {
-    year: "2012",
-    tag: "ISO 13485",
-    title: "Medical device QMS.",
-    body: "Medical-device-specific quality management system certified. The line is officially fit for regulated markets.",
+    year: "2005",
+    tag: "KGMP",
+    title: "KGMP certified.",
+    body: "Korea Good Manufacturing Practice certification is achieved, establishing GMP-grade production discipline from the start.",
     icon: ShieldCheck,
   },
   {
-    year: "2014",
-    tag: "FDA",
-    title: "US registration.",
-    body: "FDA facility registration and device listing complete. The first North American shipments leave the line.",
+    year: "2007",
+    tag: "ISO",
+    title: "ISO quality system registered.",
+    body: "International ISO quality-management certification is registered, putting documented process control behind every roll.",
+    icon: BadgeCheck,
+  },
+  {
+    year: "2008",
+    tag: "CHINA · SFDA",
+    title: "China SFDA registration.",
+    body: "SFDA registration clears the Chinese market — the first major international export approval.",
     icon: Globe,
   },
   {
-    year: "2016",
-    tag: "RESIN",
-    title: "Proprietary resin lab.",
-    body: "In-house resin formulation opens. Cast set-time and strength become a question of chemistry, not supply chain.",
-    icon: FlaskConical,
-  },
-  {
-    year: "2018",
-    tag: "CE · EU MDR",
-    title: "Europe cleared.",
-    body: "CE Mark and full EU MDR conformity for the primary product lines. The European distributor network forms.",
+    year: "2010",
+    tag: "USA · FDA",
+    title: "US FDA registration.",
+    body: "FDA facility registration and device listing complete, opening distribution into the United States.",
     icon: Stamp,
   },
   {
-    year: "2020",
-    tag: "AUTOMATION",
-    title: "Fully automated line.",
-    body: "End-to-end automation completes. Every step from fabric feed to packing runs on a single instrumented line.",
-    icon: Cog,
+    year: "2016",
+    tag: "MEDICA",
+    title: "MEDICA, Düsseldorf.",
+    body: "Tomato exhibits at MEDICA in Düsseldorf, Germany — the world's largest medical trade fair.",
+    icon: Presentation,
   },
   {
-    year: "2022",
-    tag: "30 MARKETS",
-    title: "Five continents.",
-    body: "Active distribution crosses 30 countries on five continents. Regional documentation packs become standard.",
-    icon: Globe,
+    year: "2017",
+    tag: "MEDICAL FAIR INDIA",
+    title: "Medical Fair, New Delhi.",
+    body: "Tomato presents at Medical Fair India in New Delhi, deepening its footprint across South Asia.",
+    icon: Presentation,
   },
   {
-    year: "2024",
-    tag: "EXPANSION",
-    title: "Capacity at scale.",
-    body: "Production capacity expands and KGMP coverage widens. The line is ready for new markets and partners.",
-    icon: Rocket,
+    year: "2018",
+    tag: "ARAB HEALTH",
+    title: "Arab Health, Dubai.",
+    body: "Tomato exhibits at Arab Health in Dubai, UAE, anchoring distribution across the Middle East.",
+    icon: Presentation,
   },
   {
     year: "2026",
     tag: "INDIA · BLACKCHIP",
     title: "Blackchip distributes in India.",
-    body: "Blackchip is appointed distributor of Tomato M&C India, bringing the full casting and splinting catalog to Indian hospitals and clinics.",
+    body: "Blackchip Impex is appointed distributor for Tomato M&C in India, bringing the full casting and splinting catalog to Indian hospitals and clinics.",
     icon: Handshake,
   },
 ];
@@ -124,7 +117,7 @@ export function JourneyTimeline() {
           const Icon = m.icon;
           return (
             <motion.li
-              key={m.year}
+              key={`${m.year}-${m.tag}`}
               initial={reduce ? false : { opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-15% 0px" }}

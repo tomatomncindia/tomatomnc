@@ -74,6 +74,10 @@ export const PRODUCTS: Product[] = [
     image: "/images/products/tomato-cast.webp",
     lifestyle: [
       {
+        src: "/images/products/lifestyle/tomato-cast-packaging.webp",
+        alt: "Tomato Cast packaging carton with individually sealed casting tape rolls",
+      },
+      {
         src: "/images/products/lifestyle/tomato-cast-1.webp",
         alt: "Smiling patient recovering in hospital with a Tomato Cast on her leg",
       },
@@ -84,11 +88,8 @@ export const PRODUCTS: Product[] = [
       {
         src: "/images/products/lifestyle/tomato-cast-3.webp",
         alt: "Patient back on his feet outdoors wearing a Tomato Cast walking cast",
-      },
-      {
-        src: "/images/products/lifestyle/tomato-cast-packaging.webp",
-        alt: "Tomato Cast packaging carton with individually sealed casting tape rolls",
-      },
+      }
+      
     ],
     applicationSteps: [
       {
@@ -138,22 +139,20 @@ export const PRODUCTS: Product[] = [
     shortName: "Cast Roll",
     category: "Supporting Product",
     heroTag: "Orthopedic Star Cast",
-    tagline: "Soft polyester cast roll for functional immobilization.",
+    tagline: "Premium orthopaedic cast padding roll for under-cast comfort and skin protection.",
     description:
-      "Soft cast of knitted polyester fabric impregnated with polyurethane resin. Exposure to water sets the roll; the finished wrap retains its shape while remaining elastic to the touch — a more flexible casting material for functional immobilization that can tolerate some movement.",
+      "<strong>STAR CAST Roll Premium Orthopaedic Cast Padding</strong> is an elite, medical-grade under-cast cushioning engineered for absolute patient comfort and superior skin protection. Crafted from 100% premium, high-loft absorbent cotton, this ultra-soft non-woven roll serves as a breathable, protective barrier between the skin and rigid fiberglass or plaster splints. It is specifically designed to feather seamlessly and conform flawlessly to complex anatomical contours without bunching, safely protecting vulnerable bony prominences.",
     intendedUse:
-      "Intended for secondary casting and a comprehensive wrap to control swelling. Typically used for functional immobilizations that can tolerate some movement, such as minor broken bones, casual strains, sprains, and ligament damage.",
+      "Star Cast Padding serves as a breathable, protective barrier between the skin and rigid fiberglass or plaster casts and splints. Apply the padding smoothly in a spiral fashion over the affected limb, overlapping each preceding layer by approximately 50%, with additional layers over high-friction anatomical areas or joints to guarantee optimal protection before hard immobilization.",
     features: [
-      "Uniform thickness, dense loft throughout",
-      "Tears crisply, ‘feathers’ smoothly",
-      "Blends together cleanly, stays in place",
-      "Breathable, promotes rapid drying",
-      "Easy to be cut off with bandage scissors",
-      "Enough fixation for support",
-      "Skin-tight application without padding",
-      "Shoes can be worn with the cast on",
-      "Suitable for a child in cast removal",
+      "Plush Protective Loft — maximizes shock absorption and cushions friction points to eliminate pressure sores and chafing over bony prominences.",
+      "Advanced Micro-Climate Control — highly breathable fibers rapidly absorb moisture and perspiration, keeping the skin exceptionally dry, calm, and itch-free.",
+      "Precision Conformability — tears cleanly without scissors and self-adheres slightly for a smooth, shift-free wrap around difficult joint contours.",
+      "Optimized Thermal Shielding — provides high-density, uniform protection against the exothermic heat generated during the plaster or fiberglass setting process.",
+      "100% Premium High-Grade Absorbent Cotton — a soft, fluffy, non-woven fibrous web with uniform density.",
     ],
+    precautions:
+      "Supplied non-sterile. Fully autoclavable for sterile applications when sterile use is required.",
     image: "/images/products/star-cast-roll.webp",
     lifestyle: [
       {
@@ -167,6 +166,8 @@ export const PRODUCTS: Product[] = [
     ],
     logo: { src: "/images/products/logos/star-cast-roll.webp", width: 1479, height: 240 },
     specs: [
+      { refCode: "SCR-002", width: "2 in (5.0 cm)", length: "3 m", packagingBox: "Premium Cotton Blend" },
+      { refCode: "SCR-003", width: "3 in (7.5 cm)", length: "3 m", packagingBox: "Premium Cotton Blend" },
       { refCode: "SCR-004", width: "4 in (10.0 cm)", length: "3 m", packagingBox: "Premium Cotton Blend" },
       { refCode: "SCR-006", width: "6 in (15.0 cm)", length: "3 m", packagingBox: "Premium Cotton Blend" },
     ],

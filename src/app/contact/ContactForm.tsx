@@ -1,31 +1,48 @@
 "use client";
 
-import { useActionState } from "react";
-import { CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
-import { submitInquiry } from "./actions";
-import { PRODUCT_INTERESTS, type InquiryState } from "./schema";
+import { useState } from "react";
+import { CheckCircle2 } from "lucide-react";
+import { PRODUCT_INTERESTS } from "./schema";
+import { SITE } from "@/data/site";
 import { cn } from "@/lib/cn";
-
-const initialState: InquiryState = { status: "idle" };
 
 const INPUT_BASE =
   "w-full rounded-md border border-line bg-white px-3.5 py-2.5 text-[14px] text-ink placeholder:text-ink-muted/60 focus:outline-none focus:border-forest focus:ring-2 focus:ring-forest/15 transition";
 
 export function ContactForm() {
-  const [state, formAction, pending] = useActionState(submitInquiry, initialState);
-  const fieldErrors =
-    state.status === "error" ? state.fieldErrors ?? {} : ({} as Record<string, string[]>);
+  const [sent, setSent] = useState(false);
+
+  // Build a WhatsApp message from the form data and open it ready to send.
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    const get = (k: string) => (fd.get(k) ?? "").toString().trim();
+    const products = fd.getAll("productsOfInterest").map(String);
+
+    const message = [
+      "New Distributor Inquiry — Tomato M&C India",
+      "",
+      `Company: ${get("companyName")}`,
+      `Country: ${get("country")}`,
+      `Contact: ${get("contactName")}`,
+      `Email: ${get("email")}`,
+      get("phone") ? `Phone: ${get("phone")}` : null,
+      get("territory") ? `Territory: ${get("territory")}` : null,
+      products.length ? `Products of interest: ${products.join(", ")}` : null,
+      "",
+      "Message:",
+      get("message"),
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    const href = `https://wa.me/${SITE.contact.whatsapp}?text=${encodeURIComponent(message)}`;
+    window.open(href, "_blank", "noopener,noreferrer");
+    setSent(true);
+  }
 
   return (
-    <form action={formAction} className="rounded-2xl border border-line bg-white overflow-hidden">
-      <input type="hidden" name="inquiryType" value="distributor" />
-      <div className="sr-only">
-        <label>
-          Leave this empty
-          <input name="honeypot" tabIndex={-1} autoComplete="off" />
-        </label>
-      </div>
-
+    <form onSubmit={handleSubmit} className="rounded-2xl border border-line bg-white overflow-hidden">
       {/* Header */}
       <div className="border-b border-line px-5 md:px-6 py-5">
         <h2 className="font-display text-xl">Distributor Inquiry</h2>
@@ -36,31 +53,28 @@ export function ContactForm() {
 
       <div className="px-5 md:px-6 py-5 md:py-6">
         {/* Status */}
-        {state.status === "success" ? (
+        {sent ? (
           <div className="flex items-start gap-3 rounded-md border border-forest/20 bg-forest/5 p-4 text-[14px] text-forest-deep mb-6">
             <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
-            <p>{state.message}</p>
-          </div>
-        ) : null}
-        {state.status === "error" ? (
-          <div className="flex items-start gap-3 rounded-md border border-brand-red/20 bg-brand-red/5 p-4 text-[14px] text-brand-red mb-6">
-            <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-            <p>{state.message}</p>
+            <p>
+              Your inquiry has opened in WhatsApp — just hit send to reach our team. If it
+              didn&rsquo;t open, message us directly at {SITE.contact.phone}.
+            </p>
           </div>
         ) : null}
 
         {/* Fields */}
         <div className="grid gap-4 sm:grid-cols-2">
-          <Field label="Company Name" required name="companyName" errors={fieldErrors.companyName}>
+          <Field label="Company Name" required name="companyName">
             <input name="companyName" required placeholder="Enter company name" className={INPUT_BASE} />
           </Field>
-          <Field label="Country" required name="country" errors={fieldErrors.country}>
+          <Field label="Country" required name="country">
             <input name="country" required placeholder="Country" className={INPUT_BASE} />
           </Field>
-          <Field label="Contact Name" required name="contactName" errors={fieldErrors.contactName}>
+          <Field label="Contact Name" required name="contactName">
             <input name="contactName" required placeholder="Full name" className={INPUT_BASE} />
           </Field>
-          <Field label="Email Address" required name="email" errors={fieldErrors.email}>
+          <Field label="Email Address" required name="email">
             <input
               name="email"
               type="email"
@@ -69,7 +83,7 @@ export function ContactForm() {
               className={INPUT_BASE}
             />
           </Field>
-          <Field label="Phone Number" name="phone" errors={fieldErrors.phone}>
+          <Field label="Phone Number" name="phone">
             <input name="phone" placeholder="+1 (555) 000-0000" className={INPUT_BASE} />
           </Field>
           <Field label="Territory of Interest" name="territory">
@@ -104,7 +118,7 @@ export function ContactForm() {
           </div>
         </fieldset>
 
-        <Field label="Message" required name="message" errors={fieldErrors.message} className="mt-6">
+        <Field label="Message" required name="message" className="mt-6">
           <textarea
             name="message"
             rows={5}
@@ -116,15 +130,13 @@ export function ContactForm() {
 
         <div className="mt-7 flex flex-wrap items-center justify-between gap-3">
           <p className="text-[12px] text-ink-muted">
-            By submitting this form, you agree to be contacted by Tomato M&amp;C India regarding your inquiry.
+            Submitting opens WhatsApp with your inquiry pre-filled, ready to send to our team.
           </p>
           <button
             type="submit"
-            disabled={pending}
-            className="group inline-flex items-center justify-center gap-2 rounded-md bg-brand-red px-6 py-3 text-[14px] font-medium text-white transition-[background,transform] duration-200 hover:bg-brand-red-hover disabled:opacity-60 active:scale-[0.98] [transition-timing-function:var(--ease-out-quint)]"
+            className="group inline-flex items-center justify-center gap-2 rounded-md bg-brand-red px-6 py-3 text-[14px] font-medium text-white transition-[background,transform] duration-200 hover:bg-brand-red-hover active:scale-[0.98] [transition-timing-function:var(--ease-out-quint)]"
           >
-            {pending ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
-            {pending ? "Sending…" : "Send Inquiry"}
+            Send Inquiry
           </button>
         </div>
       </div>
@@ -134,20 +146,16 @@ export function ContactForm() {
 
 function Field({
   label,
-  name,
   required,
-  errors,
   children,
   className,
 }: {
   label: string;
   name: string;
   required?: boolean;
-  errors?: string[];
   children: React.ReactNode;
   className?: string;
 }) {
-  const hasError = errors && errors.length > 0;
   return (
     <label className={cn("block", className)}>
       <span className="block font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-ink-muted">
@@ -155,9 +163,6 @@ function Field({
         {required ? <span className="ml-1 text-brand-red">*</span> : null}
       </span>
       <span className="mt-1.5 block">{children}</span>
-      {hasError ? (
-        <span className="mt-1.5 block text-[12px] text-brand-red">{errors![0]}</span>
-      ) : null}
     </label>
   );
 }

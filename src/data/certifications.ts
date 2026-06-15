@@ -34,15 +34,15 @@ export const CERTIFICATIONS: Certification[] = [
   {
     id: "fda",
     body: "USA · FDA",
-    scope: "510(k) medical device registration",
+    scope: "Facility registration & device listing",
     region: "United States",
     description:
-      "Facility registration and device listing. Fully compliant with US Food and Drug Administration requirements for medical device distribution.",
+      "FDA facility registration and device listing — compliant with US Food and Drug Administration requirements for medical device distribution.",
   },
   {
     id: "ce",
     body: "CE Mark",
-    scope: "EU MDR conformity",
+    scope: "European conformity (CE marking)",
     region: "European Union",
     description:
       "Conformity assessment certificate; products meet European Economic Area health, safety, and environmental protection standards.",

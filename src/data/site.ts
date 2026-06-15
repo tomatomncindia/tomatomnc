@@ -46,3 +46,8 @@ export function whatsappHref(phone: string) {
   const digits = phone.replace(/\D/g, "");
   return `https://wa.me/${digits}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 }
+
+// Build a click-to-call tel: link from any displayed phone number.
+export function telHref(phone: string) {
+  return `tel:${phone.replace(/\s/g, "")}`;
+}

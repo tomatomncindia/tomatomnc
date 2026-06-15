@@ -138,9 +138,11 @@ export default async function ProductDetailPage({ params }: { params: Promise<Pa
               </h1>
             </Reveal>
             <Reveal delay={0.1}>
-              <p className="text-ink-soft mt-4 max-w-xl text-[16.5px] leading-relaxed">
-                {product.description}
-              </p>
+              {/* Description may contain trusted inline markup (e.g. <strong>) from the data file */}
+              <p
+                className="text-ink-soft mt-4 max-w-xl text-[16.5px] leading-relaxed [&_strong]:font-semibold [&_strong]:text-ink"
+                dangerouslySetInnerHTML={{ __html: product.description }}
+              />
             </Reveal>
 
             <Reveal delay={0.15}>

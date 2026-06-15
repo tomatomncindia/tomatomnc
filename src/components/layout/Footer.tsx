@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, Globe, ShieldCheck } from "lucide-react";
 import { Logo } from "./Logo";
-import { SITE, whatsappHref } from "@/data/site";
-import { NewsletterSignup } from "./NewsletterSignup";
+import { SITE, telHref } from "@/data/site";
 
 const navCols = [
   {
@@ -55,28 +54,11 @@ export function Footer() {
 
   return (
     <footer className="bg-ink text-white">
-      {/* Top band: newsletter + region */}
+      {/* Top band: region + parent company */}
       <div className="border-b border-white/10">
         <div className="container-page grid items-start gap-10 py-12 md:grid-cols-12 md:gap-12 md:py-16">
+          {/* Region selector */}
           <div className="md:col-span-7">
-            <p className="text-mid-green font-mono text-[11px] tracking-[0.18em] uppercase">
-              QUARTERLY BRIEF
-            </p>
-            <h2 className="font-display mt-3 text-[28px] leading-[1.15] tracking-[-0.015em] text-white md:text-[36px]">
-              Product updates, regulatory changes,
-              <br className="hidden md:block" /> shipped to procurement teams monthly.
-            </h2>
-            <p className="mt-3 max-w-md text-[14px] leading-relaxed text-white/60">
-              Four issues per year. Spec changes, new market clearances, and the occasional
-              production-floor note. Unsubscribe in one click.
-            </p>
-            <div className="mt-6">
-              <NewsletterSignup />
-            </div>
-          </div>
-
-          {/* Region selector + parent company */}
-          <div className="md:col-span-5 md:border-l md:border-white/10 md:pl-12">
             <p className="font-mono text-[11px] tracking-[0.18em] text-white/50 uppercase">
               REGION
             </p>
@@ -96,18 +78,17 @@ export function Footer() {
                 </button>
               ))}
             </div>
-            <p className="mt-4 text-[12.5px] leading-relaxed text-white/40">
+            <p className="mt-4 max-w-md text-[12.5px] leading-relaxed text-white/40">
               Regional pricing, documentation, and distributor contacts adapt to your selection.
             </p>
+          </div>
 
-            <div className="mt-8 border-t border-white/10 pt-6">
-              <div className="inline-flex items-center gap-2 text-[13px] text-white/70 transition-colors cursor-pointer hover:text-white">
-                <span className="font-mono text-[10px] tracking-[0.16em] text-white/40 uppercase">
-                  PARENT COMPANY
-                </span>
-                <span>Blackchip Impex Pvt. Ltd.</span>
-              </div>
-            </div>
+          {/* Parent company */}
+          <div className="md:col-span-5 md:border-l md:border-white/10 md:pl-12">
+            <p className="font-mono text-[11px] tracking-[0.18em] text-white/50 uppercase">
+              PARENT COMPANY
+            </p>
+            <div className="mt-4 text-[15px] text-white/85">Blackchip Impex Pvt. Ltd.</div>
           </div>
         </div>
       </div>
@@ -131,10 +112,8 @@ export function Footer() {
                   <span key={phone}>
                     {i > 0 && " · "}
                     <a
-                      href={whatsappHref(phone)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Message ${phone} on WhatsApp`}
+                      href={telHref(phone)}
+                      aria-label={`Call ${phone}`}
                       className="underline-offset-4 transition-colors hover:text-white hover:underline"
                     >
                       {phone}
