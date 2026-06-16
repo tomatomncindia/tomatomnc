@@ -68,7 +68,7 @@ export function PortraitPlate({
       </div>
 
       {/* Portrait — photograph when available, monogram otherwise */}
-      <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden lg:aspect-[5/5.4]">
+      <div className="relative flex aspect-[4/5] items-center justify-center overflow-hidden lg:aspect-[5/5.4]">
         {image ? (
           <Image
             src={image}
