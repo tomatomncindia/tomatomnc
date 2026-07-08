@@ -20,7 +20,7 @@ export function ContactForm() {
     const products = fd.getAll("productsOfInterest").map(String);
 
     const message = [
-      "New Distributor Inquiry — Tomato M&C India",
+      "New Distributor Inquiry: Tomato Medical & Chemical India",
       "",
       `Company: ${get("companyName")}`,
       `Country: ${get("country")}`,
@@ -57,7 +57,7 @@ export function ContactForm() {
           <div className="flex items-start gap-3 rounded-md border border-forest/20 bg-forest/5 p-4 text-[14px] text-forest-deep mb-6">
             <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
             <p>
-              Your inquiry has opened in WhatsApp — just hit send to reach our team. If it
+              Your inquiry has opened in WhatsApp: just hit send to reach our team. If it
               didn&rsquo;t open, message us directly at {SITE.contact.phone}.
             </p>
           </div>

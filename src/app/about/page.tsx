@@ -55,7 +55,7 @@ export default function AboutPage() {
             <div className="lg:col-span-7">
               <Reveal>
                 <p className="text-forest font-mono text-[11px] tracking-[0.18em] uppercase">
-                  ABOUT — TOMATO M&amp;C INDIA
+                  ABOUT: TOMATO MEDICAL &amp; CHEMICAL INDIA
                 </p>
               </Reveal>
 
@@ -73,8 +73,8 @@ export default function AboutPage() {
 
               <Reveal delay={0.2}>
                 <p className="text-ink-soft mt-8 max-w-xl text-[17px] leading-relaxed">
-                  Tomato M&amp;C India brings two decades of fiberglass casting to hospitals and
-                  distributors across the country — the same people, building, and production line
+                  Tomato Medical &amp; Chemical India brings two decades of fiberglass casting to hospitals and
+                  distributors across the country: the same people, building, and production line
                   behind one of Asia&apos;s only fully automated, one-stop fiberglass-cast
                   operations.
                 </p>

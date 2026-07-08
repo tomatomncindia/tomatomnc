@@ -96,7 +96,7 @@ const foundersJsonLd = {
   "@type": "Organization",
   name: "Blackchip Impex Pvt. Ltd.",
   description:
-    "Parent company of Tomato M&C India. A bridge between global innovation and local excellence in healthcare, founded by a practicing clinician and a global sourcing specialist.",
+    "Parent company of Tomato Medical & Chemical India. A bridge between global innovation and local excellence in healthcare, founded by a practicing clinician and a global sourcing specialist.",
   slogan: "Precision. Trust. Innovation.",
   founder: [
     {
@@ -154,7 +154,7 @@ export default function FoundersPage() {
 
               <Reveal delay={0.2}>
                 <p className="text-ink-soft mt-8 max-w-xl text-[17px] leading-relaxed">
-                  Blackchip Impex Pvt. Ltd. — the parent company of Tomato M&amp;C India — was
+                  Blackchip Impex Pvt. Ltd., the parent company of Tomato Medical &amp; Chemical India, was
                   formed to act as a bridge between global innovation and local excellence:
                   world-class healthcare technology, vetted by a clinician, delivered by a global
                   sourcing specialist.
@@ -367,7 +367,7 @@ export default function FoundersPage() {
                 </p>
                 <p className="text-ink-soft mt-6 max-w-xl text-[15.5px] leading-relaxed">
                   With 35+ years of frontline experience, Dr. Shah is the guardian of our quality.
-                  He vets every product through the eyes of a clinician — ensuring that safety,
+                  He vets every product through the eyes of a clinician, ensuring that safety,
                   precision, patient comfort and outcomes are never compromised.
                 </p>
               </Reveal>
@@ -425,13 +425,13 @@ export default function FoundersPage() {
                   A forward-thinking entrepreneur with a Master&apos;s in Global Family Managed
                   Business from SP Jain, Rohan brings a sophisticated blend of heritage and
                   innovation to the venture. His roots lie in a successful family business legacy
-                  established by his father, Rajesh Jain — where he learned the intricacies of trade
+                  established by his father, Rajesh Jain, where he learned the intricacies of trade
                   and leadership, and built the strategic foundation necessary to scale.
                 </p>
                 <p className="text-ink-soft mt-4 max-w-xl text-[15.5px] leading-relaxed">
                   Rohan is the driving force behind this mission. As the Global Architect of
                   Sourcing, he is dedicated to scaling the company through strategic international
-                  partnerships — transforming the landscape of availability by making exclusive,
+                  partnerships, transforming the landscape of availability by making exclusive,
                   high-tier products accessible to the wider market.
                 </p>
               </Reveal>
@@ -672,7 +672,7 @@ export default function FoundersPage() {
                   href="/about"
                   className="group mt-2 inline-flex items-center gap-1.5 text-[13px] text-white/70 transition-colors hover:text-white"
                 >
-                  Read the Tomato M&amp;C India story
+                  Read the Tomato Medical &amp; Chemical India story
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Link>
               </div>

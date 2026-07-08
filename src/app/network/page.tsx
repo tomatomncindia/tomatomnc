@@ -49,7 +49,7 @@ export default function NetworkPage() {
             Distribution, partnership, and quality: one program.
           </h1>
           <p className="text-ink-soft mt-5 max-w-2xl text-[16.5px] leading-relaxed">
-            Tomato M&amp;C India supplies hospitals and distributors across {TOTAL_COUNTRIES}+
+            Tomato Medical &amp; Chemical India supplies hospitals and distributors across {TOTAL_COUNTRIES}+
             countries, with full quality documentation behind every market entry.
           </p>
         </div>
@@ -73,7 +73,7 @@ export default function NetworkPage() {
               </h2>
               <p className="text-ink-soft mt-5 max-w-md text-[15.5px] leading-relaxed">
                 Active distribution across the Americas, Europe, Asia-Pacific, and MENA. In India,
-                Blackchip operates as the distributor of Tomato M&amp;C India. Each market entry
+                Blackchip operates as the distributor of Tomato Medical &amp; Chemical India. Each market entry
                 backed by region-specific regulatory clearance.
               </p>
               <dl className="divide-line border-line mt-8 grid grid-cols-3 divide-x border-y">

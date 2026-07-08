@@ -23,7 +23,7 @@ export default function CompliancePage() {
       <LegalSection number="01" title="Quality management">
         <p>
           Tomato M&amp;C Co., Ltd. has manufactured fiberglass orthopedic casting products since
-          2005 and controls its supply chain end-to-end — from fiberglass fabric and polyurethane
+          2005 and controls its supply chain end-to-end, from fiberglass fabric and polyurethane
           coating resin through finished casting tape and splints. Manufacturing operates under the
           certified management systems listed below.
         </p>

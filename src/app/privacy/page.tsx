@@ -59,16 +59,16 @@ export default function PrivacyPage() {
         <p>We collect personal information only when you choose to provide it:</p>
         <ul>
           <li>
-            <strong>Distributor inquiry form</strong> — company name, country, contact name, email
+            <strong>Distributor inquiry form</strong>: company name, country, contact name, email
             address, phone number (optional), products of interest, intended territory, and your
             message.
           </li>
           <li>
-            <strong>Newsletter signup</strong> — your email address, used to send our quarterly
+            <strong>Newsletter signup</strong>: your email address, used to send our quarterly
             product and regulatory brief.
           </li>
           <li>
-            <strong>Direct contact</strong> — information you share when you email, call, or
+            <strong>Direct contact</strong>: information you share when you email, call, or
             message us on WhatsApp.
           </li>
         </ul>
@@ -105,17 +105,17 @@ export default function PrivacyPage() {
         <p>The website relies on a small number of service providers:</p>
         <ul>
           <li>
-            <strong>Cloudflare</strong> — website hosting and Turnstile spam protection.
+            <strong>Cloudflare</strong>: website hosting and Turnstile spam protection.
           </li>
           <li>
-            <strong>Resend</strong> — delivery of contact form submissions by email.
+            <strong>Resend</strong>: delivery of contact form submissions by email.
           </li>
           <li>
-            <strong>Google Maps</strong> — the embedded map on our contact page is served by
+            <strong>Google Maps</strong>: the embedded map on our contact page is served by
             Google, which may process technical data and set its own cookies.
           </li>
           <li>
-            <strong>WhatsApp (Meta)</strong> — the WhatsApp chat button opens a conversation in the
+            <strong>WhatsApp (Meta)</strong>: the WhatsApp chat button opens a conversation in the
             WhatsApp app or website; any chat is governed by WhatsApp&rsquo;s own terms and privacy
             policy.
           </li>

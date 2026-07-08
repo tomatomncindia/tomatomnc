@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 
 import { cn } from "@/lib/cn";
@@ -141,27 +141,18 @@ export function HomeHero() {
             initial={reduce ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-3 flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.28em] text-white/85 [text-shadow:0_1px_12px_rgba(0,0,0,0.5)] md:mb-4 md:text-xs"
+            className="mb-3 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/85 [text-shadow:0_1px_12px_rgba(0,0,0,0.5)] md:mb-4 md:text-xs"
           >
-            <span aria-hidden className="bg-brand-red h-px w-7" />
-            Comfort in discomfort
+            <ShieldCheck aria-hidden className="text-mid-green h-5 w-5 shrink-0" strokeWidth={2.5} />
+            Trusted by thousands of doctors and millions of patients
           </motion.p>
           <motion.h1
             initial={reduce ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display max-w-[18ch] text-[clamp(30px,8.5vw,56px)] leading-[1.05] tracking-[-0.02em] text-white [text-shadow:0_2px_20px_rgba(0,0,0,0.45)]"
+            className="font-display max-w-[18ch] text-[clamp(48px,10.5vw,76px)] leading-[1.05] tracking-[-0.02em] text-white [text-shadow:0_2px_20px_rgba(0,0,0,0.45)]"
           >
-            You can be{" "}
-            <span className="editorial-italic text-mid-green whitespace-nowrap">
-              No.&thinsp;1
-              <span
-                aria-hidden
-                className="bg-brand-red ml-1.5 inline-block h-2 w-2 rounded-full align-baseline sm:h-2.5 sm:w-2.5"
-              />
-            </span>
-            <br />
-            with Tomato Orthopedics
+            Comfort in discomfort
           </motion.h1>
 
           <div className="mt-7 flex items-end justify-between gap-6 md:mt-9">

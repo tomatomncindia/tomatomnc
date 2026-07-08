@@ -14,8 +14,8 @@ export const SITE = {
     ],
     phone: "+91 98331 16680",
     phones: ["+91 98331 16680", "+91 98203 24286"],
-    email: "Blackchip.pvt@gmail.com",
-    salesEmail: "Blackchip.pvt@gmail.com",
+    email: "contact@tomatomncindia.com",
+    salesEmail: "contact@tomatomncindia.com",
     // WhatsApp business line — digits only, used to build wa.me links.
     whatsapp: "919833116680",
   },

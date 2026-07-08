@@ -20,7 +20,7 @@ export default function ContactPage() {
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">Get in Touch</p>
           <h1 className="mt-4 font-display text-[40px] sm:text-[52px] leading-[1.05] tracking-[-0.02em]">
-            Contact Tomato M&amp;C India
+            Contact Tomato Medical &amp; Chemical India
           </h1>
           <p className="mt-5 text-[16.5px] leading-relaxed text-ink-soft">
             We respond to all inquiries within 2 hours.
@@ -135,8 +135,7 @@ export default function ContactPage() {
   );
 }
 
-const MAP_QUERY =
-  "Shiv CHS Ltd, MHB Colony, Mahavir Nagar, Kandivali West, Mumbai 400067";
+const MAP_QUERY = "BLACKCHIP IMPEX PVT. LTD., Mumbai";
 const MAP_DIRECT_HREF = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAP_QUERY)}`;
 
 function FacilityMap({ className }: { className?: string }) {
@@ -149,9 +148,10 @@ function FacilityMap({ className }: { className?: string }) {
     >
       <iframe
         title="Blackchip Impex Private Limited office location, Mumbai"
-        src={`https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&output=embed`}
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.55021323978!2d72.83655147498105!3d19.21483808201851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b76e81102a6b%3A0x3268074c489dce6f!2sBLACKCHIP%20IMPEX%20PVT.%20LTD.!5e0!3m2!1sen!2sin!4v1783535059627!5m2!1sen!2sin"
         loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
         className="absolute inset-0 h-full w-full grayscale-[0.2] contrast-[1.05]"
         style={{ border: 0 }}
       />
