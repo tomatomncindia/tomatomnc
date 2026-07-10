@@ -14,8 +14,8 @@ export const SITE = {
     ],
     phone: "+91 98331 16680",
     phones: ["+91 98331 16680", "+91 98203 24286"],
-    email: "contact@tomatomncindia.com",
-    salesEmail: "contact@tomatomncindia.com",
+    email: "tomatomncindia@gmail.com",
+    salesEmail: "tomatomncindia@gmail.com",
     // WhatsApp business line — digits only, used to build wa.me links.
     whatsapp: "919833116680",
   },

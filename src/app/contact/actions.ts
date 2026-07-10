@@ -57,7 +57,7 @@ export async function submitInquiry(
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.INQUIRY_TO_EMAIL ?? "contact@tomatomncindia.com";
+  const to = process.env.INQUIRY_TO_EMAIL ?? "tomatomncindia@gmail.com";
   const from = process.env.INQUIRY_FROM_EMAIL ?? "noreply@tomatomnc.com";
 
   if (!apiKey) {
@@ -103,7 +103,7 @@ export async function submitInquiry(
     console.error("Resend error:", err);
     return {
       status: "error",
-      message: "We couldn't send your message. Please email contact@tomatomncindia.com directly.",
+      message: "We couldn't send your message. Please email tomatomncindia@gmail.com directly.",
     };
   }
 }
