@@ -252,17 +252,19 @@ export function GlobalReach() {
                   onMouseLeave={() => setHoveredRegion(null)}
                   onFocus={() => setHoveredRegion(r.name)}
                   onBlur={() => setHoveredRegion(null)}
-                  className="group border-line hover:border-forest/40 focus-visible:outline-forest w-full rounded-xl border bg-white px-4 py-4 text-left transition-[border-color,transform,box-shadow] duration-300 [transition-timing-function:var(--ease-out-quint)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-card)] focus-visible:outline-2 focus-visible:outline-offset-2"
+                  className="group focus-visible:outline-forest w-full rounded-xl text-left focus-visible:outline-2 focus-visible:outline-offset-2"
                 >
-                  <div className="flex items-baseline justify-between gap-2">
-                    <p className="text-ink-muted font-mono text-[10px] tracking-[0.14em] uppercase">
-                      Region
-                    </p>
-                    <p className="text-forest font-mono text-[11px] tabular-nums">
-                      {String(r.countries).padStart(2, "0")}
-                    </p>
+                  <div className="border-line rounded-xl border bg-white px-4 py-4 transition-[border-color,transform,box-shadow] duration-300 [transition-timing-function:var(--ease-out-quint)] group-hover:-translate-y-0.5 group-hover:border-forest/40 group-hover:shadow-[var(--shadow-card)]">
+                    <div className="flex items-baseline justify-between gap-2">
+                      <p className="text-ink-muted font-mono text-[10px] tracking-[0.14em] uppercase">
+                        Region
+                      </p>
+                      <p className="text-forest font-mono text-[11px] tabular-nums">
+                        {String(r.countries).padStart(2, "0")}
+                      </p>
+                    </div>
+                    <p className="font-display text-ink mt-2 text-[14.5px] leading-tight">{r.name}</p>
                   </div>
-                  <p className="font-display text-ink mt-2 text-[14.5px] leading-tight">{r.name}</p>
                 </button>
               </li>
             ))}

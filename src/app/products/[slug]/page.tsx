@@ -253,8 +253,8 @@ export default async function ProductDetailPage({ params }: { params: Promise<Pa
 
                     <StaggerGroup className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                       {product.applicationSteps.map((step, i) => (
-                        <StaggerItem key={step.title}>
-                          <div className="group border-line hover:border-forest/30 flex h-full flex-col overflow-hidden rounded-xl border bg-white transition-[border-color,transform] duration-300 [transition-timing-function:var(--ease-out-quint)] hover:-translate-y-0.5">
+                        <StaggerItem key={step.title} className="group h-full">
+                          <div className="border-line flex h-full flex-col overflow-hidden rounded-xl border bg-white transition-[border-color,transform] duration-300 [transition-timing-function:var(--ease-out-quint)] group-hover:-translate-y-0.5 group-hover:border-forest/30">
                             {/* Step illustration from the catalog */}
                             {step.image ? (
                               <div className="relative aspect-[16/11] w-full overflow-hidden bg-white">

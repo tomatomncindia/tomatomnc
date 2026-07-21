@@ -80,17 +80,16 @@ export default function NotFound() {
             <ul className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-2.5 border-t border-line pt-8">
               {QUICK_LINKS.map((l) => (
                 <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    className="group flex items-center justify-between gap-3 rounded-xl border border-line bg-white px-4 py-3.5 transition-[border-color,transform] duration-300 [transition-timing-function:var(--ease-out-quint)] hover:-translate-y-0.5 hover:border-forest/40"
-                  >
-                    <span>
-                      <span className="block font-display text-[15px] leading-tight text-ink">
-                        {l.label}
+                  <Link href={l.href} className="group block">
+                    <span className="flex items-center justify-between gap-3 rounded-xl border border-line bg-white px-4 py-3.5 transition-[border-color,transform] duration-300 [transition-timing-function:var(--ease-out-quint)] group-hover:-translate-y-0.5 group-hover:border-forest/40">
+                      <span>
+                        <span className="block font-display text-[15px] leading-tight text-ink">
+                          {l.label}
+                        </span>
+                        <span className="mt-0.5 block text-[12.5px] text-ink-muted">{l.note}</span>
                       </span>
-                      <span className="mt-0.5 block text-[12.5px] text-ink-muted">{l.note}</span>
+                      <ArrowUpRight className="h-4 w-4 text-ink-muted transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-forest" />
                     </span>
-                    <ArrowUpRight className="h-4 w-4 text-ink-muted transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-forest" />
                   </Link>
                 </li>
               ))}

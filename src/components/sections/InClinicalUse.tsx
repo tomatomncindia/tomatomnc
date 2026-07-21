@@ -79,8 +79,8 @@ export function InClinicalUse() {
 
         <ul className="mt-10 space-y-3">
           {USE_CASES.map(({ icon: Icon, title, body, stat, statLabel }, i) => (
-            <Reveal key={title} delay={i * 0.06} as="li">
-              <div className="group flex items-start gap-4 rounded-xl border border-line bg-white p-5 transition-[border-color,transform] duration-300 [transition-timing-function:var(--ease-out-quint)] hover:border-line-strong hover:-translate-y-0.5">
+            <Reveal key={title} delay={i * 0.06} as="li" className="group">
+              <div className="flex items-start gap-4 rounded-xl border border-line bg-white p-5 transition-[border-color,transform] duration-300 [transition-timing-function:var(--ease-out-quint)] group-hover:border-line-strong group-hover:-translate-y-0.5">
                 <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-forest/10 text-forest">
                   <Icon className="h-4.5 w-4.5" strokeWidth={1.7} />
                 </span>
