@@ -38,6 +38,8 @@ export const SITE = {
 } as const;
 
 // Pre-filled inquiry message — opens in WhatsApp ready to send.
+export const CATALOG_PDF = "/downloads/TomatoMNCIndia_Catalogue.pdf";
+
 export const WHATSAPP_MESSAGE =
   "Hello! I'm interested in Tomato M&C India orthopedic casting products and would like to know more. Could you please share details on products, pricing, and availability?";
 

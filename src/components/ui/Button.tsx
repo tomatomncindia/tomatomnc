@@ -3,8 +3,8 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/cn";
 
-type Variant = "primary" | "secondary" | "outline" | "ghost" | "dark";
-type Size = "sm" | "md" | "lg";
+export type Variant = "primary" | "secondary" | "outline" | "ghost" | "dark";
+export type Size = "sm" | "md" | "lg";
 
 type CommonProps = {
   variant?: Variant;
@@ -33,6 +33,11 @@ const sizes: Record<Size, string> = {
   md: "h-11 px-5 text-sm",
   lg: "h-12 px-6 text-[15px]",
 };
+
+/** Shared so non-Button elements (e.g. the catalog download anchor) match exactly. */
+export function buttonClasses(variant: Variant = "primary", size: Size = "md", className?: string) {
+  return cn(baseStyles, variants[variant], sizes[size], className);
+}
 
 type ButtonProps = CommonProps &
   Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children">;

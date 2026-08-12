@@ -9,6 +9,7 @@ import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 
 import { Logo } from "./Logo";
 import { ButtonLink } from "@/components/ui/Button";
+import { CatalogDownload } from "@/components/ui/CatalogDownload";
 import { PRODUCTS, type Product } from "@/data/products";
 import { SITE } from "@/data/site";
 import { cn } from "@/lib/cn";
@@ -16,8 +17,6 @@ import { cn } from "@/lib/cn";
 const CASTING = PRODUCTS.filter((p) => p.category === "Cast");
 const SPLINTS = PRODUCTS.filter((p) => p.category === "Splint");
 const SUPPORTING = PRODUCTS.filter((p) => p.category === "Supporting Product");
-
-const CATALOG_PDF = "/downloads/Tomato_MnC_India_Catalog_BlackchipImpex.pdf";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -121,11 +120,11 @@ export function Navbar() {
           <ButtonLink href="/contact" variant="outline" size="sm" className="hidden xl:inline-flex">
             Request a Sample
           </ButtonLink>
-          <ButtonLink href={CATALOG_PDF} variant="primary" size="sm">
+          <CatalogDownload variant="primary" size="sm">
             <span className="inline-flex items-center gap-1.5">
               <FileDown className="h-3.5 w-3.5" /> Download Catalog
             </span>
-          </ButtonLink>
+          </CatalogDownload>
         </div>
 
         <button
@@ -212,11 +211,11 @@ export function Navbar() {
               );
             })}
             <div className="pt-4 mt-2 border-t border-line space-y-2.5">
-              <ButtonLink href={CATALOG_PDF} variant="primary" size="lg" className="w-full">
+              <CatalogDownload variant="primary" size="lg" className="w-full">
                 <span className="inline-flex items-center gap-2">
                   <FileDown className="h-4 w-4" /> Download Catalog
                 </span>
-              </ButtonLink>
+              </CatalogDownload>
               <ButtonLink href="/contact" variant="outline" size="lg" className="w-full">
                 Request a Sample
               </ButtonLink>
@@ -299,9 +298,15 @@ function ProductsMegaMenu({ onClose }: { onClose: () => void }) {
           <p className="eyebrow">Resources</p>
           <ul className="mt-4 space-y-3">
             <li>
-              <ResourceLink href={CATALOG_PDF} icon={<FileDown className="h-3.5 w-3.5" />}>
+              <CatalogDownload
+                plain
+                className="group inline-flex items-center gap-2 text-[13.5px] text-ink-soft hover:text-ink"
+              >
+                <span className="text-ink-muted group-hover:text-forest transition-colors">
+                  <FileDown className="h-3.5 w-3.5" />
+                </span>
                 Full catalog PDF
-              </ResourceLink>
+              </CatalogDownload>
             </li>
             <li>
               <ResourceLink href="/network#quality" icon={<ArrowUpRight className="h-3.5 w-3.5" />}>

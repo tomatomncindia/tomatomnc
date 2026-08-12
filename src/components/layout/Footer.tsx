@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { ArrowUpRight, Globe, ShieldCheck } from "lucide-react";
 import { Logo } from "./Logo";
-import { SITE, telHref } from "@/data/site";
+import { CatalogDownload } from "@/components/ui/CatalogDownload";
+import { CATALOG_PDF, SITE, telHref } from "@/data/site";
 
 const navCols = [
   {
@@ -10,7 +11,7 @@ const navCols = [
       { label: "Casting", href: "/products" },
       { label: "Splints", href: "/products" },
       { label: "Supporting Products", href: "/products" },
-      { label: "Full catalog (PDF)", href: "/downloads/Tomato_MnC_India_Catalog_BlackchipImpex.pdf" },
+      { label: "Full catalog (PDF)", href: CATALOG_PDF },
     ],
   },
   {
@@ -138,6 +139,17 @@ export function Footer() {
               <ul className="mt-4 space-y-2.5">
                 {col.links.map((l) => {
                   const isExternal = "external" in l && l.external;
+                  const linkClass =
+                    "text-[13.5px] text-white/60 transition-colors hover:text-white";
+                  if (l.href === CATALOG_PDF) {
+                    return (
+                      <li key={l.label}>
+                        <CatalogDownload plain className={linkClass}>
+                          {l.label}
+                        </CatalogDownload>
+                      </li>
+                    );
+                  }
                   return (
                     <li key={l.label}>
                       {isExternal ? (
