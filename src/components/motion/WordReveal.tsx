@@ -10,6 +10,16 @@ import { Children, isValidElement, type ReactNode } from "react";
  * of typeset words being slotted into place. Maintains layout (so it doesn't
  * cause CLS) by using overflow:hidden on the wrapper, not the word.
  *
+ * The mask carries `pb-[0.24em] -mb-[0.19em]`: headings here run at
+ * line-height ~0.9–1.08, which is shorter than the display fonts' content
+ * area, so descenders ('g', 'y') sit below the wrapper's box and get sliced
+ * off by overflow:hidden. The padding extends the clip region past the
+ * deepest descender; the negative margin pulls the margin box back to the
+ * height it had with the old 0.05em pad, so glyph positions and line spacing
+ * stay exactly where they were — only the clip region grows.
+ * The hidden offset is 135% (not 115%) so the word still starts fully below
+ * the now-taller mask.
+ *
  * Children may include inline <span> formatting (e.g. italic accents) — the
  * reveal recurses into spans so a styled span still animates as one word.
  */
@@ -42,7 +52,7 @@ export function WordReveal({
   };
 
   const word: Variants = {
-    hidden: { y: "115%" },
+    hidden: { y: "135%" },
     visible: {
       y: "0%",
       transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
@@ -62,7 +72,7 @@ export function WordReveal({
       {words.map((w, i) => (
         <span
           key={i}
-          className="inline-block overflow-hidden align-bottom pb-[0.05em]"
+          className="inline-block overflow-hidden align-bottom pb-[0.24em] -mb-[0.19em]"
         >
           {w.isBreak ? (
             <span style={{ display: "block", width: 0, height: 0 }} aria-hidden />
