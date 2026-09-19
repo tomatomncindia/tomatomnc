@@ -89,7 +89,15 @@ export function Footer() {
             <p className="font-mono text-[11px] tracking-[0.18em] text-white/50 uppercase">
               PARENT COMPANY
             </p>
-            <div className="mt-4 text-[15px] text-white/85">Blackchip Impex Pvt. Ltd.</div>
+            <a
+              href={SITE.blackchipUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-4 inline-flex items-center gap-1.5 text-[15px] text-white/85 transition-colors hover:text-white"
+            >
+              Blackchip Impex Pvt. Ltd.
+              <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
           </div>
         </div>
       </div>

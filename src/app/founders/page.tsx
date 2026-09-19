@@ -9,6 +9,7 @@ import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion/Reveal";
 import { WordReveal } from "@/components/motion/WordReveal";
 import { PortraitPlate } from "@/components/founders/PortraitPlate";
 import { pageMetadata } from "@/lib/seo";
+import { SITE } from "@/data/site";
 
 export const metadata = pageMetadata({
   title: "Founders",
@@ -168,14 +169,22 @@ export default function FoundersPage() {
                 <p className="text-ink-muted font-mono text-[10px] tracking-[0.18em] uppercase">
                   A venture by
                 </p>
-                <Image
-                  src="/images/products/logos/blackchiplogo.webp"
-                  alt="Blackchip Impex Pvt. Ltd."
-                  width={4496}
-                  height={1248}
-                  sizes="(max-width: 1024px) 80vw, 360px"
-                  className="mx-auto mt-6 h-auto w-full max-w-[340px] mix-blend-multiply lg:max-w-none"
-                />
+                <a
+                  href={SITE.blackchipUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit the Blackchip Impex website"
+                  className="block transition-opacity duration-200 hover:opacity-80"
+                >
+                  <Image
+                    src="/images/products/logos/blackchiplogo.webp"
+                    alt="Blackchip Impex Pvt. Ltd."
+                    width={4496}
+                    height={1248}
+                    sizes="(max-width: 1024px) 80vw, 360px"
+                    className="mx-auto mt-6 h-auto w-full max-w-[340px] mix-blend-multiply lg:max-w-none"
+                  />
+                </a>
                 <p className="text-forest mt-6 border-ink/15 border-t pt-4 font-mono text-[10px] tracking-[0.14em] uppercase">
                   Precision · Trust · Innovation
                 </p>
@@ -660,7 +669,8 @@ export default function FoundersPage() {
               </StaggerGroup>
               <div className="mt-8 flex flex-col gap-2.5">
                 <ButtonLink
-                  href="/contact?type=distributor"
+                  href={`${SITE.blackchipUrl}#enquiry`}
+                  external
                   variant="primary"
                   size="lg"
                   withArrow

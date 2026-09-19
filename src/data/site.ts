@@ -4,6 +4,8 @@ export const SITE = {
   tagline: "Fiberglass orthopedic casting solutions, manufactured in Korea since 2005.",
   founded: 2005,
   parentUrl: "https://www.tomatomnc.com",
+  // India distributor / parent company site.
+  blackchipUrl: "https://blackchipimpex.com/",
 
   contact: {
     company: "Blackchip Impex Private Limited",
