@@ -10,7 +10,6 @@
 // Run:  node scripts/gen-og.mjs
 // Output: src/app/opengraph-image.png  (Next picks it up by file convention)
 
-import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";

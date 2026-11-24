@@ -1,11 +1,16 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "tomatomnc",
-  "main": ".open-next/worker.js",
+  // Custom entry wraps .open-next/worker.js to add HTTP Range support for
+  // /videos/* (Safari won't play video without it). See worker/index.ts.
+  "main": "worker/index.ts",
   "compatibility_date": "2025-10-01",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {
     "directory": ".open-next/assets",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
+    // Only videos hit the worker before the asset layer; every other static
+    // file is still served directly without invoking the worker.
+    "run_worker_first": ["/videos/*"]
   }
 }

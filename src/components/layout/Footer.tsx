@@ -11,6 +11,7 @@ const navCols = [
       { label: "Casting", href: "/products" },
       { label: "Splints", href: "/products" },
       { label: "Supporting Products", href: "/products" },
+      { label: "How to use (videos)", href: "/how-to-use" },
       { label: "Full catalog (PDF)", href: CATALOG_PDF },
     ],
   },
@@ -107,7 +108,7 @@ export function Footer() {
         {/* Mobile: brand block full-width, link columns 2-up. md+: 12-col row. */}
         <div className="container-page grid grid-cols-2 gap-x-6 gap-y-10 py-12 md:grid-cols-12 md:gap-12 md:py-16">
           <div className="col-span-2 md:col-span-4">
-            <Logo tone="light" />
+            <Logo />
             <p className="mt-4 max-w-sm text-[13.5px] leading-relaxed text-white/60">
               {SITE.tagline}
             </p>

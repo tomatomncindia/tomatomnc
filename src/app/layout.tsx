@@ -6,6 +6,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { ScrollProgress } from "@/components/motion/ScrollProgress";
+import { MotionProvider } from "@/components/motion/MotionProvider";
 import { baseMetadata, SITE_URL } from "@/lib/seo";
 import { SITE } from "@/data/site";
 
@@ -98,11 +99,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
-        <ScrollProgress />
-        <Navbar />
-        <main className="flex-1 pt-16">{children}</main>
-        <Footer />
-        <WhatsAppButton />
+        <MotionProvider>
+          <ScrollProgress />
+          <Navbar />
+          <main className="flex-1 pt-16">{children}</main>
+          <Footer />
+          <WhatsAppButton />
+        </MotionProvider>
       </body>
     </html>
   );

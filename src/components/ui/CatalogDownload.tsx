@@ -1,13 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { FileDown, Loader2 } from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 
 import { buttonClasses, type Size, type Variant } from "@/components/ui/Button";
 import { CATALOG_PDF } from "@/data/site";
 import { cn } from "@/lib/cn";
+
+const subscribeNoop = () => () => {};
 
 // ponytail: the browser's own download manager owns real progress and completion.
 // We only acknowledge the click so a slow connection doesn't read as a dead button
@@ -36,12 +39,12 @@ export function CatalogDownload({
 }: Props) {
   const [busy, setBusy] = useState(false);
   const [toast, setToast] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  // True after hydration (false during SSR) — gates the toast portal.
+  const mounted = useSyncExternalStore(subscribeNoop, () => true, () => false);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
-    setMounted(true);
     const t = timers;
     return () => t.current.forEach(clearTimeout);
   }, []);

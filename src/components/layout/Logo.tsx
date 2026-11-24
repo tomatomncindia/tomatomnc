@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export function Logo({ tone = "dark" }: { tone?: "dark" | "light" }) {
+// One full-colour wordmark works on both the light navbar and the dark footer.
+export function Logo() {
   return (
     <Link href="/" aria-label="Tomato M&C India, Home" className="inline-flex items-center">
       <Image

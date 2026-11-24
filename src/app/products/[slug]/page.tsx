@@ -14,7 +14,10 @@ import { ProductGallery } from "@/components/products/ProductGallery";
 import { ProductSpecAside } from "@/components/products/ProductSpecAside";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion/Reveal";
 
+import { VideoGuideLinks } from "@/components/how-to-use/VideoGuideLinks";
+
 import { PRODUCTS, getProduct, getRelatedProducts } from "@/data/products";
+import { getVideosForProduct } from "@/data/videos";
 import { SITE_URL } from "@/lib/seo";
 
 type Params = { slug: string };
@@ -240,7 +243,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<Pa
               {/* Application Guide — step grid */}
               {product.applicationSteps ? (
                 <Reveal>
-                  <div>
+                  <div id="application-guide" className="scroll-mt-24">
                     <div className="mb-6 flex items-baseline justify-between gap-4">
                       <div>
                         <p className="eyebrow">How to use</p>
@@ -250,6 +253,8 @@ export default async function ProductDetailPage({ params }: { params: Promise<Pa
                         {product.applicationSteps.length} STEPS
                       </p>
                     </div>
+
+                    <VideoGuideLinks videos={getVideosForProduct(product.slug)} />
 
                     <StaggerGroup className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                       {product.applicationSteps.map((step, i) => (

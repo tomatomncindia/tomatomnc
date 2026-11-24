@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { Stethoscope, Activity, Baby, ArrowUpRight } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 
 import { ProductVisual } from "@/components/products/ProductVisual";
 import { getProduct } from "@/data/products";

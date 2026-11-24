@@ -4,8 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown, FileDown, ArrowUpRight } from "lucide-react";
-import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import { Menu, X, ChevronDown, FileDown, ArrowUpRight, PlayCircle } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 
 import { Logo } from "./Logo";
 import { ButtonLink } from "@/components/ui/Button";
@@ -25,12 +26,15 @@ export function Navbar() {
   const [productsOpen, setProductsOpen] = useState(false);
   const [mobileProductsExpanded, setMobileProductsExpanded] = useState(false);
 
-  // Close menus on route change
-  useEffect(() => {
+  // Close menus on route change. Adjusting state during render (rather than
+  // in an effect) avoids a wasted render with the stale menus still open.
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
     setMobileOpen(false);
     setProductsOpen(false);
     setMobileProductsExpanded(false);
-  }, [pathname]);
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -67,7 +71,7 @@ export function Navbar() {
       onMouseLeave={() => setProductsOpen(false)}
     >
       <div className="container-page flex h-16 items-center justify-between">
-        <Logo tone={overlay ? "light" : "dark"} />
+        <Logo />
 
         <nav aria-label="Primary" className="hidden lg:flex items-center gap-1">
           {SITE.nav.map((item) => {
@@ -92,7 +96,7 @@ export function Navbar() {
                 href={item.href}
                 onMouseEnter={() => setProductsOpen(false)}
                 className={cn(
-                  "relative px-3.5 py-2 text-[13.5px] font-medium transition-colors",
+                  "relative whitespace-nowrap px-2.5 xl:px-3.5 py-2 text-[13.5px] font-medium transition-colors",
                   overlay
                     ? active
                       ? "text-white"
@@ -105,7 +109,7 @@ export function Navbar() {
                 {item.label}
                 <span
                   className={cn(
-                    "absolute left-3.5 right-3.5 -bottom-px h-px origin-left scale-x-0 transition-transform duration-200",
+                    "absolute left-2.5 right-2.5 xl:left-3.5 xl:right-3.5 -bottom-px h-px origin-left scale-x-0 transition-transform duration-200",
                     overlay ? "bg-white" : "bg-ink",
                     active && "scale-x-100",
                   )}
@@ -246,7 +250,7 @@ function ProductsTrigger({
       aria-haspopup="true"
       aria-expanded={open}
       className={cn(
-        "relative px-3.5 py-2 text-[13.5px] font-medium transition-colors inline-flex items-center gap-1",
+        "relative whitespace-nowrap px-2.5 xl:px-3.5 py-2 text-[13.5px] font-medium transition-colors inline-flex items-center gap-1",
         overlay
           ? active
             ? "text-white"
@@ -265,7 +269,7 @@ function ProductsTrigger({
       />
       <span
         className={cn(
-          "absolute left-3.5 right-7 -bottom-px h-px origin-left scale-x-0 transition-transform duration-200",
+          "absolute left-2.5 right-6 xl:left-3.5 xl:right-7 -bottom-px h-px origin-left scale-x-0 transition-transform duration-200",
           overlay ? "bg-white" : "bg-ink",
           active && "scale-x-100",
         )}
@@ -307,6 +311,11 @@ function ProductsMegaMenu({ onClose }: { onClose: () => void }) {
                 </span>
                 Full catalog PDF
               </CatalogDownload>
+            </li>
+            <li>
+              <ResourceLink href="/how-to-use" icon={<PlayCircle className="h-3.5 w-3.5" />}>
+                Application videos
+              </ResourceLink>
             </li>
             <li>
               <ResourceLink href="/network#quality" icon={<ArrowUpRight className="h-3.5 w-3.5" />}>

@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useInView, useMotionValue, useSpring, useReducedMotion } from "motion/react";
+import { useInView, useMotionValue, useSpring } from "motion/react";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 
 /**
  * Counts up to a numeric target when the element enters the viewport.
@@ -38,11 +39,7 @@ export function AnimatedNumber({
   const [display, setDisplay] = useState<number>(reduce ? numeric : 0);
 
   useEffect(() => {
-    if (!inView) return;
-    if (reduce) {
-      setDisplay(numeric);
-      return;
-    }
+    if (!inView || reduce) return;
     motionVal.set(numeric);
   }, [inView, numeric, motionVal, reduce]);
 
@@ -68,7 +65,8 @@ export function AnimatedNumber({
   return (
     <span ref={ref} className={className}>
       {prefix}
-      <span className="tabular-nums">{display}</span>
+      {/* Reduced motion: show the final figure, no count-up. */}
+      <span className="tabular-nums">{reduce ? numeric : display}</span>
       {suffix}
     </span>
   );

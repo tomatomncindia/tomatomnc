@@ -1,6 +1,12 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+
+// Reduced motion is handled globally by <MotionProvider reducedMotion="user">:
+// for those visitors the y-offset is skipped and only the fade remains. These
+// components must NOT branch on the preference themselves — a different tree
+// on the client than on the server breaks hydration, and dropping the
+// whileInView trigger after hydration would leave content stuck at opacity 0.
 
 export function Reveal({
   children,
@@ -13,12 +19,7 @@ export function Reveal({
   className?: string;
   as?: "div" | "section" | "header" | "li" | "article";
 }) {
-  const reduce = useReducedMotion();
   const MotionTag = motion[as] as typeof motion.div;
-
-  if (reduce) {
-    return <MotionTag className={className}>{children}</MotionTag>;
-  }
 
   return (
     <MotionTag
@@ -40,9 +41,6 @@ export function StaggerGroup({
   children: React.ReactNode;
   className?: string;
 }) {
-  const reduce = useReducedMotion();
-  if (reduce) return <div className={className}>{children}</div>;
-
   return (
     <motion.div
       initial="hidden"
@@ -65,12 +63,8 @@ export function StaggerItem({
   className?: string;
   as?: "div" | "li" | "article";
 }) {
-  const reduce = useReducedMotion();
   const MotionTag = motion[as] as typeof motion.div;
 
-  if (reduce) {
-    return <MotionTag className={className}>{children}</MotionTag>;
-  }
   return (
     <MotionTag
       variants={{

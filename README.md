@@ -44,6 +44,9 @@ src/
 public/
   images/               # optimized assets
   downloads/            # PDF catalog, datasheets, certificates
+  videos/               # web-encoded application videos (generated, see below)
+worker/                 # custom Cloudflare Worker entry (video Range support)
+media-src/              # full-size video masters — gitignored, not deployed
 ```
 
 ## Pages
@@ -52,6 +55,7 @@ public/
 - `/about` — About / heritage / certifications summary
 - `/products` — Catalog grid + Downloads tab (catalog PDFs, datasheets)
 - `/products/[slug]` — Product detail (SSG)
+- `/how-to-use` — Application videos (`src/data/videos.ts`); link to one video with `/how-to-use#<video-id>`
 - `/manufacturing` — Facility, automation, capacity
 - `/network` — Global markets, OEM/private label, quality certifications
 - `/contact` — Inquiry forms (sample, distributor, OEM)
@@ -93,6 +97,16 @@ npm run deploy
 Public, non-secret vars live in `wrangler.jsonc` under `vars` (e.g. `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_TURNSTILE_SITE_KEY`). After the first deploy, add the custom domain `tomatomncindia.com` to the Worker in the Cloudflare dashboard (Workers → your worker → Settings → Domains & Routes).
 
 > Email sending requires a verified domain in [Resend](https://resend.com); `INQUIRY_FROM_EMAIL` must be on that domain. Without `RESEND_API_KEY`, the contact form still accepts submissions but logs instead of sending.
+
+### Build uses webpack (Windows + OpenNext 1.19)
+
+`npm run build` is `next build --webpack`. With `@opennextjs/cloudflare` 1.19.x, a Turbopack build made **on Windows** produces a Worker that 500s on every page (`ChunkLoadError` — the runtime loader can't resolve Turbopack chunks). Fixed upstream in 1.20.2+; after upgrading (`npm i -D @opennextjs/cloudflare@latest`), the `--webpack` flag can be dropped. Verify with `npm run preview`.
+
+### Videos (`/how-to-use`)
+
+- Masters go in `media-src/videos/` (gitignored). `node scripts/encode-videos.mjs` writes web copies to `public/videos/` (each must stay under Cloudflare's **25 MiB** per-asset limit) plus `worker/video-sizes.json`.
+- Workers Static Assets ignores `Range` and always answers 200, which Safari/iOS won't play. `worker/index.ts` (the `main` in `wrangler.jsonc`) wraps the OpenNext worker and serves `/videos/*` via `worker/video-range.ts` with proper 206 responses. Only `/videos/*` runs the worker first (`assets.run_worker_first`), and that path never loads the Next server handler, so it doesn't affect the CPU note below.
+- Replaced a video file by hand? Run `node scripts/encode-videos.mjs --manifest-only` so the size manifest matches.
 
 ### Cloudflare Free-plan CPU note (Error 1102)
 

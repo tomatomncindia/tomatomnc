@@ -32,6 +32,7 @@ export const SITE = {
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
     { label: "Products", href: "/products" },
+    { label: "How to Use", href: "/how-to-use" },
     { label: "Manufacturing", href: "/manufacturing" },
     { label: "Network", href: "/network" },
     { label: "Founders", href: "/founders" },

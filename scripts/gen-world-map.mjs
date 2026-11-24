@@ -36,10 +36,10 @@ projection.fitWidth(W - PAD * 2, land);
 const pathGen = geoPath(projection);
 
 // Translate so the land bbox sits at [PAD, PAD], then size the viewBox to it.
-let [[bx0, by0], [bx1, by1]] = pathGen.bounds(land);
+let [[bx0, by0], [, by1]] = pathGen.bounds(land);
 const [tx, ty] = projection.translate();
 projection.translate([tx - bx0 + PAD, ty - by0 + PAD]);
-[[bx0, by0], [bx1, by1]] = pathGen.bounds(land);
+[[bx0, by0], [, by1]] = pathGen.bounds(land);
 const H = Math.round(by1 + PAD);
 
 // Equator + prime-meridian guide positions in projected space.

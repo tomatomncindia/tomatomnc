@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion, type Variants } from "motion/react";
-import { Children, isValidElement, type ReactNode } from "react";
+import { motion, type Variants } from "motion/react";
+import { useReducedMotion } from "@/lib/useReducedMotion";
+import { Children, Fragment, isValidElement, type ReactNode } from "react";
 
 /**
  * Staggered word reveal for hero headings.
@@ -69,26 +70,29 @@ export function WordReveal({
       viewport={{ once: true, margin: "-10% 0px" }}
       variants={container}
     >
-      {words.map((w, i) => (
-        <span
-          key={i}
-          className="inline-block overflow-hidden align-bottom pb-[0.24em] -mb-[0.19em]"
-        >
-          {w.isBreak ? (
-            <span style={{ display: "block", width: 0, height: 0 }} aria-hidden />
-          ) : (
-            <motion.span
-              variants={word}
-              className="inline-block will-change-transform"
-              style={w.style}
-            >
-              {w.content}
-              {w.trailingSpace ? " " : ""}
-            </motion.span>
-          )}
-          {w.isBreak ? <br /> : null}
-        </span>
-      ))}
+      {words.map((w, i) =>
+        // A <br> must sit directly in the heading's own line box: inside the
+        // inline-block word mask it only broke the mask's line, not the
+        // heading's, so authored line breaks were silently ignored.
+        w.isBreak ? (
+          <br key={i} />
+        ) : (
+          <Fragment key={i}>
+            <span className="inline-block overflow-hidden align-bottom pb-[0.24em] -mb-[0.19em]">
+              <motion.span
+                variants={word}
+                className="inline-block will-change-transform"
+                style={w.style}
+              >
+                {w.content}
+              </motion.span>
+            </span>
+            {/* Word space lives between masks, in the heading's flow, so it is
+                a normal break opportunity and never trimmed inside a mask. */}
+            {w.trailingSpace ? " " : null}
+          </Fragment>
+        ),
+      )}
     </MotionTag>
   );
 }

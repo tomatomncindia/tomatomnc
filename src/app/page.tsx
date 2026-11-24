@@ -7,6 +7,7 @@ import { HomeHero } from "@/components/sections/HomeHero";
 import { HeroCarousel } from "@/components/sections/HeroCarousel";
 import { ProductionFlowPreview } from "@/components/sections/ProductionFlowPreview";
 import { GlobalReach } from "@/components/sections/GlobalReach";
+import { HowToUseTeaser } from "@/components/sections/HowToUseTeaser";
 import { ProductCard } from "@/components/products/ProductCard";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion/Reveal";
 import { WordReveal } from "@/components/motion/WordReveal";
@@ -110,6 +111,9 @@ export default function HomePage() {
 
       {/* ─── GLOBAL REACH (world map) ──────────────────────────── */}
       <GlobalReach />
+
+      {/* ─── HOW TO USE (application films teaser → /how-to-use) ─ */}
+      <HowToUseTeaser />
 
       {/* ─── KEY FIGURES STRIP ─────────────────────────────────── */}
       <Section size="md" tone="paper">

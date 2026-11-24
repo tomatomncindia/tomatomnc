@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion, useInView } from "motion/react";
+import { motion, useInView } from "motion/react";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 import { useRef } from "react";
 
 /**
